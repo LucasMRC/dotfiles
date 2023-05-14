@@ -83,6 +83,7 @@ keys = [
     Key([mod, "shift"], "z", lazy.spawn("code-insiders"), desc="Open code-insiders"),
     # The 'mod1' key is the 'Alt' key
     Key(["mod1"], "Tab", lazy.spawn("rofi -show window"), desc="Display open windows"),
+    Key([mod], "b", lazy.hide_show_bar("top"), desc="Toggle bar visibility"),
 ]
 
 # Custom workspace icons from https://fontawesome.com/v4/cheatsheet/
