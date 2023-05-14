@@ -200,11 +200,11 @@ screens = [
                 widget.Spacer(
                     length=20
                 ),
-                widget.Clock(format=" %d/%m/%Y %a"),
+                widget.Clock(format=" %H:%M"),
                 widget.Spacer(
                     length=20
                 ),
-                widget.Clock(format=" %H:%M"),
+                widget.Clock(format=" %d/%m/%Y %a"),
                 widget.Spacer(
                     length=10
                 ),
