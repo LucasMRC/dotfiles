@@ -21,10 +21,12 @@ if [ -z "$SSH_AUTH_SOCK" ]
     ssh-add -q ~/.ssh/id_ed25519_GH
 end
 
-set fish_color_normal brcyan
+set fish_color_normal '#17a1a1'
 set fish_color_autosuggestion '#7d7d7d'
-set fish_color_command brcyan
+set fish_color_command '#17a1a1'
 set fish_color_error '#ff6c6b'
-set fish_color_param brcyan
+set fish_color_param '#0070a3'
 
 set __fish_git_prompt_show_informative_status true
+set __fish_git_prompt_showcolorhints true
+set __fish_git_prompt_char_dirtystate '*'
