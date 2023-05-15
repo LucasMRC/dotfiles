@@ -10,6 +10,7 @@ alias ls='ls --color=auto'
 alias grep='grep --color=auto'
 alias code='code-insiders'
 alias standing-setup='sh /home/lucas/.screenlayout/standing-setup.sh'
+alias sitting-setup='sh /home/lucas/.screenlayout/sitting-setup.sh'
 
 if [ -f /usr/bin/neofetch ]
     neofetch | lolcat
