@@ -36,6 +36,19 @@ def autostart():
         home = os.path.expanduser('~/.config/qtile/autostart.sh')
         subprocess.Popen([home])
 
+@hook.subscribe.client_new
+def client_new(client):
+    if client.window.get_wm_class()[0] == "brave-browser-beta":
+        client.togroup("2")
+    if client.window.get_wm_class()[0] == "code - insiders":
+        client.togroup("1")
+    if client.window.get_wm_class()[0] == "ferdium":
+        client.togroup("4")
+    if client.window.get_wm_class()[0] == "1password":
+        client.togroup("9")
+    if client.window.get_wm_class()[0] == "spotify":
+        client.togroup("8")
+
 mod = "mod4"
 
 terminal = guess_terminal()
