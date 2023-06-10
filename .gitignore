@@ -16,3 +16,5 @@ systemd
 mimeapps.list
 pavucontrol.ini
 qtile/__pycache__
+QtProject.conf
+flameshot
