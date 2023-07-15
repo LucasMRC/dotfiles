@@ -5,9 +5,6 @@ end
 # Supresses fish's intro message
 set fish_greeting
 
-# Set time for bash history
-set HISTTIMEFORMAT "%d/%m/%y %T "
-
 # Aliases
 alias ls='ls --color=auto'
 alias grep='grep --color=auto'
@@ -15,6 +12,7 @@ alias code='code-insiders'
 alias standing-setup='sh /home/lucas/.screenlayout/standing-setup.sh'
 alias sitting-setup='sh /home/lucas/.screenlayout/sitting-setup.sh'
 alias pdf='mupdf'
+alias history='history --show-time="%d/%m/%Y %T " | less'
 
 if [ -f /usr/bin/neofetch ]
     neofetch | lolcat
