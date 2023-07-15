@@ -5,6 +5,24 @@ end
 # Supresses fish's intro message
 set fish_greeting
 
+# Syntax:
+# To just rerun your last command, simply type '!!'
+# '!! sudo' will prepend sudo to your most recent command
+# Running !! with anything other than sudo will append the argument to your most recent command
+# To add another command to prepend list remove the # on line 10 and put the command in the quotes. Repeat as needed
+function !!;
+  set var (history | head -n 1)
+  if test $argv
+    if test $argv = "sudo"        #; or "any other command you want to prepend"
+        eval $argv $var
+    else
+        eval $var $argv
+    end
+    else
+        eval $var
+  end
+end
+
 # Aliases
 alias ls='ls --color=auto'
 alias grep='grep --color=auto'
@@ -12,7 +30,7 @@ alias code='code-insiders'
 alias standing-setup='sh /home/lucas/.screenlayout/standing-setup.sh'
 alias sitting-setup='sh /home/lucas/.screenlayout/sitting-setup.sh'
 alias pdf='mupdf'
-alias history='history --show-time="%d/%m/%Y %T " | less'
+alias hist='history --show-time="%d/%m/%Y %T " | less'
 
 if [ -f /usr/bin/neofetch ]
     neofetch | lolcat
