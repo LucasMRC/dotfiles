@@ -38,11 +38,15 @@ def autostart():
 
 @hook.subscribe.client_new
 def client_new(client):
+    if client.window.get_wm_name.find("DevTools"):
+        return
     if client.window.get_wm_class()[0] == "brave-browser-beta":
         client.togroup("2")
     if client.window.get_wm_class()[0] == "code - insiders":
         client.togroup("1")
     if client.window.get_wm_class()[0] == "ferdium":
+        client.togroup("4")
+    if client.window.get_wm_class()[0] == "slack":
         client.togroup("4")
     if client.window.get_wm_class()[0] == "1password":
         client.togroup("9")
