@@ -38,7 +38,7 @@ def autostart():
 
 @hook.subscribe.client_new
 def client_new(client):
-    if client.window.get_wm_class()[0] == "brave-browser-beta" and client.name.find("DevTools") == -1:
+    if client.window.get_wm_class()[0] == "brave-browser" and client.name.find("DevTools") == -1:
         client.togroup("2")
     if client.window.get_wm_class()[0] == "code - insiders":
         client.togroup("1")
@@ -46,7 +46,7 @@ def client_new(client):
         client.togroup("4")
     if client.window.get_wm_class()[0] == "slack":
         client.togroup("4")
-    if client.window.get_wm_class()[0] == "1password":
+    if client.window.get_wm_class()[0] == "1password" and client.name.find("Quick Access") == -1:
         client.togroup("9")
     if client.window.get_wm_class()[0] == "spotify":
         client.togroup("8")
@@ -84,7 +84,7 @@ keys = [
     Key(
         [mod, "shift"],
         "Return",
-        lazy.spawn("brave-beta"),
+        lazy.spawn("brave"),
         desc="Open brave browser",
     ),
     Key([mod], "Return", lazy.spawn(terminal), desc="Launch terminal"),
@@ -95,6 +95,7 @@ keys = [
     Key([mod, "control"], "q", lazy.shutdown(), desc="Shutdown Qtile"),
     Key([mod], "r", lazy.spawn("rofi -show drun"), desc="Spawn a command using a prompt widget"),
     Key([mod, "shift"], "s", lazy.spawn("flameshot gui"), desc="Open screenshot tool"),
+    Key([mod, "shift"], "a", lazy.spawn("1password --quick-access"), desc="1Password quick access tool"),
     Key([mod, "shift"], "z", lazy.spawn("code-insiders"), desc="Open code-insiders"),
     # The 'mod1' key is the 'Alt' key
     Key(["mod1"], "Tab", lazy.spawn("rofi -show window"), desc="Display open windows"),
@@ -232,11 +233,11 @@ screens = [
 ]
 
 # Drag floating layouts.
-# mouse = [
-#     Drag([mod], "Button1", lazy.window.set_position_floating(), start=lazy.window.get_position()),
-#     Drag([mod], "Button3", lazy.window.set_size_floating(), start=lazy.window.get_size()),
-#     Click([mod], "Button2", lazy.window.bring_to_front()),
-# ]
+mouse = [
+    Drag([mod], "Button1", lazy.window.set_position_floating(), start=lazy.window.get_position()),
+    Drag([mod], "Button3", lazy.window.set_size_floating(), start=lazy.window.get_size()),
+    Click([mod], "Button2", lazy.window.bring_to_front()),
+]
 
 dgroups_key_binder = None
 dgroups_app_rules = []  # type: list
