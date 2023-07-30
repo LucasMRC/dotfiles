@@ -145,8 +145,8 @@ layouts = [
     layout.Columns(
         border_width=1,
         border_focus="#444",
-        margin=2,
-        margin_on_single=2,
+        margin=0,
+        margin_on_single=0,
     ),
     layout.Max(),
     # Try more layouts by unleashing below layouts.
@@ -228,6 +228,7 @@ screens = [
             ],
             24,
             background=["#222", "#111"],
+            opacity=0.9,
         ),
     ) for i in range(12)
 ]
