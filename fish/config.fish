@@ -51,3 +51,5 @@ set fish_color_param '#0070a3'
 set __fish_git_prompt_show_informative_status true
 set __fish_git_prompt_showcolorhints true
 set __fish_git_prompt_char_dirtystate '*'
+
+set -gx EDITOR nvim
