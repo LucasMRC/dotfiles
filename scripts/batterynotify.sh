@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 # Send a notification if the laptop battery is either low
 
 # This functionality is using the 'acpi' package to get the battery status.

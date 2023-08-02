@@ -228,7 +228,7 @@ screens = [
             ],
             24,
             background=["#222", "#111"],
-            opacity=0.9,
+            opacity=0.8,
         ),
     ) for i in range(12)
 ]
