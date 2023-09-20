@@ -1,50 +1,141 @@
+// vim: foldmethod=marker foldlevel=0
+
 configuration {
-  display-drun: "Search:";
-  display-window: "Windows:";
-  drun-display-format: "{icon} {name}";
-  font: "JetBrainsMono Nerd Font Medium 12";
-  modi: "window,run,drun";
-  show-icons: true;
-  icon-theme: "Papirus";
+  modes: "window,drun,run,ssh";
+  font: "JetBrainsMono Nerd Font 14";
+  drun-display-format: "{name}";
 }
 
-@theme "/dev/null"
-
 * {
-  bg: #1e1e2e66;
-  bg-alt: #585b7066;
-  bg-selected: #31324466;
+  // general
+  bg: #282828;
+  bgt: #28282895;
+  t: transparent;
+  fg: #d4be98;
 
-  fg: #cdd6f4;
-  fg-alt: #7f849c;
+  selected-bg: @fg;
+  selected-fg: @bg;
 
-  
-  border: 0;
-  margin: 0;
-  padding: 0;
-  spacing: 0;
+  // for windows
+  active: #a9b665;
+  urgent: #ea6962;
 }
 
 window {
-  width: 45%;
-  background-color: @bg;
+  fullscreen: true;
+  padding: 35% 30%;       // you might want to ajust these to resize rofi.
+  transparency: "real";
+  background-color: @bgt;
+  border-color: @t;
 }
+
+listview {
+  border: 0 0 0 0;
+  padding: 23 0 0;
+  scrollbar: true;
+}
+
+scrollbar {
+    width:        4px;
+    border:       0;
+    handle-color: @fg;
+    handle-width: 8px;
+    padding:      0 5;
+}
+
+entry {
+    placeholder: "";
+}
+
+// other kinda less interesting stuff {{{
+
+textbox {
+    text-color: @fg;
+}
+
+// using elements from:
+// https://github.com/bardisty/gruvbox-rofi/blob/master/gruvbox-common.rasi
 
 element {
-  padding: 8 12;
-  background-color: transparent;
-  text-color: @fg-alt;
+    border:  0;
+    padding: 2px;
 }
 
-element selected {
-  text-color: @fg;
-  background-color: @bg-selected;
+element.normal.normal {
+    background-color: @t;
+    text-color:       @fg;
 }
 
-element-text {
-  background-color: transparent;
-  text-color: inherit;
-  vertical-align: 0.5;
+element.normal.urgent {
+    background-color: @t;
+    text-color:       @urgent;
+}
+
+element.normal.active {
+    background-color: @t;
+    text-color:       @active;
+}
+
+element.selected.normal {
+    background-color: @selected-bg;
+    text-color:       @selected-fg;
+}
+
+element.selected.urgent {
+    background-color: @selected-bg;
+    text-color:       @urgent;
+}
+
+element.selected.active {
+    background-color: @selected-bg;
+    text-color:       @selected-fg;
+}
+
+element.alternate.normal {
+    background-color: @t;
+    text-color:       @fg;
+}
+
+element.alternate.urgent {
+    background-color: @t;
+    text-color:       @urgent;
+}
+
+element.alternate.active {
+    background-color: @t;
+    text-color:       @active;
+}
+
+sidebar {
+    border:       2px 0 0;
+    border-color: @fg;
+}
+
+inputbar {
+    spacing:    0;
+    text-color: @fg;
+    padding:    2px;
+    children:   [ prompt, textbox-prompt-sep, entry, case-indicator ];
+}
+
+case-indicator,
+entry,
+prompt,
+button {
+    spacing:    0;
+    text-color: @fg;
+}
+
+button.selected {
+    background-color: @bg;
+    text-color:       @fg;
+}
+
+textbox-prompt-sep {
+    expand:     false;
+    str:        ":";
+    text-color: @fg;
+    margin:     0 0.3em 0 0;
 }
 
 element-icon {
@@ -52,34 +143,3 @@ element-icon {
   padding: 0 10 0 0;
   background-color: transparent;
 }
-
-entry {
-  padding: 12;
-  background-color: @bg-alt;
-  text-color: @fg;
-}
-
-inputbar {
-  children: [prompt, entry];
-  background-color: @bg;
-}
-
-listview {
-  background-color: @bg;
-  columns: 1;
-  lines: 10;
-}
-
-mainbox {
-  children: [inputbar, listview];
-  background-color: @bg;
-}
-
-prompt {
-  enabled: true;
-  padding: 12 0 0 12;
-  background-color: @bg-alt;
-  text-color: @fg;
-}
-
-/* vim: ft=sass
