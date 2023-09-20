@@ -53,3 +53,6 @@ set __fish_git_prompt_showcolorhints true
 set __fish_git_prompt_char_dirtystate '*'
 
 set -gx EDITOR nvim
+# bun
+set --export BUN_INSTALL "$HOME/.bun"
+set --export PATH $BUN_INSTALL/bin $PATH
