@@ -95,7 +95,6 @@ keys = [
     Key([mod, "control"], "q", lazy.shutdown(), desc="Shutdown Qtile"),
     Key([mod], "r", lazy.spawn("rofi -show drun"), desc="Spawn a command using a prompt widget"),
     Key([mod, "shift"], "s", lazy.spawn("flameshot gui"), desc="Open screenshot tool"),
-    Key([mod, "shift"], "a", lazy.spawn("1password --quick-access"), desc="1Password quick access tool"),
     Key([mod, "shift"], "z", lazy.spawn("code-insiders"), desc="Open code-insiders"),
     # The 'mod1' key is the 'Alt' key
     Key(["mod1"], "Tab", lazy.spawn("rofi -show window"), desc="Display open windows"),
@@ -228,7 +227,7 @@ screens = [
             ],
             24,
             background=["#222", "#111"],
-            opacity=0.8,
+            opacity=0.5,
         ),
     ) for i in range(12)
 ]
