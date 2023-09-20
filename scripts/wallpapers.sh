@@ -5,4 +5,4 @@
 
 export DISPLAY=:0
 
-feh --bg-fill --randomize ~/.desktop/
+feh --bg-max --randomize ~/.desktop/
