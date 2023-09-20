@@ -11,9 +11,9 @@ export DBUS_SESSION_BUS_ADDRESS="unix:path=/run/user/1000/bus"
 
 # Battery percentage at which to notify
 WARNING_LEVEL=10
- # Check which is the main battery. This time is Battery 1
-BATTERY_DISCHARGING=$(acpi -b | grep "Battery 1" | grep -c "Discharging")
-BATTERY_LEVEL=$(acpi -b | grep "Battery 1" | grep -P -o '[0-9]+(?=%)')
+# Check which is the main battery.
+BATTERY_DISCHARGING=$(acpi -b | grep -v "rate information unavailable" | grep -c "Discharging")
+BATTERY_LEVEL=$(acpi -b | grep -v "rate information unavailable" | grep -P -o '[0-9]+(?=%)')
 
 # Use two files to store whether we've shown a notification or not (to prevent multiple notifications)
 EMPTY_FILE=/tmp/batteryempty
