@@ -77,10 +77,7 @@ keys = [
     Key([mod, "control"], "j", lazy.layout.grow_down(), desc="Grow window down"),
     Key([mod, "control"], "k", lazy.layout.grow_up(), desc="Grow window up"),
     Key([mod], "n", lazy.layout.normalize(), desc="Reset all window sizes"),
-    # Toggle between split and unsplit sides of stack.
-    # Split = all windows displayed
-    # Unsplit = 1 window displayed, like Max layout, but still with
-    # multiple stack panes
+
     Key(
         [mod, "shift"],
         "Return",
@@ -88,7 +85,6 @@ keys = [
         desc="Open brave browser",
     ),
     Key([mod], "Return", lazy.spawn(terminal), desc="Launch terminal"),
-    # Toggle between different layouts as defined below
     Key([mod], "Tab", lazy.next_layout(), desc="Toggle between layouts"),
     Key([mod], "w", lazy.window.kill(), desc="Kill focused window"),
     Key([mod, "control"], "r", lazy.reload_config(), desc="Reload the config"),
@@ -96,9 +92,10 @@ keys = [
     Key([mod], "r", lazy.spawn("rofi -show drun"), desc="Spawn a command using a prompt widget"),
     Key([mod, "shift"], "s", lazy.spawn("flameshot gui"), desc="Open screenshot tool"),
     Key([mod, "shift"], "z", lazy.spawn("code-insiders"), desc="Open code-insiders"),
+    Key([mod], "b", lazy.hide_show_bar("top"), desc="Toggle bar visibility"),
     # The 'mod1' key is the 'Alt' key
     Key(["mod1"], "Tab", lazy.spawn("rofi -show window"), desc="Display open windows"),
-    Key([mod], "b", lazy.hide_show_bar("top"), desc="Toggle bar visibility"),
+    Key([mod, "control"], "p", lazy.spawn("sh /home/lucas/.config/scripts/pomodoro.sh"), desc="Manage pomodoro sessions")
 ]
 
 # Custom workspace icons from https://fontawesome.com/v4/cheatsheet/

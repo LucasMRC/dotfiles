@@ -17,17 +17,14 @@ BATTERY_LEVEL=$(acpi -b | grep -v "rate information unavailable" | grep -P -o '[
 
 # Use two files to store whether we've shown a notification or not (to prevent multiple notifications)
 EMPTY_FILE=/tmp/batteryempty
-FULL_FILE=/tmp/batteryfull
 
 # Reset notifications if the computer is charging/discharging
-if [ "$BATTERY_DISCHARGING" -eq 0 ] && [ -f $FULL_FILE ]; then
-    rm $FULL_FILE
-elif [ "$BATTERY_DISCHARGING" -eq 1 ] && [ -f $EMPTY_FILE ]; then
+if [ "$BATTERY_DISCHARGING" -gt 0 ] && [ -f $EMPTY_FILE ]; then
     rm $EMPTY_FILE
 fi
 
-# If the battery is charging and is full (and has not shown notification yet)
-if [ "$BATTERY_LEVEL" -le $WARNING_LEVEL ] && [ "$BATTERY_DISCHARGING" -eq 1 ] && [ ! -f $EMPTY_FILE ]; then
-    notify-send "Low Battery" "${BATTERY_LEVEL}% of battery remaining." -u critical -i "~/.config/battery/battery-alert.svg" -r 9991
+# If the battery is discharging and below the warning level (and has not shown notification yet)
+if [ "$BATTERY_LEVEL" -le $WARNING_LEVEL ] && [ "$BATTERY_DISCHARGING" -gt 0 ] && [ ! -f $EMPTY_FILE ]; then
+    notify-send "Low Battery" "${BATTERY_LEVEL}% of battery remaining." -u critical -i "/home/lucas/.config/scripts/battery-alert.svg" -r 9991
     touch $EMPTY_FILE
 fi
