@@ -5,3 +5,4 @@ sh ~/.screenlayout/standing-setup.sh
 # allow lucas to use X, I need this for the cron job that changes the wallpaper
 xhost +si:localuser:lucas &
 redshift &
+1password &
