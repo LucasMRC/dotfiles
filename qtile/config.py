@@ -38,18 +38,19 @@ def autostart():
 
 @hook.subscribe.client_new
 def client_new(client):
-    if client.window.get_wm_class()[0] == "brave-browser" and client.name.find("DevTools") == -1:
-        client.togroup("2")
-    if client.window.get_wm_class()[0] == "code - insiders":
-        client.togroup("1")
-    if client.window.get_wm_class()[0] == "ferdium":
-        client.togroup("4")
-    if client.window.get_wm_class()[0] == "slack":
-        client.togroup("4")
-    if client.window.get_wm_class()[0] == "1password" and client.name.find("Quick Access") == -1:
-        client.togroup("9")
-    if client.window.get_wm_class()[0] == "spotify":
-        client.togroup("8")
+    if hasattr(client, 'window'):
+        if client.window.get_wm_class()[0] == "brave-browser" and client.name.find("DevTools") == -1:
+            client.togroup("2")
+        if client.window.get_wm_class()[0] == "code - insiders":
+            client.togroup("1")
+        if client.window.get_wm_class()[0] == "ferdium":
+            client.togroup("4")
+        if client.window.get_wm_class()[0] == "slack":
+            client.togroup("4")
+        if client.window.get_wm_class()[0] == "1password" and client.name.find("Quick Access") == -1:
+            client.togroup("9")
+        if client.window.get_wm_class()[0] == "spotify":
+            client.togroup("8")
 
 mod = "mod4"
 
@@ -77,25 +78,23 @@ keys = [
     Key([mod, "control"], "j", lazy.layout.grow_down(), desc="Grow window down"),
     Key([mod, "control"], "k", lazy.layout.grow_up(), desc="Grow window up"),
     Key([mod], "n", lazy.layout.normalize(), desc="Reset all window sizes"),
-
-    Key(
-        [mod, "shift"],
-        "Return",
-        lazy.spawn("brave"),
-        desc="Open brave browser",
-    ),
     Key([mod], "Return", lazy.spawn(terminal), desc="Launch terminal"),
     Key([mod], "Tab", lazy.next_layout(), desc="Toggle between layouts"),
     Key([mod], "w", lazy.window.kill(), desc="Kill focused window"),
+    Key([mod], "b", lazy.hide_show_bar("top"), desc="Toggle bar visibility"),
     Key([mod, "control"], "r", lazy.reload_config(), desc="Reload the config"),
     Key([mod, "control"], "q", lazy.shutdown(), desc="Shutdown Qtile"),
+    # Applications
+    Key([mod, "shift"], "Return", lazy.spawn("brave"), desc="Open brave browser"),
     Key([mod], "r", lazy.spawn("rofi -show drun"), desc="Spawn a command using a prompt widget"),
     Key([mod, "shift"], "s", lazy.spawn("flameshot gui"), desc="Open screenshot tool"),
     Key([mod, "shift"], "z", lazy.spawn("code-insiders"), desc="Open code-insiders"),
-    Key([mod], "b", lazy.hide_show_bar("top"), desc="Toggle bar visibility"),
-    # The 'mod1' key is the 'Alt' key
-    Key(["mod1"], "Tab", lazy.spawn("rofi -show window"), desc="Display open windows"),
-    Key([mod, "control"], "p", lazy.spawn("sh /home/lucas/.config/scripts/pomodoro.sh"), desc="Manage pomodoro sessions")
+    Key(["mod1"], "Tab", lazy.spawn("rofi -show window"), desc="Display open windows"), # The 'mod1' key is the 'Alt' key
+    Key([mod, "control"], "p", lazy.spawn("sh /home/lucas/.config/scripts/pomodoro.sh"), desc="Manage pomodoro sessions"),
+    # Audio keys
+    Key([mod], "F9", lazy.spawn("pactl set-sink-mute 0 toggle"), desc="Toggle mute"),
+    Key([mod], "F10", lazy.spawn("pactl set-sink-volume @DEFAULT_SINK@ -5%"), desc="Decrease volume by %5"),
+    Key([mod], "F11", lazy.spawn("pactl set-sink-volume @DEFAULT_SINK@ +5%"), desc="Increase volume by %5")
 ]
 
 # Custom workspace icons from https://fontawesome.com/v4/cheatsheet/
@@ -110,8 +109,6 @@ for i in range(len(group_names)):
             label=group_labels[i],
         )
     )
-
-# groups = [Group(i) for i in "123456789"]
 
 for i in groups:
     keys.extend(
@@ -177,7 +174,7 @@ screens = [
                     active="#ddd",
                     use_mouse_wheel=False,
                     highlight_method="line",
-                    highlight_color="#222",
+                    highlight_color="#555",
                 ),
                 widget.Spacer(
                     length=10
@@ -231,16 +228,16 @@ screens = [
 
 # Drag floating layouts.
 mouse = [
-    Drag([mod], "Button1", lazy.window.set_position_floating(), start=lazy.window.get_position()),
-    Drag([mod], "Button3", lazy.window.set_size_floating(), start=lazy.window.get_size()),
+    # Drag([mod], "Button1", lazy.window.set_position_floating(), start=lazy.window.get_position()),
+    # Drag([mod], "Button3", lazy.window.set_size_floating(), start=lazy.window.get_size()),
     Click([mod], "Button2", lazy.window.bring_to_front()),
 ]
 
 dgroups_key_binder = None
 dgroups_app_rules = []  # type: list
-follow_mouse_focus = True
+follow_mouse_focus = False
 bring_front_click = False
-cursor_warp = False
+cursor_warp = True
 floating_layout = layout.Floating(
     float_rules=[
         # Run the utility of `xprop` to see the wm class and name of an X client.
