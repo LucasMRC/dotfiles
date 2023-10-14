@@ -33,3 +33,5 @@ tuta_integration
 tutanota-desktop
 Stretchly/*
 !Stretchly/config.json
+KADOKAWA
+user-dirs*
