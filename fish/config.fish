@@ -29,8 +29,10 @@ alias grep='grep --color=auto'
 alias code='code-insiders'
 alias standing-setup='sh /home/lucas/.screenlayout/standing-setup.sh'
 alias sitting-setup='sh /home/lucas/.screenlayout/sitting-setup.sh'
+alias laptop-only='sh /home/lucas/.screenlayout/laptop-only.sh'
 alias pdf='mupdf'
 alias hist='history --show-time="%d/%m/%Y %T " | less'
+alias conda-activate='eval ~/anaconda3/bin/conda "shell.fish" "hook" $argv | source'
 
 if [ -f /usr/bin/neofetch ]
     neofetch | lolcat
@@ -53,6 +55,16 @@ set __fish_git_prompt_showcolorhints true
 set __fish_git_prompt_char_dirtystate '*'
 
 set -gx EDITOR nvim
+set -gx JAVA_HOME /usr/lib/jvm/java-11-openjdk
+set -gx MVN_HOME /opt/apache-maven-3.9.6/bin
+set -gx MAVEN_HOME /opt/apache-maven-3.9.6/bin
 # bun
 set --export BUN_INSTALL "$HOME/.bun"
 set --export PATH $BUN_INSTALL/bin $PATH
+
+# pnpm
+set -gx PNPM_HOME "/home/lucas/.local/share/pnpm"
+if not string match -q -- $PNPM_HOME $PATH
+  set -gx PATH "$PNPM_HOME" $PATH
+end
+# pnpm end
