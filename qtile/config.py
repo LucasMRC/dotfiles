@@ -51,6 +51,8 @@ def client_new(client):
             client.togroup("9")
         if client.window.get_wm_class()[0] == "spotify":
             client.togroup("8")
+        if client.window.get_wm_class()[0] == "stremio":
+            lazy.spawn("xdg-screensaver suspend " + client.window.id);
 
 mod = "mod4"
 
@@ -160,6 +162,7 @@ widget_defaults = dict(
     fontsize=12,
     padding=3,
 )
+
 extension_defaults = widget_defaults.copy()
 
 screens = [
@@ -190,15 +193,25 @@ screens = [
                 ),
                 widget.Memory(
                     format=" {MemUsed: .0f}{mm}/{MemTotal: .0f}{mm}",
-                    charge_char="",
-                    notify_below=100,
-                    notification_timeout=0
                 ),
                 widget.Spacer(
                     length=20
                 ),
                 widget.Battery(
                     format=" {percent:2.0%}",
+                    full_char="",
+                    charge_char="",
+                    notify_below=10,
+                    notification_timeout=0
+                ),
+                widget.Spacer(
+                    length=20
+                ),
+                widget.Volume(
+                    fmt=' {}',
+                    # emoji=True,
+                    emoji_list=['','','',''],
+                    get_volume_command="pactl get-sink-volume 0 | awk '{print $5}'"
                 ),
                 widget.Spacer(
                     length=20
@@ -228,14 +241,14 @@ screens = [
 
 # Drag floating layouts.
 mouse = [
-    # Drag([mod], "Button1", lazy.window.set_position_floating(), start=lazy.window.get_position()),
-    # Drag([mod], "Button3", lazy.window.set_size_floating(), start=lazy.window.get_size()),
+    Drag([mod], "Button1", lazy.window.set_position_floating(), start=lazy.window.get_position()),
+    Drag([mod], "Button3", lazy.window.set_size_floating(), start=lazy.window.get_size()),
     Click([mod], "Button2", lazy.window.bring_to_front()),
 ]
 
 dgroups_key_binder = None
 dgroups_app_rules = []  # type: list
-follow_mouse_focus = False
+follow_mouse_focus = True
 bring_front_click = False
 cursor_warp = True
 floating_layout = layout.Floating(
@@ -248,6 +261,9 @@ floating_layout = layout.Floating(
         Match(wm_class="ssh-askpass"),  # ssh-askpass
         Match(title="branchdialog"),  # gitk
         Match(title="pinentry"),  # GPG key password entry
+        Match(title="Quick Access"),
+        # Mine
+        Match(wm_class="records")  # Recordings
     ]
 )
 auto_fullscreen = True
