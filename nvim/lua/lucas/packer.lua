@@ -8,15 +8,38 @@ return require('packer').startup(function(use)
 	use 'wbthomason/packer.nvim'
 
 	-- Simple plugins can be specified as strings
-	use 'rstacruz/vim-closer'
+	-- use 'rstacruz/vim-closer' -- Auto-pairing for quotes, parens, brackets, etc.
+    use 'windwp/nvim-autopairs'
 	use 'nvim-lua/plenary.nvim' -- don't forget to add this one if you don't have it yet!
+    use 'numToStr/Comment.nvim' -- toggle comments
+    use 'nvim-tree/nvim-tree.lua' -- file explorer
+    use 'lewis6991/gitsigns.nvim' -- git signs
+    use 'nvim-lualine/lualine.nvim' -- status line
+	use 'AlexvZyl/nordic.nvim' -- Nord theme
+	use 'mbbill/undotree' -- undo tree
+	use 'tpope/vim-fugitive' -- git commands
+
+
+    use {
+            'zbirenbaum/copilot.lua',
+            cmd = 'Copilot',
+            event = 'InsertEnter',
+            config = function()
+                require('copilot').setup({
+                    suggestion = {
+                        auto_trigger = true,
+                        keymap = {
+                            accept_word = '<C-M-l>',
+                        },
+                    },
+                })
+            end,
+        }
 
 	use {
 		'nvim-telescope/telescope.nvim', tag = '0.1.5',
 	--:	requires = { {'nvim-lua/plenary.nvim'} }
 	}
-
-	use 'AlexvZyl/nordic.nvim'
 
 	use {
 		'nvim-treesitter/nvim-treesitter',
@@ -25,10 +48,6 @@ return require('packer').startup(function(use)
 			ts_update()
 		end,
 	}
-
-	use 'ThePrimeagen/harpoon'
-	use 'mbbill/undotree'
-	use 'tpope/vim-fugitive'
 
 	use {
 		'VonHeikemen/lsp-zero.nvim',

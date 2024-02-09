@@ -36,8 +36,9 @@ set.scrolloff = 5
 set.sidescrolloff = 5
 
 set.updatetime = 50
-set.colorcolumn = "80"
 
 -- Show the matching part of the pair for [] {} and ()
 set.showmatch = true
 
+-- Disable mouse
+set.mouse = ""
