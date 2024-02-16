@@ -8,8 +8,7 @@ return require('packer').startup(function(use)
 	use 'wbthomason/packer.nvim'
 
 	-- Simple plugins can be specified as strings
-	-- use 'rstacruz/vim-closer' -- Auto-pairing for quotes, parens, brackets, etc.
-    use 'windwp/nvim-autopairs'
+    use 'windwp/nvim-autopairs' -- Auto-pairing for quotes, parens, brackets, etc.
 	use 'nvim-lua/plenary.nvim' -- don't forget to add this one if you don't have it yet!
     use 'numToStr/Comment.nvim' -- toggle comments
     use 'nvim-tree/nvim-tree.lua' -- file explorer
@@ -18,7 +17,8 @@ return require('packer').startup(function(use)
 	use 'AlexvZyl/nordic.nvim' -- Nord theme
 	use 'mbbill/undotree' -- undo tree
 	use 'tpope/vim-fugitive' -- git commands
-
+    use 'windwp/nvim-ts-autotag' -- auto close html tags
+    use 'mattn/emmet-vim' -- emmet
 
     use {
             'zbirenbaum/copilot.lua',

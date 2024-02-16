@@ -1,8 +1,5 @@
 vim.g.mapleader = " "
 
--- Open explorer
-vim.keymap.set("n", "<leader>pv", ":Ex<CR>")
-
 -- Move lines up and down
 vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv")
 vim.keymap.set("v", "K", ":m '>-2<CR>gv=gv")
@@ -15,4 +12,4 @@ vim.keymap.set("n", "<C-u>", "<C-u>zz")
 vim.keymap.set('n', '<F9>', ':noh<CR>')
 
 -- Open file tree
-vim.keymap.set('n', '<F10>', ':NvimTreeToggle<CR>')
+vim.keymap.set('n', '<leader>h', ':NvimTreeToggle<CR>')

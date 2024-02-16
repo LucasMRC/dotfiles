@@ -3,8 +3,9 @@ local g = vim.g
 
 g.mapleader = " "
 
--- Line number
+-- Line numbers
 set.nu = true
+-- set.rnu = true
 
 -- Indentation
 set.tabstop = 4

@@ -6,16 +6,20 @@ require('telescope').setup{
 		},
         pickers = {
             find_files = {
-                hidden = true
+               hidden = true,
+               file_ignore_patterns = { "node_modules/", ".git/" }
             },
             live_grep = {
-                hidden = true
+                hidden = true,
+                file_ignore_patterns = { "node_modules/", ".git/", "%-lock.%" }
             },
             help_tags = {
-                hidden = true
+                hidden = true,
+                file_ignore_patterns = { "node_modules/", ".git/" }
             },
             git_files = {
-                hidden = true
+                hidden = true,
+                file_ignore_patterns = { "node_modules/", ".git/" }
             }
         }
 }
