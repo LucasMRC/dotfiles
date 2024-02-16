@@ -186,7 +186,7 @@ screens = [
                     format="{state}{name}",
                 ),
                 widget.CPU(
-                    format=" {freq_current}GHz {load_percent}%"
+                    format="  {freq_current}GHz {load_percent}%"
                 ),
                 widget.Spacer(
                     length=20
@@ -198,7 +198,7 @@ screens = [
                     length=20
                 ),
                 widget.Battery(
-                    format=" {percent:2.0%}",
+                    format="   {percent:2.0%}",
                     full_char="",
                     charge_char="",
                     notify_below=10,
@@ -208,7 +208,7 @@ screens = [
                     length=20
                 ),
                 widget.Volume(
-                    fmt=' {}',
+                    fmt='  {}',
                     # emoji=True,
                     emoji_list=['','','',''],
                     get_volume_command="pactl get-sink-volume 0 | awk '{print $5}'"
@@ -218,7 +218,7 @@ screens = [
                 ),
                 widget.Wlan(
                     interface="wlp9s0",
-                    format=" {essid} {percent:2.0%}"
+                    format="   {essid} {percent:2.0%}"
                 ),
                 widget.Spacer(
                     length=20
