@@ -8,13 +8,13 @@ set fish_greeting
 # Aliases
 alias ls='ls --color=auto'
 alias grep='grep --color=auto'
-alias code='code-insiders'
 alias standing-setup='sh /home/lucas/.config/scripts/standing-setup.sh'
 alias sitting-setup='sh /home/lucas/.config/scripts/sitting-setup.sh'
 alias laptop-only='sh /home/lucas/.config/scripts/laptop-only.sh'
 alias pdf='mupdf'
 alias hist='history --show-time="%d/%m/%Y %T " | less'
 alias conda-activate='eval ~/anaconda3/bin/conda "shell.fish" "hook" $argv | source'
+alias vbox-enable='sudo modprobe vboxnetadp'
 
 if [ -f /usr/bin/neofetch ]
     neofetch | lolcat
@@ -47,3 +47,8 @@ if not string match -q -- $PNPM_HOME $PATH
   set -gx PATH "$PNPM_HOME" $PATH
 end
 # pnpm end
+
+set -gx NPM_GLOBAL "/home/lucas/.npm-global/bin"
+if not string match -q -- $NPM_GLOBAL $PATH
+  set -gx PATH "$NPM_GLOBAL" $PATH
+end
