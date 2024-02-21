@@ -48,4 +48,6 @@ keymap('n', 'j', 'gj', opts)
 keymap('n', 'k', 'gk', opts)
 
 -- Lazygit
-keymap('n', '<leader>gs', ':LazyGit<CR>', opts)
+keymap('n', '<leader>gg', ':LazyGit<CR>', opts)
+keymap('n', '<leader>gf', ':LazyGitFilterCurrentFile<CR>', opts)
+keymap('n', '<leader>gc', ':LazyGitFilter<CR>', opts)
