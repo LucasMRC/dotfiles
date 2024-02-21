@@ -41,7 +41,7 @@ def client_new(client):
     if hasattr(client, 'window'):
         if client.window.get_wm_class()[0] == "brave-browser" and client.name.find("DevTools") == -1:
             client.togroup("2")
-        if client.window.get_wm_class()[0] == "code - insiders":
+        if client.name.find("Neovim") != -1:
             client.togroup("1")
         if client.window.get_wm_class()[0] == "ferdium":
             client.togroup("4")
@@ -90,7 +90,7 @@ keys = [
     Key([mod, "shift"], "Return", lazy.spawn("brave"), desc="Open brave browser"),
     Key([mod], "r", lazy.spawn("rofi -show drun"), desc="Spawn a command using a prompt widget"),
     Key([mod, "shift"], "s", lazy.spawn("flameshot gui"), desc="Open screenshot tool"),
-    Key([mod, "shift"], "z", lazy.spawn("code-insiders"), desc="Open code-insiders"),
+    Key([mod, "shift"], "z", lazy.spawn("alacritty -T Neovim -e nvim"), desc="Open neovim"),
     Key(["mod1"], "Tab", lazy.spawn("rofi -show window"), desc="Display open windows"), # The 'mod1' key is the 'Alt' key
     Key([mod, "control"], "p", lazy.spawn("sh /home/lucas/.config/scripts/pomodoro.sh"), desc="Manage pomodoro sessions"),
     # Audio keys
@@ -102,7 +102,7 @@ keys = [
 # Custom workspace icons from https://fontawesome.com/v4/cheatsheet/
 groups = []
 group_names = ["1", "2", "3", "4", "5", "6", "7", "8", "9"]
-group_labels = ["", "", "", "", "", "6", "7", "", ""]
+group_labels = [" ", "", " ", "", " ", "6", "7", " ", " "]
 
 for i in range(len(group_names)):
     groups.append(
