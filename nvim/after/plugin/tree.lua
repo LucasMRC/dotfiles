@@ -13,8 +13,7 @@ require('nvim-tree').setup({
         icons = {
             show = {
                 folder = false,
-                file = false,
-                git = false
+                file = false
             }
         },
     },
@@ -22,7 +21,10 @@ require('nvim-tree').setup({
     hijack_netrw = true,
     actions = {
         open_file = {
-            quit_on_open = true
+            quit_on_open = false
+        },
+        expand_all = {
+            exclude = { '.git', 'target', 'build' }
         }
     },
     view = {
@@ -30,5 +32,12 @@ require('nvim-tree').setup({
         side = 'right',
         number = true
     },
+    filters = {
+        git_ignored = false
+    },
+    live_filter = {
+        always_show_folders = false,
+        prefix = '> '
+    }
     -- on_attach = my_on_attach
 })
