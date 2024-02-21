@@ -69,4 +69,4 @@ set.signcolumn = "yes" -- always show the sign column, otherwise it would shift 
 set.guifont = "monospace:h17" -- the font used in graphical neovim applications
 set.title = true
 
-set.formatoptions = 'tcqj' -- Prevents automaticly adding comments on newline
+set.formatoptions = 'tqj' -- Prevents automaticly adding comments on newline

@@ -38,6 +38,7 @@ return packer.startup(function(use)
 	use 'tpope/vim-fugitive' -- git commands
     use 'windwp/nvim-ts-autotag' -- auto close html tags
     use 'mattn/emmet-vim' -- emmet
+    use 'kdheepak/lazygit.nvim' -- lazygit
 
     use {
             'zbirenbaum/copilot.lua',
