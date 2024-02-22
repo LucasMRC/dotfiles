@@ -21,7 +21,7 @@ require('nvim-tree').setup({
     hijack_netrw = true,
     actions = {
         open_file = {
-            quit_on_open = false
+            quit_on_open = true
         },
         expand_all = {
             exclude = { '.git', 'target', 'build' }
