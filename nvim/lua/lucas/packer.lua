@@ -34,7 +34,6 @@ return packer.startup(function(use)
     use 'nvim-tree/nvim-tree.lua' -- file explorer
     use 'lewis6991/gitsigns.nvim' -- git signs
     use 'nvim-lualine/lualine.nvim' -- status line
-	use 'mbbill/undotree' -- undo tree
 	use 'tpope/vim-fugitive' -- git commands
     use 'windwp/nvim-ts-autotag' -- auto close html tags
     use 'mattn/emmet-vim' -- emmet
@@ -56,9 +55,13 @@ return packer.startup(function(use)
             end,
         }
 
+    -- Telescope
 	use {
 		'nvim-telescope/telescope.nvim', tag = '0.1.5',
 	}
+    use 'nvim-telescope/telescope-symbols.nvim'
+    use 'debugloop/telescope-undo.nvim'
+    --
 
 	use {
 		'nvim-treesitter/nvim-treesitter',
