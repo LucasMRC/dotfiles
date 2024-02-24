@@ -68,3 +68,6 @@ set.laststatus = 3 -- show status line always and only on last window
 set.signcolumn = "yes" -- always show the sign column, otherwise it would shift the text each time
 set.guifont = "monospace:h17" -- the font used in graphical neovim applications
 set.title = true
+
+vim.o.updatetime = 250
+vim.cmd [[autocmd CursorHold * lua vim.diagnostic.open_float({ scope = "cursor" }, { focus = false })]]
