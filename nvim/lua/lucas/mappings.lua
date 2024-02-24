@@ -13,6 +13,10 @@ keymap("x", "<A-k>", ":m '<-2<CR>gv", opts)
 keymap("n", "<C-d>", "<C-d>zz", opts)
 keymap("n", "<C-u>", "<C-u>zz", opts)
 
+-- Center cursor when using brackets
+keymap("n", "{", "{zz", opts)
+keymap("n", "}", "}zz", opts)
+
 -- Clean search highlights
 keymap('n', '<C-c>', ':noh<CR>', opts)
 
@@ -36,9 +40,11 @@ keymap('n', '<C-PageUp>', ':bnext<CR>', opts)
 keymap('n', '<C-PageDown>', ':bprevious<CR>', opts)
 keymap('n', '<C-w>', ':bd<CR>', opts)
 
--- Persistent indenting
+-- One-key persistent indenting
 keymap('v', '<', '<gv', opts)
 keymap('v', '>', '>gv', opts)
+keymap('n', '<', '<<', opts)
+keymap('n', '>', '>>', opts)
 
 -- Persistent pasting
 keymap('v', 'p', '"_dP', opts)

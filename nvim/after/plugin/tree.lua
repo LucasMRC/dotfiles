@@ -33,11 +33,11 @@ require('nvim-tree').setup({
         number = true
     },
     filters = {
-        git_ignored = false
+        git_ignored = false,
+        custom = { '.git' }
     },
     live_filter = {
         always_show_folders = false,
         prefix = '> '
     }
-    -- on_attach = my_on_attach
 })
