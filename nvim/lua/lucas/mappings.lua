@@ -4,16 +4,16 @@ local keymap = vim.api.nvim_set_keymap
 -- Move lines up and down
 keymap("n", "<A-j>", ":m .+1<CR>==", opts)
 keymap("n", "<A-k>", ":m .-2<CR>==", opts)
-keymap("v", "<A-j>", ":m '>+1<CR>gv", opts)
-keymap("v", "<A-k>", ":m '<-2<CR>gv", opts)
-keymap("x", "<A-j>", ":m '>+1<CR>gv", opts)
-keymap("x", "<A-k>", ":m '<-2<CR>gv", opts)
+keymap("v", "<A-j>", ":m '>+1<CR>gv=gv", opts)
+keymap("v", "<A-k>", ":m '<-2<CR>gv=gv", opts)
+keymap("x", "<A-j>", ":m '>+1<CR>gv=gv", opts)
+keymap("x", "<A-k>", ":m '<-2<CR>gv=gv", opts)
 
 -- Center cursor when jumping half page
 keymap("n", "<C-d>", "<C-d>zz", opts)
 keymap("n", "<C-u>", "<C-u>zz", opts)
 
--- Center cursor when using brackets
+-- Center cursor when moving using brackets
 keymap("n", "{", "{zz", opts)
 keymap("n", "}", "}zz", opts)
 
