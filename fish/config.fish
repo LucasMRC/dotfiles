@@ -2,6 +2,9 @@ if status is-interactive
     # Commands to run in interactive sessions can go here
 end
 
+# Set vi mode
+fish_vi_key_bindings
+
 # Supresses fish's intro message
 set fish_greeting
 
