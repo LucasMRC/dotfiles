@@ -3,7 +3,13 @@ if status is-interactive
 end
 
 # Set vi mode
-fish_vi_key_bindings
+function fish_user_key_bindings
+    fish_vi_key_bindings default
+end
+# Set normal mode as the default
+for mode in default insert visual
+  bind -M $mode \r -m default execute
+end
 
 # Supresses fish's intro message
 set fish_greeting
