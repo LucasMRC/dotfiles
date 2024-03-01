@@ -53,7 +53,7 @@ keymap('v', 'p', '"_dP', opts)
 keymap('n', 'j', 'gj', opts)
 keymap('n', 'k', 'gk', opts)
 
--- Lazygit
-keymap('n', '<leader>gg', ':LazyGit<CR>', opts)
-keymap('n', '<leader>gf', ':LazyGitFilterCurrentFile<CR>', opts)
-keymap('n', '<leader>gc', ':LazyGitFilter<CR>', opts)
+-- Git
+keymap('n', '<leader>gg', ':Git<CR>', opts)
+keymap('n', '<leader>gb', ':Git blame<CR>', opts)
+keymap('n', '<leader>gd', ':Gvdiffsplit<CR>', opts)

@@ -27,21 +27,21 @@ lazyvim.setup({
     'nvim-lualine/lualine.nvim', -- status line
     'windwp/nvim-ts-autotag', -- auto close html tags
     'mattn/emmet-vim', -- emmet
-    'kdheepak/lazygit.nvim', -- lazygit
+    'tpope/vim-fugitive', -- git
     {
         'zbirenbaum/copilot.lua',
-        cmd = 'Copilot',
-        event = 'InsertEnter',
+        lazy = true,
+        event = 'BufEnter',
         config = function()
             require('copilot').setup({
                 suggestion = {
                     auto_trigger = true,
                     keymap = {
                         accept_word = '<C-M-l>',
-                    },
-                },
+                    }
+                }
             })
-        end,
+        end
     },
     -- Telescope
 	{
