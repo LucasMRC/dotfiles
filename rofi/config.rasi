@@ -1,38 +1,42 @@
 // vim: foldmethod=marker foldlevel=0
 
 configuration {
-  modes: "window,drun,run,ssh";
-  font: "JetBrainsMono Nerd Font 14";
-  drun-display-format: "{name}";
+    display-drun: "Search";
+    display-window: "Windows";
+    modes: [ combi ];
+    combi-modes: [ window, drun, run ];
+    font: "JetBrainsMono Nerd Font 12";
+    show-icons: true;
+    icon-theme: "Papirus";
 }
 
 * {
-  // general
-  bg: #282828;
-  bgt: #28282895;
-  t: transparent;
-  fg: #d4be98;
+    // general
+    bg: #282828;
+    bgt: #28282895;
+    t: transparent;
+    fg: #d4be98;
 
-  selected-bg: @fg;
-  selected-fg: @bg;
+    selected-bg: @fg;
+    selected-fg: @bg;
 
-  // for windows
-  active: #a9b665;
-  urgent: #ea6962;
+    // for windows
+    active: #a9b665;
+    urgent: #ea6962;
 }
 
 window {
-  fullscreen: true;
-  padding: 35% 30%;       // you might want to ajust these to resize rofi.
-  transparency: "real";
-  background-color: @bgt;
-  border-color: @t;
+    fullscreen: true;
+    padding: 35% 30%;       // ajust these to resize rofi.
+    transparency: "real";
+    background-color: @bgt;
+    border-color: @t;
 }
 
 listview {
-  border: 0 0 0 0;
-  padding: 23 0 0;
-  scrollbar: true;
+    border: 0 0 0 0;
+    padding: 23 0 0;
+    scrollbar: true;
 }
 
 scrollbar {
@@ -47,18 +51,19 @@ entry {
     placeholder: "";
 }
 
-// other kinda less interesting stuff {{{
-
 textbox {
     text-color: @fg;
 }
 
-// using elements from:
-// https://github.com/bardisty/gruvbox-rofi/blob/master/gruvbox-common.rasi
-
 element {
     border:  0;
-    padding: 2px;
+    orientation: horizontal;
+    children: [ element-text, element-icon ];
+    spacing: 5px;
+}
+
+element-text {
+    vertical-align: 0.5;
 }
 
 element.normal.normal {
@@ -139,7 +144,7 @@ textbox-prompt-sep {
 }
 
 element-icon {
-  size: 30;
-  padding: 0 10 0 0;
-  background-color: transparent;
+    size: 30;
+    padding: 0 10 0 0;
+    background-color: transparent;
 }
