@@ -26,19 +26,30 @@ telescope.setup{
         git_files = {
             hidden = true,
             file_ignore_patterns = { "node_modules/", ".git/" }
+        },
+        git_branches = {
+            initial_mode = "normal"
         }
     },
     extensions = {
         undo = {
             layout_config = {
                 preview_width = 0.6
+            },
+            initial_mode = "normal",
+            mappings = {
+                n = {
+                    ["<CR>"] = require("telescope-undo.actions").restore,
+                },
+                i = {
+                    ["<CR>"] = require("telescope-undo.actions").restore,
+                }
             }
         }
     }
 }
-
-local builtin = require("telescope.builtin")
 telescope.load_extension('undo')
+local builtin = require("telescope.builtin")
 
 vim.keymap.set('n', '<leader>pf', builtin.find_files, {})
 vim.keymap.set('n', '<leader>pg', builtin.git_branches, {})

@@ -8,7 +8,7 @@ require('lualine').setup({
     },
     sections = {
         lualine_a = { 'mode' },
-        lualine_b = { 'filename' },
+        lualine_b = { { 'filename', path = 4 } },
         lualine_c = { { 'branch', icons_enabled = true }, 'diff', 'diagnostics' },
         lualine_x = { "require('lsp-zero').status()" },
         lualine_y = {

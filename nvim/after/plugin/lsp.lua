@@ -1,19 +1,18 @@
 local lsp = require('lsp-zero')
 
-lsp.preset("recommended")
+lsp.preset('recommended')
 
 -- Diagnostics
 vim.diagnostic.config({
     virtual_text = false,
     severity_sort = true,
-    signs = false,
     float = {
         border = 'rounded',
         source = 'always',
     },
 })
 
-vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(
+vim.lsp.handlers['textDocument/publishDiagnostics'] = vim.lsp.with(
     vim.lsp.diagnostic.on_publish_diagnostics,
     { update_in_insert = false }
 )
@@ -32,7 +31,12 @@ lsp.on_attach(function(_, bufnr)
     local opts = { buffer = bufnr, remap = false }
 
     -- Go to definition
-    vim.keymap.set("n", "gd", vim.lsp.buf.definition, opts)
+    vim.keymap.set('n', 'gd', vim.lsp.buf.definition, opts)
+    -- Rename symbol
+    vim.keymap.set('n', '<leader>rn', vim.lsp.buf.rename, opts)
+    -- Code actions
+    vim.keymap.set('n', '<leader>ca', vim.lsp.buf.code_action, opts)
+    vim.keymap.set('x', '<leader>ca', vim.lsp.buf.code_action, opts)
 
     lsp.default_keymaps({
         buffer = bufnr,
@@ -40,15 +44,13 @@ lsp.on_attach(function(_, bufnr)
     })
 
     -- Set diagnostics on CursorHold
-    vim.api.nvim_create_autocmd("CursorHold", {
+    vim.api.nvim_create_autocmd('CursorHold', {
         buffer = bufnr,
         callback = function()
             local opties = {
                 focusable = false,
-                close_events = { "BufLeave", "CursorMoved", "InsertEnter", "FocusLost" },
-                border = 'rounded',
+                close_events = { 'BufLeave', 'CursorMoved', 'InsertEnter', 'FocusLost' },
                 source = 'always',
-                prefix = ' ',
                 scope = 'cursor',
             }
             vim.diagnostic.open_float(nil, opties)
@@ -60,13 +62,13 @@ require('mason').setup({})
 require('mason-lspconfig').setup({
     handlers = {
         lsp.default_setup,
-        ["lua_ls"] = function ()
-            local lspconfig = require("lspconfig")
+        ['lua_ls'] = function ()
+            local lspconfig = require('lspconfig')
             lspconfig.lua_ls.setup {
                 settings = {
                     Lua = {
                         diagnostics = {
-                            globals = { "vim" }
+                            globals = { 'vim' }
                         }
                     }
                 }

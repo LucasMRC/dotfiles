@@ -68,3 +68,5 @@ set.laststatus = 3 -- show status line always and only on last window
 set.signcolumn = "yes" -- always show the sign column, otherwise it would shift the text each time
 set.guifont = "monospace:h17" -- the font used in graphical neovim applications
 set.title = true
+
+g.editorconfig = false -- disable .editorconfig file search
