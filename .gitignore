@@ -3,4 +3,4 @@ Stretchly
 fish/conf.d/work.fish
 __pycache__
 packer_compiled.lua
-lazygit/state.yml
+nvim/lazy-lock.json
