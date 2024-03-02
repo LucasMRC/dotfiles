@@ -1,21 +1,30 @@
--- local function my_on_attach(bufnr)
-    -- local api = require('nvim-tree.api')
-    --
-    -- local function opts(desc)
-    --     return { desc = 'nvim-tree: ' .. desc, buffer = bufnr, noremap = true, silent = true, nowait = true }
-    -- end
-    -- copy default mappings here from defaults in next section
-    -- vim.keymap.set('n', '<Space>', api.node.open.edit, opts('Open'))
--- end
-
 require('nvim-tree').setup({
+    diagnostics = {
+        enable = true,
+        show_on_dirs = true,
+        show_on_open_dirs = false
+    },
+    modified = {
+        enable = true,
+        show_on_open_dirs = false
+    },
+    git = {
+        show_on_open_dirs = false
+    },
+    update_focused_file = {
+        enable = true
+    },
     renderer = {
+        highlight_diagnostics = 'name',
+        group_empty = true,
         icons = {
             show = {
-                folder = false,
-                file = false
-            }
-        },
+                diagnostics = false,
+                file = false,
+                folder = false
+            },
+            git_placement = 'signcolumn'
+        }
     },
     disable_netrw = true,
     hijack_netrw = true,
@@ -24,7 +33,7 @@ require('nvim-tree').setup({
             quit_on_open = true
         },
         expand_all = {
-            exclude = { '.git', 'target', 'build' }
+            exclude = { '.git', 'target', 'build', 'node_modules' }
         }
     },
     view = {
@@ -34,7 +43,7 @@ require('nvim-tree').setup({
     },
     filters = {
         git_ignored = false,
-        custom = { '.git' }
+        custom = { '\\.git$' }
     },
     live_filter = {
         always_show_folders = false,
