@@ -43,6 +43,11 @@ lazyvim.setup({
             })
         end
     },
+    {
+        'fladson/vim-kitty',
+        lazy = true,
+        event = 'VeryLazy'
+    },
     -- Telescope
     {
         'nvim-telescope/telescope.nvim',

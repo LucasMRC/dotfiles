@@ -43,7 +43,7 @@ set.scrolloff = 5
 set.sidescrolloff = 5
 --
 
-set.updatetime = 50
+set.updatetime = 10
 
 -- Show the matching part of the pair for [] {} and ()
 set.showmatch = true
