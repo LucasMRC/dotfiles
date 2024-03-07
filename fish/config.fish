@@ -4,12 +4,12 @@ end
 
 # Set vi mode
 function fish_user_key_bindings
-    fish_vi_key_bindings default
+    fish_vi_key_bindings 
 end
 # Set normal mode as the default
-for mode in default insert visual
-  bind -M $mode \r -m default execute
-end
+# for mode in default insert visual
+#   bind -M $mode \r -m default execute
+# end
 
 # Supresses fish's intro message
 set fish_greeting
@@ -24,9 +24,10 @@ alias pdf='mupdf'
 alias hist='history --show-time="%d/%m/%Y %T " | less'
 alias conda-activate='eval ~/anaconda3/bin/conda "shell.fish" "hook" $argv | source'
 alias vbox-enable='sudo modprobe vboxnetadp'
+alias :q='exit'
 
 if [ -f /usr/bin/neofetch ]
-    neofetch | lolcat
+    # neofetch | lolcat
 end
 
 # Set up ssh-agent with GH key
@@ -61,3 +62,6 @@ set -gx NPM_GLOBAL "/home/lucas/.npm-global/bin"
 if not string match -q -- $NPM_GLOBAL $PATH
   set -gx PATH "$NPM_GLOBAL" $PATH
 end
+
+# Kitty
+set -gx KITTY_CONFIG_DIRECTORY "/home/lucas/.config/kitty"
