@@ -18,7 +18,6 @@ if not status_ok then
 end
 
 lazyvim.setup({
-    'AlexvZyl/nordic.nvim', -- Nord theme
     'windwp/nvim-autopairs', -- Auto-pairing for quotes, parens, brackets, etc.
     'nvim-lua/plenary.nvim', -- don't forget to add this one if you don't have it yet!
     'numToStr/Comment.nvim', -- toggle comments
@@ -28,6 +27,15 @@ lazyvim.setup({
     'windwp/nvim-ts-autotag', -- auto close html tags
     'mattn/emmet-vim', -- emmet
     'tpope/vim-fugitive', -- git
+    -- 'ThePrimeagen/git-worktree.nvim', -- git worktrees
+    {
+        'AlexvZyl/nordic.nvim',
+        lazy = false,
+        priority = 1000,
+        config = function()
+            require 'nordic' .load()
+        end
+    },
     {
         'zbirenbaum/copilot.lua',
         lazy = true,
