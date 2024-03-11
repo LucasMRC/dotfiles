@@ -1,3 +1,18 @@
+local function my_on_attach(bufnr)
+    local api = require "nvim-tree.api"
+
+    local function opts(desc)
+        return { desc = "nvim-tree: " .. desc, buffer = bufnr, noremap = true, silent = true, nowait = true }
+    end
+
+    -- default mappings
+    api.config.mappings.default_on_attach(bufnr)
+
+    -- custom mappings
+    vim.keymap.set('n', 's', '<Nop>', opts('Run System'))
+    vim.keymap.set('n', '?', api.tree.toggle_help, opts('Help'))
+end
+
 require('nvim-tree').setup({
     diagnostics = {
         enable = true,
@@ -43,10 +58,11 @@ require('nvim-tree').setup({
     },
     filters = {
         git_ignored = false,
-        custom = { '\\.git$' }
+        custom = { '^\\.git$' }
     },
     live_filter = {
         always_show_folders = false,
         prefix = '> '
-    }
+    },
+    on_attach = my_on_attach
 })

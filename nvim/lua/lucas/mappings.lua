@@ -1,6 +1,8 @@
 local opts = { noremap = true, silent = true }
 local keymap = vim.api.nvim_set_keymap
 
+vim.keymap.set({ 'n', 'v' }, '<Space>', '<Nop>', opts)
+
 -- Move lines up and down
 keymap("n", "<A-j>", ":m .+1<CR>==", opts)
 keymap("n", "<A-k>", ":m .-2<CR>==", opts)
@@ -21,7 +23,7 @@ keymap("n", "}", "}zz", opts)
 keymap('n', '<C-c>', ':noh<CR>', opts)
 
 -- Open file tree
-keymap('n', '<leader>h', ':NvimTreeToggle<CR>', opts)
+keymap('n', '<leader><Space>', ':NvimTreeToggle<CR>', opts)
 
 -- Window navigation
 keymap('n', '<C-h>', '<C-w>h', opts)
