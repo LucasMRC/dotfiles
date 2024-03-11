@@ -82,16 +82,15 @@ lazyvim.setup({
             'hrsh7th/cmp-path',
             'hrsh7th/cmp-nvim-lsp',
             'hrsh7th/cmp-buffer',
-            {
-                'ray-x/lsp_signature.nvim',
-                event = 'VeryLazy',
-                config = function()
-                    require('lsp_signature').setup({
-                        hint_enable = false
-                    })
-                end
-            },
             'L3MON4D3/LuaSnip',
+        }
+    },
+    {
+        "ray-x/go.nvim",
+        lazy = true,
+        event = 'VeryLazy',
+        dependencies = {  -- optional packages
+            "ray-x/guihua.lua",
         }
     }
 })
