@@ -15,6 +15,8 @@ set.softtabstop = 4
 set.shiftwidth = 4
 set.smartindent = true
 set.expandtab = true
+
+vim.o.breakindent = true
 --
 
 -- Big undo history
@@ -32,7 +34,6 @@ set.hlsearch = true -- highlight all matches on previous search pattern
 -- Better searching
 set.ignorecase = true
 set.smartcase = true
-set.smartindent = true -- make indenting smarter again
 --
 
 -- Enable 24-bit RGB colors
