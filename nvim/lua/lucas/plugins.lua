@@ -27,7 +27,7 @@ lazyvim.setup({
     'windwp/nvim-ts-autotag', -- auto close html tags
     'mattn/emmet-vim', -- emmet
     'tpope/vim-fugitive', -- git
-    -- 'ThePrimeagen/git-worktree.nvim', -- git worktrees
+    'ThePrimeagen/git-worktree.nvim', -- git worktrees
     {
         'AlexvZyl/nordic.nvim',
         lazy = false,
