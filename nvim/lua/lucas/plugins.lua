@@ -29,6 +29,10 @@ lazyvim.setup({
     'tpope/vim-fugitive', -- git
     'ThePrimeagen/git-worktree.nvim', -- git worktrees
     {
+        'lukas-reineke/indent-blankline.nvim',
+        main = 'ibl',
+        opts = {}
+    },
     --------------------------------
     -- Writer mode -----------------
     'folke/zen-mode.nvim', -- zen mode
@@ -94,24 +98,17 @@ lazyvim.setup({
         }
     },
     {
-        "ray-x/go.nvim",
+        'ray-x/go.nvim',
         lazy = true,
         event = 'VeryLazy',
         dependencies = {  -- optional packages
-            "ray-x/guihua.lua",
+            'ray-x/guihua.lua',
         }
     },
     {
-        "epwalsh/obsidian.nvim",
-        version = "*",  -- recommended, use latest release instead of latest commit
+        'epwalsh/obsidian.nvim',
+        version = '*',  -- recommended, use latest release instead of latest commit
         lazy = true,
-        ft = "markdown",
-        -- Replace the above line with this if you only want to load obsidian.nvim for markdown files in your vault:
-        -- event = {
-        --   -- If you want to use the home shortcut '~' here you need to call 'vim.fn.expand'.
-        --   -- E.g. "BufReadPre " .. vim.fn.expand "~" .. "/my-vault/**.md"
-        --   "BufReadPre path/to/my-vault/**.md",
-        --   "BufNewFile path/to/my-vault/**.md",
-        -- },
+        ft = 'markdown',
     }
 })
