@@ -29,6 +29,14 @@ lazyvim.setup({
     'tpope/vim-fugitive', -- git
     'ThePrimeagen/git-worktree.nvim', -- git worktrees
     {
+    --------------------------------
+    -- Writer mode -----------------
+    'folke/zen-mode.nvim', -- zen mode
+    'preservim/vim-pencil', -- writing mode
+    'folke/twilight.nvim', -- focus mode
+    --------------------------------
+    --------------------------------
+    {
         'AlexvZyl/nordic.nvim',
         lazy = false,
         priority = 1000,
