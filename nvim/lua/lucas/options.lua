@@ -70,4 +70,6 @@ set.signcolumn = "yes" -- always show the sign column, otherwise it would shift 
 set.guifont = "monospace:h17" -- the font used in graphical neovim applications
 set.title = true
 
+set.conceallevel = 1 -- so that I can see `` in markdown files
+
 g.editorconfig = false -- disable .editorconfig file search

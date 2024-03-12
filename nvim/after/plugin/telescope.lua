@@ -68,6 +68,7 @@ vim.keymap.set('n', '<leader>pd', builtin.diagnostics, { desc = '[S]earch [D]iag
 vim.keymap.set('n', '<leader>pe', builtin.symbols, { desc = '[S]earch [E]moji' })
 vim.keymap.set('n', '<leader>pu', '<CMD>Telescope undo<CR>', { desc = '[S]earch [U]ndo' })
 vim.keymap.set('n', '<leader>pb', builtin.buffers, { desc = '[S]earch existing buffers' })
+vim.keymap.set('n', '<leader><tab>', builtin.commands, { desc = '[S]earch [C]ommands', noremap = false })
 vim.keymap.set('n', '<leader>pS', builtin.git_status, { desc = '' })
 
 local wt_status_ok, git_wt = pcall(require, 'git-worktree')
