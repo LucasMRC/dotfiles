@@ -59,3 +59,5 @@ keymap('n', 'k', 'gk', opts)
 keymap('n', '<leader>gg', ':Git<CR>', opts)
 keymap('n', '<leader>gb', ':Git blame<CR>', opts)
 keymap('n', '<leader>gd', ':Gvdiffsplit<CR>', opts)
+
+keymap('n', '<CR>', 'o<ESC>', opts)

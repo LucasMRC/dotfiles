@@ -8,4 +8,4 @@ if not status_ok then
     return
 end
 
-vim.cmd.highlight "LineNr guifg=#4C566A"
+vim.cmd.highlight "LineNr guifg=#6e7d9b"
