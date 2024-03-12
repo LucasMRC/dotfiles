@@ -16,7 +16,7 @@ set fish_greeting
 
 # Aliases
 alias ls='ls --color=auto'
-alias grep='grep --color=auto'
+alias grep='grep --color=auto -i'
 alias standing-setup='sh /home/lucas/.config/scripts/standing-setup.sh'
 alias sitting-setup='sh /home/lucas/.config/scripts/sitting-setup.sh'
 alias laptop-only='sh /home/lucas/.config/scripts/laptop-only.sh'
