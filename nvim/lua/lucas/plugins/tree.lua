@@ -17,6 +17,7 @@ return {
 		end
 
 		require("nvim-tree").setup({
+			hijack_unnamed_buffer_when_opening = true,
 			diagnostics = {
 				enable = true,
 				show_on_dirs = true,
@@ -58,6 +59,7 @@ return {
 				width = 50,
 				side = "right",
 				number = true,
+				relativenumber = true,
 			},
 			filters = {
 				git_ignored = false,

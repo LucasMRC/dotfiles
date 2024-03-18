@@ -13,7 +13,6 @@ return { -- Fuzzy Finder (files, lsp, etc)
 				return vim.fn.executable("make") == 1
 			end,
 		},
-		{ "nvim-telescope/telescope-ui-select.nvim" },
 		{ "nvim-telescope/telescope-symbols.nvim" },
 		{ "debugloop/telescope-undo.nvim" },
 		{ "nvim-tree/nvim-web-devicons", enabled = vim.g.have_nerd_font },
@@ -31,6 +30,7 @@ return { -- Fuzzy Finder (files, lsp, etc)
 				-- path_display = { "truncate" },
 				preview = false,
 				layout_strategy = "vertical",
+				disable_devicons = true,
 				layout_config = {
 					preview_height = 0.7,
 					vertical = {
@@ -40,16 +40,15 @@ return { -- Fuzzy Finder (files, lsp, etc)
 						},
 					},
 				},
+				file_ignore_patterns = { "^node_modules/", "^%.git/", "^%.vim/", "%-lock%." },
 			},
 			pickers = {
 				find_files = {
 					hidden = true,
-					file_ignore_patterns = { "node_modules/", "^.git/", "^.vim/" },
 				},
 				live_grep = {
 					hidden = true,
 					preview = true,
-					file_ignore_patterns = { "node_modules/", "^.git/", "^.vim/", "%-lock.%" },
 				},
 				help_tags = {
 					hidden = true,
@@ -62,6 +61,7 @@ return { -- Fuzzy Finder (files, lsp, etc)
 				git_status = {
 					preview = true,
 					initial_mode = "normal",
+					disable_devicons = false,
 				},
 				buffers = {
 					initial_mode = "normal",
@@ -89,6 +89,7 @@ return { -- Fuzzy Finder (files, lsp, etc)
 		})
 
 		telescope.load_extension("undo")
+		telescope.load_extension("fzf")
 		local builtin = require("telescope.builtin")
 
 		vim.keymap.set("n", "<leader>sf", builtin.find_files, { desc = "[S]earch [F]iles" })
@@ -103,8 +104,8 @@ return { -- Fuzzy Finder (files, lsp, etc)
 		vim.keymap.set("n", "<leader><tab>", builtin.commands, { desc = "[S]earch [C]ommands", noremap = false })
 		vim.keymap.set("n", "<leader>pS", builtin.git_status, { desc = "" })
 		vim.keymap.set("n", "<leader>s.", function()
-			builtin.find_files({ cwd = vim.fn.stdpath("config") })
-		end, { desc = "[S]earch [N]eovim files" })
+			builtin.find_files({ cwd = "~/.dotfiles/" })
+		end, { desc = "[S]earch [.]dot files" })
 
 		local wt_status_ok, git_wt = pcall(require, "git-worktree")
 		if not wt_status_ok then
