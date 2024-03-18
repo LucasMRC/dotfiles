@@ -3,17 +3,28 @@ local keymap = vim.api.nvim_set_keymap
 
 vim.keymap.set({ "n", "v" }, "<Space>", "<Nop>", opts)
 
--- Disable arrow keys/mouse wheel in normal mode
-vim.keymap.set("n", "<left>", '<cmd>echo "Use h to move!!"<CR>')
-vim.keymap.set("n", "<right>", '<cmd>echo "Use l to move!!"<CR>')
-vim.keymap.set("n", "<up>", '<cmd>echo "Use k to move!!"<CR>')
-vim.keymap.set("n", "<down>", '<cmd>echo "Use j to move!!"<CR>')
-
 -- Diagnostic keymaps
 vim.keymap.set("n", "[d", vim.diagnostic.goto_prev, { desc = "Go to previous [D]iagnostic message" })
 vim.keymap.set("n", "]d", vim.diagnostic.goto_next, { desc = "Go to next [D]iagnostic message" })
 vim.keymap.set("n", "<leader>e", vim.diagnostic.open_float, { desc = "Show diagnostic [E]rror messages" })
 vim.keymap.set("n", "<leader>q", vim.diagnostic.setloclist, { desc = "Open diagnostic [Q]uickfix list" })
+
+-- Disable arrow keys/mouse wheel
+keymap("n", "<left>", '<cmd>echo "Use h to move!!"<CR>', opts)
+keymap("n", "<right>", '<cmd>echo "Use l to move!!"<CR>', opts)
+keymap("n", "<up>", '<cmd>echo "Use k to move!!"<CR>', opts)
+keymap("n", "<down>", '<cmd>echo "Use j to move!!"<CR>', opts)
+keymap("v", "<left>", '<cmd>echo "Use h to move!!"<CR>', opts)
+keymap("v", "<right>", '<cmd>echo "Use l to move!!"<CR>', opts)
+keymap("v", "<up>", '<cmd>echo "Use k to move!!"<CR>', opts)
+keymap("v", "<down>", '<cmd>echo "Use j to move!!"<CR>', opts)
+keymap("i", "<left>", '<cmd>echo "Use h to move!!"<CR>', opts)
+keymap("i", "<right>", '<cmd>echo "Use l to move!!"<CR>', opts)
+keymap("i", "<up>", '<cmd>echo "Use k to move!!"<CR>', opts)
+keymap("i", "<down>", '<cmd>echo "Use j to move!!"<CR>', opts)
+
+-- Cancel terminal mode
+vim.keymap.set("t", "<Esc><Esc>", "<C-\\><C-n>", { desc = "Exit terminal mode" })
 
 -- Move lines up and down
 keymap("n", "<A-j>", ":m .+1<CR>==", opts)
@@ -46,7 +57,7 @@ keymap("n", "<C-Right>", ":vertical resize -2<CR>", opts)
 -- Navigate between buffers
 keymap("n", "<C-PageUp>", ":bnext<CR>", opts)
 keymap("n", "<C-PageDown>", ":bprevious<CR>", opts)
-keymap("n", "<C-w>", ":bd<CR>", opts)
+keymap("n", "<C-q>", ":bd<CR>", opts)
 
 -- One-key persistent indenting
 keymap("v", "<", "<gv", opts)
