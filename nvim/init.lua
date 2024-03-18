@@ -1,5 +1,4 @@
-require "lucas.options"
-require "lucas.mappings"
-require "lucas.plugins"
-require "lucas.colorscheme"
-
+require("lucas.options")
+require("lucas.mappings")
+require("lucas.lazy")
+require("lucas.colorscheme")

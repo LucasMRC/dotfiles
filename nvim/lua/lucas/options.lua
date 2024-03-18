@@ -7,7 +7,7 @@ g.maplocalleader = " "
 -- Line numbers
 set.nu = true
 set.numberwidth = 4 -- set number column width {default 4}
--- set.rnu = true
+set.rnu = true
 
 -- Indentation
 set.tabstop = 4
@@ -73,3 +73,6 @@ set.title = true
 set.conceallevel = 1 -- so that I can see `` in markdown files
 
 g.editorconfig = false -- disable .editorconfig file search
+
+set.list = true
+set.listchars = { tab = "» ", trail = "·", nbsp = "␣" }
