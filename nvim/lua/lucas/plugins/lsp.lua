@@ -24,6 +24,11 @@ return { -- LSP Configuration & Plugins
 				map("K", vim.lsp.buf.hover, "Hover Documentation")
 				map("gD", vim.lsp.buf.declaration, "[G]oto [D]eclaration")
 
+				vim.lsp.handlers["textDocument/publishDiagnostics"] =
+					vim.lsp.with(vim.lsp.diagnostic.on_publish_diagnostics, {
+						virtual_text = false,
+					})
+
 				local client = vim.lsp.get_client_by_id(event.data.client_id)
 				if client and client.server_capabilities.documentHighlightProvider then
 					vim.api.nvim_create_autocmd({ "CursorHold", "CursorHoldI" }, {
