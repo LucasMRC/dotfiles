@@ -44,10 +44,12 @@ return { -- Fuzzy Finder (files, lsp, etc)
 			},
 			pickers = {
 				find_files = {
+					no_ignore = true,
 					hidden = true,
 				},
 				live_grep = {
 					hidden = true,
+					no_ignore = true,
 					preview = true,
 				},
 				help_tags = {
@@ -65,6 +67,7 @@ return { -- Fuzzy Finder (files, lsp, etc)
 				},
 				buffers = {
 					initial_mode = "normal",
+					no_ignore = true,
 					mappings = {
 						n = {
 							["x"] = require("telescope.actions").delete_buffer,
@@ -76,6 +79,7 @@ return { -- Fuzzy Finder (files, lsp, etc)
 				undo = {
 					initial_mode = "normal",
 					preview = true,
+					no_ignore = true,
 					mappings = {
 						n = {
 							["<CR>"] = require("telescope-undo.actions").restore,
@@ -84,6 +88,9 @@ return { -- Fuzzy Finder (files, lsp, etc)
 							["<CR>"] = require("telescope-undo.actions").restore,
 						},
 					},
+				},
+				git_worktree = {
+					initial_mode = "normal",
 				},
 			},
 		})

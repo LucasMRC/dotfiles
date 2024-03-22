@@ -2,7 +2,9 @@ return {
 	{
 		"folke/zen-mode.nvim", -- zen mode
 		dependencies = {
-			"preservim/vim-pencil", -- writing mode
+			{
+				"preservim/vim-pencil",
+			}, -- writing mode
 			"folke/twilight.nvim", -- focus mode
 		},
 		config = function()
@@ -31,7 +33,7 @@ return {
 						-- statusline will be shown only if 'laststatus' == 3
 						laststatus = 0, -- turn off the statusline in zen mode
 					},
-					twilight = { enabled = true }, -- enable to start Twilight when zen mode opens
+					twilight = { enabled = false }, -- enable to start Twilight when zen mode opens
 					gitsigns = { enabled = false }, -- disables git signs
 					tmux = { enabled = true }, -- disables the tmux statusline
 					wezterm = {
@@ -39,6 +41,28 @@ return {
 						font = "+20", -- (10% increase per step)
 					},
 				},
+			})
+
+			local group = vim.api.nvim_create_augroup("lucas-writer-mode", { clear = true })
+			vim.api.nvim_create_autocmd("FileType", {
+				pattern = { "markdown", "text" },
+				group = group,
+				callback = function(event)
+					vim.api.nvim_create_autocmd("BufEnter", {
+						buffer = event.buf,
+						group = group,
+						callback = function()
+							vim.cmd("PencilSoft")
+						end,
+					})
+					vim.api.nvim_create_autocmd("BufLeave", {
+						buffer = event.buf,
+						group = group,
+						callback = function()
+							vim.cmd("PencilOff")
+						end,
+					})
+				end,
 			})
 		end,
 	},
@@ -144,11 +168,11 @@ return {
 				callbacks = {
 					enter_note = function()
 						vim.cmd("ZenMode")
-						vim.cmd("PencilSoft")
+						vim.cmd("TwilightEnable")
 					end,
 					leave_note = function()
 						vim.cmd("ZenMode")
-						vim.cmd("PencilOff")
+						vim.cmd("TwilightDisable")
 					end,
 				},
 			})
@@ -156,6 +180,8 @@ return {
 			vim.keymap.set("n", "<leader>oo", ":ObsidianQuickSwitch<CR>", { noremap = true, silent = true })
 			vim.keymap.set("n", "<leader>on", ":ObsidianNew<CR>", { noremap = true, silent = true })
 			vim.keymap.set("n", "<leader>ot", ":ObsidianToday<CR>", { noremap = true, silent = true })
+			vim.keymap.set("n", "<leader>os", ":ObsidianSearch<CR>", { noremap = true, silent = true })
+			vim.keymap.set("n", "<leader>ow", ":ObsidianWorkspace<CR>", { noremap = true, silent = true })
 		end,
 	},
 }

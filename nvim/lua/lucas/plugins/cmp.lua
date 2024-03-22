@@ -17,7 +17,6 @@ return { -- Autocompletion
 	config = function()
 		local cmp = require("cmp")
 		local luasnip = require("luasnip")
-		require("luasnip/loaders/from_vscode").lazy_load()
 
 		luasnip.config.setup({})
 
@@ -97,7 +96,6 @@ return { -- Autocompletion
 			},
 			experimental = {
 				ghost_text = false,
-				native_menu = false,
 			},
 			view = {
 				docs = {
