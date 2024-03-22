@@ -56,7 +56,9 @@
 		""
 	],
 	"showBreaksAsRegularWindows": false,
-	"appExclusions": ["zoom"],
+	"appExclusions": [
+		"zoom"
+	],
 	"appExclusionsCheckInterval": 1000,
 	"pauseForSuspendOrLock": true,
 	"pauseBreaksToggleShortcut": "",
@@ -64,9 +66,13 @@
 	"timeToBreakInTray": false,
 	"currentTimeInBreaks": false,
 	"showTrayIcon": true,
+	"skipToNextScheduledBreakShortcut": "",
+	"skipToNextMiniBreakShortcut": "",
+	"skipToNextLongBreakShortcut": "",
+	"resetBreaksShortcut": "",
 	"__internal__": {
 		"migrations": {
-			"version": "1.14.1"
+			"version": "1.15.1"
 		}
 	}
 }
