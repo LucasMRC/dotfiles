@@ -16,6 +16,8 @@ return {
 				"vim",
 				"vimdoc",
 				"query",
+				"sql",
+				"json",
 			},
 
 			-- Install parsers synchronously (only applied to `ensure_installed`)
