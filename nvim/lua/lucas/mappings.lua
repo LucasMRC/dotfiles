@@ -2,6 +2,8 @@ local opts = { noremap = true, silent = true }
 local keymap = vim.api.nvim_set_keymap
 
 vim.keymap.set({ "n", "v" }, "<Space>", "<Nop>", opts)
+-- disable close a window with <C-w>q
+vim.keymap.set({ "n", "v" }, "<C-w>q", "<Nop>", opts)
 
 -- Diagnostic keymaps
 vim.keymap.set("n", "[d", vim.diagnostic.goto_prev, { desc = "Go to previous [D]iagnostic message" })
@@ -76,3 +78,6 @@ keymap("n", "<C-k>", "gk", opts)
 keymap("n", "<leader>gg", ":Git<CR>", opts)
 keymap("n", "<leader>gb", ":Git blame<CR>", opts)
 keymap("n", "<leader>gd", ":Gvdiffsplit<CR>", opts)
+
+-- Autoformat
+keymap("n", "<leader>==", "ggVG=<C-o>zz", opts)

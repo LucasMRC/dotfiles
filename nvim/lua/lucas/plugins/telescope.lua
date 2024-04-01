@@ -40,7 +40,7 @@ return { -- Fuzzy Finder (files, lsp, etc)
 						},
 					},
 				},
-				file_ignore_patterns = { "^node_modules/", "^%.git/", "^%.vim/", "%-lock%." },
+				file_ignore_patterns = { "node_modules/", "%.git/", "^%.vim/", "%-lock%." },
 			},
 			pickers = {
 				find_files = {

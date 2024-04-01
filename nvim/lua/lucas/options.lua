@@ -76,3 +76,12 @@ g.editorconfig = false -- disable .editorconfig file search
 
 set.list = true
 set.listchars = { tab = "» ", trail = "·", nbsp = "␣" }
+
+-- Folding
+set.fillchars = { fold = " " }
+set.foldmethod = "indent"
+set.foldenable = false
+set.foldlevel = 99
+g.markdown_folding = 1 -- enable markdown folding
+
+-- vim.o.exrc = true -- enable per-directory .vimrc files

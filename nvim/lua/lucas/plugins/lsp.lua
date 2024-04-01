@@ -14,8 +14,8 @@ return { -- LSP Configuration & Plugins
 					vim.keymap.set("n", keys, func, { buffer = event.buf, desc = "LSP: " .. desc })
 				end
 				map("gd", require("telescope.builtin").lsp_definitions, "[G]oto [D]efinition")
-				map("gr", require("telescope.builtin").lsp_references, "[G]oto [R]eferences")
-				map("gI", require("telescope.builtin").lsp_implementations, "[G]oto [I]mplementation")
+				map("<leader>sr", require("telescope.builtin").lsp_references, "[S]earch [R]eferences")
+				map("<leader>si", require("telescope.builtin").lsp_implementations, "[S]earch [I]mplementation")
 				map("<leader>D", require("telescope.builtin").lsp_type_definitions, "Type [D]efinition")
 				map("<leader>ds", require("telescope.builtin").lsp_document_symbols, "[D]ocument [S]ymbols")
 				map("<leader>ws", require("telescope.builtin").lsp_dynamic_workspace_symbols, "[W]orkspace [S]ymbols")
@@ -27,6 +27,7 @@ return { -- LSP Configuration & Plugins
 				vim.lsp.handlers["textDocument/publishDiagnostics"] =
 					vim.lsp.with(vim.lsp.diagnostic.on_publish_diagnostics, {
 						virtual_text = false,
+						underline = true,
 					})
 
 				local client = vim.lsp.get_client_by_id(event.data.client_id)
