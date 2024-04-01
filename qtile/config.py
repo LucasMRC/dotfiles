@@ -47,6 +47,8 @@ def client_new(client):
             client.togroup("4")
         if client.window.get_wm_class()[0] == "slack":
             client.togroup("4")
+        if client.window.get_wm_class()[1] == "thunderbird":
+            client.togroup("4")
         if client.window.get_wm_class()[0] == "1password" and client.name.find("Quick Access") == -1:
             client.togroup("9")
         if client.window.get_wm_class()[0] == "spotify":
@@ -86,11 +88,12 @@ keys = [
     Key([mod], "b", lazy.hide_show_bar("top"), desc="Toggle bar visibility"),
     Key([mod, "control"], "r", lazy.reload_config(), desc="Reload the config"),
     Key([mod, "control"], "q", lazy.shutdown(), desc="Shutdown Qtile"),
+    Key([mod, "control"], "f", lazy.window.toggle_fullscreen(), desc="Toggle fullscreen"),
     # Applications
     Key([mod, "shift"], "Return", lazy.spawn("brave"), desc="Open brave browser"),
     Key([mod], "r", lazy.spawn("rofi -show drun"), desc="Spawn a command using a prompt widget"),
     Key([mod, "shift"], "s", lazy.spawn("flameshot gui"), desc="Open screenshot tool"),
-    Key([mod, "shift"], "z", lazy.spawn("kitty 'nvim'"), desc="Open neovim"),
+    Key([mod, "shift"], "z", lazy.spawn("kitty 'tmux'"), desc="Open a tmux session"),
     Key(["mod1"], "Tab", lazy.spawn("rofi -show window"), desc="Display open windows"), # The 'mod1' key is the 'Alt' key
     Key([mod, "control"], "p", lazy.spawn("sh /home/lucas/.config/scripts/pomodoro.sh"), desc="Manage pomodoro sessions"),
     # Audio keys
