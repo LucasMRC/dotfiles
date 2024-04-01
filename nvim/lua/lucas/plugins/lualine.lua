@@ -8,6 +8,7 @@ return {
 				disabled_filetypes = {
 					statusline = { "NvimTree" },
 				},
+				theme = "palenight",
 			},
 			sections = {
 				lualine_a = { "mode" },
