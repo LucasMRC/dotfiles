@@ -1,10 +1,13 @@
 if status is-interactive
     # Commands to run in interactive sessions can go here
-end
 
-# Set vi mode
-function fish_user_key_bindings
-    fish_vi_key_bindings 
+    set fish_cursor_default     block      blink
+    set fish_cursor_insert      line       blink
+    set fish_cursor_replace_one underscore blink
+    set fish_cursor_visual      block   # Set vi mode
+    function fish_user_key_bindings
+        fish_vi_key_bindings 
+    end
 end
 # Set normal mode as the default
 # for mode in default insert visual
@@ -25,6 +28,7 @@ alias hist='history --show-time="%d/%m/%Y %T " | less'
 alias conda-activate='eval ~/anaconda3/bin/conda "shell.fish" "hook" $argv | source'
 alias vbox-enable='sudo modprobe vboxnetadp'
 alias :q='exit'
+alias bruno='~/AppImages/Bruno/bruno_1.12.2_x86_64_linux.AppImage'
 
 if [ -f /usr/bin/neofetch ]
     # neofetch | lolcat
@@ -65,3 +69,14 @@ end
 
 # Kitty
 set -gx KITTY_CONFIG_DIRECTORY "/home/lucas/.config/kitty"
+
+# Connect to bluetooth
+function bt
+    set ADDRESS (bluetoothctl devices | grep $argv | awk '{print $2}')
+    set CONNECTED (bluetoothctl info $ADDRESS | grep 'Connected: yes')
+    if [ -z "$CONNECTED" ]
+        bluetoothctl connect $ADDRESS
+    else
+        bluetoothctl disconnect $ADDRESS
+    end
+end
