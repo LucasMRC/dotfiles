@@ -13,6 +13,7 @@ set.rnu = true
 set.tabstop = 4
 set.softtabstop = 4
 set.shiftwidth = 4
+set.autoindent = true
 set.smartindent = true
 set.expandtab = true
 
@@ -38,6 +39,7 @@ set.smartcase = true
 
 -- Enable 24-bit RGB colors
 set.termguicolors = true
+set.background = "dark"
 
 -- Always 5 lines above/below the cursor
 set.scrolloff = 5
@@ -60,7 +62,7 @@ set.pumheight = 10 -- pop up menu height
 set.pumblend = 10
 
 -- set.showmode = false -- we don't need to see things like -- INSERT -- anymore
-set.splitbelow = false -- force all horizontal splits to go above current window
+set.splitbelow = true -- force all horizontal splits to go below current window
 set.splitright = true -- force all vertical splits to go to the right of current window
 
 set.cursorline = true -- highlight the current line
@@ -77,11 +79,14 @@ g.editorconfig = false -- disable .editorconfig file search
 set.list = true
 set.listchars = { tab = "» ", trail = "·", nbsp = "␣" }
 
+set.backspace = "indent,eol,start"
+
 -- Folding
 set.fillchars = { fold = " " }
 set.foldmethod = "indent"
 set.foldenable = false
 set.foldlevel = 99
 g.markdown_folding = 1 -- enable markdown folding
+--
 
 -- vim.o.exrc = true -- enable per-directory .vimrc files

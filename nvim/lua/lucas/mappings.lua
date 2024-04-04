@@ -87,6 +87,11 @@ keymap("n", "<leader>gd", ":Gvdiffsplit<CR>", opts)
 
 -- Autoformat
 keymap("n", "<leader>==", "ggVG=<C-o>zz", opts)
+
+-- Number increment/decrement
+keymap("n", "++", "<C-a>", desc("Increment number under cursor"))
+keymap("n", "--", "<C-x>", desc("Decrement number under cursor"))
+
 -- Splits
 keymap("n", "<leader>pv", "<C-w>v", desc("Split vertically"))
 keymap("n", "<leader>ph", "<C-w>s", desc("Split horizontally"))
