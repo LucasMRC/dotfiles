@@ -42,9 +42,11 @@ keymap("v", "<A-k>", ":m '<-2<CR>gv=gv", opts)
 keymap("x", "<A-j>", ":m '>+1<CR>gv=gv", opts)
 keymap("x", "<A-k>", ":m '<-2<CR>gv=gv", opts)
 
--- Center cursor when jumping half page
+-- Center cursor when jumping through the page
 keymap("n", "<C-d>", "<C-d>zz", opts)
 keymap("n", "<C-u>", "<C-u>zz", opts)
+keymap("n", "n", "nzz", opts)
+keymap("n", "N", "Nzz", opts)
 
 -- Center cursor when moving using brackets
 keymap("n", "{", "{zz", opts)
@@ -79,6 +81,10 @@ keymap("v", "<C-j>", "gj", opts)
 keymap("v", "<C-k>", "gk", opts)
 keymap("n", "<C-j>", "gj", opts)
 keymap("n", "<C-k>", "gk", opts)
+vim.keymap.set({ "n", "v" }, "<C-j>", "gj", opts) -- disable close window
+vim.keymap.set({ "n", "v" }, "<C-k>", "gk", opts) -- disable close window
+vim.keymap.set({ "n", "v" }, "<C-l>", "$", opts) -- disable close window
+vim.keymap.set({ "n", "v" }, "<C-h>", "^", opts) -- disable close window
 
 -- Git
 keymap("n", "<leader>gg", ":Git<CR>", opts)

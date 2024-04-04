@@ -76,9 +76,6 @@ set.conceallevel = 1 -- so that I can see `` in markdown files
 
 g.editorconfig = false -- disable .editorconfig file search
 
-set.list = true
-set.listchars = { tab = "» ", trail = "·", nbsp = "␣" }
-
 set.backspace = "indent,eol,start"
 
 -- Folding

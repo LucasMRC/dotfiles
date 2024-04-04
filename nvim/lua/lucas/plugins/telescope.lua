@@ -27,7 +27,7 @@ return { -- Fuzzy Finder (files, lsp, etc)
 		telescope.setup({
 			defaults = {
 				-- Default configuration for telescope goes here:
-				-- path_display = { "truncate" },
+				path_display = { "smart" },
 				preview = false,
 				layout_strategy = "vertical",
 				disable_devicons = true,
@@ -127,7 +127,12 @@ return { -- Fuzzy Finder (files, lsp, etc)
 				telescope.extensions.git_worktree.git_worktrees,
 				{ desc = "[S]earch [T]rees" }
 			)
-			vim.keymap.set("n", "<leader>sn", telescope.extensions.git_worktree.create_git_worktree, {})
+			vim.keymap.set(
+				"n",
+				"<leader>sn",
+				telescope.extensions.git_worktree.create_git_worktree,
+				{ desc = "[S]earch [N]ew tree" }
+			)
 		end
 	end,
 }
