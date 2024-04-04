@@ -1,4 +1,7 @@
 local opts = { noremap = true, silent = true }
+local desc = function(description)
+	return { desc = description, noremap = true, silent = true }
+end
 local keymap = vim.api.nvim_set_keymap
 
 vim.keymap.set({ "n", "v" }, "<Space>", "<Nop>", opts)
@@ -84,3 +87,8 @@ keymap("n", "<leader>gd", ":Gvdiffsplit<CR>", opts)
 
 -- Autoformat
 keymap("n", "<leader>==", "ggVG=<C-o>zz", opts)
+-- Splits
+keymap("n", "<leader>pv", "<C-w>v", desc("Split vertically"))
+keymap("n", "<leader>ph", "<C-w>s", desc("Split horizontally"))
+keymap("n", "<leader>pq", "<C-w>q", desc("Close window"))
+keymap("n", "<leader>pe", "<C-w>=", desc("Equal size windows"))
