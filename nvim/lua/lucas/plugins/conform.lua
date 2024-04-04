@@ -1,5 +1,6 @@
 return { -- Autoformat
 	"stevearc/conform.nvim",
+	event = { "BufWritePre", "BufNewFile" },
 	opts = {
 		notify_on_error = false,
 		format_on_save = function(bufnr)
@@ -14,6 +15,17 @@ return { -- Autoformat
 		end,
 		formatters_by_ft = {
 			lua = { "stylua" },
+			javascript = { "prettier" },
+			typescript = { "prettier" },
+			json = { "prettier" },
+			html = { "prettier" },
+			css = { "prettier" },
+			scss = { "prettier" },
+			markdown = { "prettier" },
+			yaml = { "prettier" },
+			svelte = { "prettier" },
+			typescriptreact = { "prettier" },
+			javascriptreact = { "prettier" },
 		},
 	},
 }

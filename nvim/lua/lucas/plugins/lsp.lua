@@ -52,9 +52,6 @@ return { -- LSP Configuration & Plugins
 			lua_ls = {
 				settings = {
 					Lua = {
-						completion = {
-							callSnippet = "Replace",
-						},
 						diagnostics = {
 							-- Get the language server to recognize the `vim` global
 							globals = {
@@ -70,7 +67,22 @@ return { -- LSP Configuration & Plugins
 
 		local ensure_installed = vim.tbl_keys(servers or {})
 		vim.list_extend(ensure_installed, {
+			-- formatters
 			"stylua", -- Used to format lua code
+			"prettier",
+			-- linters
+			"eslint_d",
+			-- "luacheck",
+			"shellcheck",
+			"vint",
+			-- lsp servers
+			"emmet_ls",
+			"tsserver",
+			"html",
+			"cssls",
+			"tailwindcss",
+			"svelte",
+			"gopls",
 		})
 		require("mason-tool-installer").setup({ ensure_installed = ensure_installed })
 
