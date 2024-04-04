@@ -1,9 +1,12 @@
 return { -- Useful plugin to show you pending keybinds.
 	"folke/which-key.nvim",
 	event = "VimEnter", -- Sets the loading event to 'VimEnter'
-	config = function() -- This is the function that runs, AFTER loading
+	init = function() -- This is the function that runs BEFORE loading
+		vim.opt.timeout = true
+		vim.opt.timeoutlen = 1500
+	end,
+	config = function() -- This is the function that runs AFTER loading
 		require("which-key").setup()
-
 		-- Document existing key chains
 		require("which-key").register({
 			["<leader>c"] = { name = "[C]ode", _ = "which_key_ignore" },
