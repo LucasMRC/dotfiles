@@ -2,97 +2,85 @@ local opts = { noremap = true, silent = true }
 local desc = function(description)
 	return { desc = description, noremap = true, silent = true }
 end
-local keymap = vim.api.nvim_set_keymap
+local keymap = vim.keymap.set
 
-vim.keymap.set({ "n", "v" }, "<Space>", "<Nop>", opts)
+keymap({ "n", "v" }, "<Space>", "<Nop>", opts)
 
 -- disable annoying commands
-vim.keymap.set({ "n", "v" }, "<C-w>q", "<Nop>", opts) -- disable close window
+keymap({ "n", "v" }, "<C-w>q", "<Nop>", opts) -- disable close window
 keymap("c", "W<CR>", "w<CR>", opts) -- :W writes the file too
 keymap("c", "Q<CR>", "q<CR>", opts) -- :Q closes the buffer too
 
 -- Diagnostic keymaps
-vim.keymap.set("n", "[d", vim.diagnostic.goto_prev, { desc = "Go to previous [D]iagnostic message" })
-vim.keymap.set("n", "]d", vim.diagnostic.goto_next, { desc = "Go to next [D]iagnostic message" })
-vim.keymap.set("n", "<leader>e", vim.diagnostic.open_float, { desc = "Show diagnostic [E]rror messages" })
-vim.keymap.set("n", "<leader>q", vim.diagnostic.setloclist, { desc = "Open diagnostic [Q]uickfix list" })
+keymap("n", "[d", vim.diagnostic.goto_prev, desc("Go to previous [D]iagnostic message"))
+keymap("n", "]d", vim.diagnostic.goto_next, desc("Go to next [D]iagnostic message"))
+keymap("n", "<leader>e", vim.diagnostic.open_float, desc("Show diagnostic [E]rror messages"))
+keymap("n", "<leader>q", vim.diagnostic.setloclist, desc("Open diagnostic [Q]uickfix list"))
 
 -- Disable arrow keys/mouse wheel
-keymap("n", "<left>", '<cmd>echo "Use h to move!!"<CR>', opts)
-keymap("n", "<right>", '<cmd>echo "Use l to move!!"<CR>', opts)
-keymap("n", "<up>", '<cmd>echo "Use k to move!!"<CR>', opts)
-keymap("n", "<down>", '<cmd>echo "Use j to move!!"<CR>', opts)
-keymap("v", "<left>", '<cmd>echo "Use h to move!!"<CR>', opts)
-keymap("v", "<right>", '<cmd>echo "Use l to move!!"<CR>', opts)
-keymap("v", "<up>", '<cmd>echo "Use k to move!!"<CR>', opts)
-keymap("v", "<down>", '<cmd>echo "Use j to move!!"<CR>', opts)
-keymap("i", "<left>", '<cmd>echo "Use h to move!!"<CR>', opts)
-keymap("i", "<right>", '<cmd>echo "Use l to move!!"<CR>', opts)
-keymap("i", "<up>", '<cmd>echo "Use k to move!!"<CR>', opts)
-keymap("i", "<down>", '<cmd>echo "Use j to move!!"<CR>', opts)
+-- , "<left>", "<Nop>", opts) -- disable close window
+keymap({ "n", "v", "i" }, "<left>", '<cmd>echo "Use h to move!!"<CR>', opts)
+keymap({ "n", "v", "i" }, "<right>", '<cmd>echo "Use l to move!!"<CR>', opts)
+keymap({ "n", "v", "i" }, "<up>", '<cmd>echo "Use k to move!!"<CR>', opts)
+keymap({ "n", "v", "i" }, "<down>", '<cmd>echo "Use j to move!!"<CR>', opts)
 
 -- Cancel terminal mode
-vim.keymap.set("t", "<Esc><Esc>", "<C-\\><C-n>", { desc = "Exit terminal mode" })
+keymap("t", "<Esc><Esc>", "<C-\\><C-n>", desc("Exit terminal mode"))
 
 -- Move lines up and down
-keymap("n", "<A-j>", ":m .+1<CR>==", opts)
-keymap("n", "<A-k>", ":m .-2<CR>==", opts)
-keymap("v", "<A-j>", ":m '>+1<CR>gv=gv", opts)
-keymap("v", "<A-k>", ":m '<-2<CR>gv=gv", opts)
-keymap("x", "<A-j>", ":m '>+1<CR>gv=gv", opts)
-keymap("x", "<A-k>", ":m '<-2<CR>gv=gv", opts)
+keymap({ "n", "i" }, "<A-j>", ":m .+1<CR>==", desc("Move line down"))
+keymap({ "n", "i" }, "<A-k>", ":m .-2<CR>==", desc("Move line up"))
+
+keymap({ "x", "v" }, "<A-j>", ":m '>+1<CR>gv=gv", desc("Move lines down"))
+keymap({ "x", "v" }, "<A-k>", ":m '<-2<CR>gv=gv", desc("Move lines up"))
 
 -- Center cursor when jumping through the page
-keymap("n", "<C-d>", "<C-d>zz", opts)
-keymap("n", "<C-u>", "<C-u>zz", opts)
-keymap("n", "n", "nzz", opts)
-keymap("n", "N", "Nzz", opts)
+keymap("n", "<C-d>", "<C-d>zz", desc("Move half page down"))
+keymap("n", "<C-u>", "<C-u>zz", desc("Move half page up"))
+keymap("n", "n", "nzz", desc("Jump to next match"))
+keymap("n", "N", "Nzz", desc("Jump to previous match"))
 
 -- Center cursor when moving using brackets
-keymap("n", "{", "{zz", opts)
-keymap("n", "}", "}zz", opts)
+keymap("n", "{", "[{zz", desc("Move to matching bracket"))
+keymap("n", "}", "]}zz", desc("Move to matching bracket"))
 
 -- Clean search highlights
-keymap("n", "<C-c>", ":noh<CR>", opts)
+keymap("n", "<C-c>", ":noh<CR>", desc("Clear search highlights"))
 
 -- Open file tree
-keymap("n", "<leader><Space>", ":NvimTreeToggle<CR>", opts)
+keymap("n", "<leader><Space>", ":NvimTreeToggle<CR>", desc("Toggle file tree"))
 
 -- Resize windows
-keymap("n", "<C-Left>", ":vertical resize +2<CR>", opts)
-keymap("n", "<C-Down>", ":resize +2<CR>", opts)
-keymap("n", "<C-Up>", ":resize -2<CR>", opts)
-keymap("n", "<C-Right>", ":vertical resize -2<CR>", opts)
+keymap("n", "<C-Left>", ":vertical resize +2<CR>", desc("Resize window left"))
+keymap("n", "<C-Down>", ":resize +2<CR>", desc("Resize window down"))
+keymap("n", "<C-Up>", ":resize -2<CR>", desc("Resize window up"))
+keymap("n", "<C-Right>", ":vertical resize -2<CR>", desc("Resize window right"))
 
 -- Navigate between buffers
-keymap("n", "<C-PageUp>", ":bnext<CR>", opts)
-keymap("n", "<C-PageDown>", ":bprevious<CR>", opts)
-keymap("n", "<C-q>", ":bd<CR>", opts)
+keymap("n", "<C-PageUp>", ":bnext<CR>", desc("Next buffer"))
+keymap("n", "<C-PageDown>", ":bprevious<CR>", desc("Previous buffer"))
+keymap("n", "<C-q>", ":bd<CR>", desc("Close buffer"))
 
 -- One-key persistent indenting
-keymap("v", "<", "<gv", opts)
-keymap("v", ">", ">gv", opts)
+keymap("v", "<", "<gv", desc("Indent left"))
+keymap("v", ">", ">gv", desc("Indent right"))
 
 -- Persistent pasting
-keymap("v", "p", '"_dP', opts)
+keymap("v", "p", '"_dP', desc("Paste without yanking"))
 
 -- Move down and up by visual lines
-keymap("v", "<C-j>", "gj", opts)
-keymap("v", "<C-k>", "gk", opts)
-keymap("n", "<C-j>", "gj", opts)
-keymap("n", "<C-k>", "gk", opts)
-vim.keymap.set({ "n", "v" }, "<C-j>", "gj", opts) -- disable close window
-vim.keymap.set({ "n", "v" }, "<C-k>", "gk", opts) -- disable close window
-vim.keymap.set({ "n", "v" }, "<C-l>", "$", opts) -- disable close window
-vim.keymap.set({ "n", "v" }, "<C-h>", "^", opts) -- disable close window
+keymap({ "n", "v" }, "<C-j>", "gj", desc("Move down by visual line"))
+keymap({ "n", "v" }, "<C-k>", "gk", desc("Move up by visual line"))
+keymap({ "n", "v" }, "<C-l>", "$", desc("Move to end of line"))
+keymap({ "n", "v" }, "<C-h>", "^", desc("Move to start of line"))
 
 -- Git
-keymap("n", "<leader>gg", ":Git<CR>", opts)
-keymap("n", "<leader>gb", ":Git blame<CR>", opts)
-keymap("n", "<leader>gd", ":Gvdiffsplit<CR>", opts)
+keymap("n", "<leader>gg", ":Git<CR>", desc("Git status"))
+keymap("n", "<leader>gb", ":Git blame<CR>", desc("Git blame"))
+keymap("n", "<leader>gd", ":Gvdiffsplit<CR>", desc("Git diff"))
 
 -- Autoformat
-keymap("n", "<leader>==", "ggVG=<C-o>zz", opts)
+keymap("n", "<leader>==", "ggVG=<C-o>zz", desc("Autoformat"))
 
 -- Number increment/decrement
 keymap("n", "++", "<C-a>", desc("Increment number under cursor"))
