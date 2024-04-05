@@ -14,30 +14,6 @@ return {
 		end,
 	}, -- toggle comments
 	{
-		"lukas-reineke/indent-blankline.nvim",
-		main = "ibl",
-		opts = {},
-		config = function()
-			require("ibl").setup()
-		end,
-	},
-	{
-		"JoosepAlviste/palenightfall.nvim",
-		lazy = false,
-		priority = 1000,
-		config = function()
-			require("palenightfall").setup()
-		end,
-	},
-	{
-		"AlexvZyl/nordic.nvim",
-		lazy = false,
-		priority = 1000,
-		config = function()
-			require("nordic").load()
-		end,
-	},
-	{
 		"fladson/vim-kitty",
 		lazy = true,
 		event = "VeryLazy",

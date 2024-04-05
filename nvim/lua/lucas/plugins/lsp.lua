@@ -17,7 +17,7 @@ return { -- LSP Configuration & Plugins
 				map("<leader>sr", require("telescope.builtin").lsp_references, "[S]earch [R]eferences")
 				map("<leader>si", require("telescope.builtin").lsp_implementations, "[S]earch [I]mplementation")
 				map("<leader>D", require("telescope.builtin").lsp_type_definitions, "Type [D]efinition")
-				map("<leader>ds", require("telescope.builtin").lsp_document_symbols, "[D]ocument [S]ymbols")
+				map("<leader>ss", require("telescope.builtin").lsp_document_symbols, "[S]earch Document [S]ymbols")
 				map("<leader>ws", require("telescope.builtin").lsp_dynamic_workspace_symbols, "[W]orkspace [S]ymbols")
 				map("<leader>rn", vim.lsp.buf.rename, "[R]e[n]ame")
 				map("<leader>ca", vim.lsp.buf.code_action, "[C]ode [A]ction")
@@ -27,8 +27,30 @@ return { -- LSP Configuration & Plugins
 				vim.lsp.handlers["textDocument/publishDiagnostics"] =
 					vim.lsp.with(vim.lsp.diagnostic.on_publish_diagnostics, {
 						virtual_text = false,
-						underline = true,
+						severity_sort = true,
+						signs = false,
+						float = {
+							source = "always",
+						},
 					})
+
+				local _border = "single"
+
+				vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, {
+					border = _border,
+				})
+
+				vim.lsp.handlers["textDocument/signatureHelp"] = vim.lsp.with(vim.lsp.handlers.signature_help, {
+					border = _border,
+				})
+
+				vim.diagnostic.config({
+					float = { border = _border },
+				})
+
+				require("lspconfig.ui.windows").default_options = {
+					border = _border,
+				}
 
 				local client = vim.lsp.get_client_by_id(event.data.client_id)
 				if client and client.server_capabilities.documentHighlightProvider then
