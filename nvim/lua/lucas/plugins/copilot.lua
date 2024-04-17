@@ -10,6 +10,10 @@ return {
 					accept_word = "<C-M-l>",
 				},
 			},
+            filetypes = {
+                go = false,
+                ["*"] = true,
+            }
 		})
 	end,
 }

@@ -46,6 +46,7 @@ return { -- LSP Configuration & Plugins
 
                 vim.diagnostic.config({
                     float = { border = _border },
+                    virtual_text = false,
                 })
 
                 require("lspconfig.ui.windows").default_options = {
@@ -66,10 +67,8 @@ return { -- LSP Configuration & Plugins
                 end
 
                 vim.api.nvim_create_autocmd("BufWritePost", {
-                    callback = function(data)
-                        if data.file:match("%.md$") or data.file:match("COMMIT_EDITMSG") then
-                            return
-                        end
+                    pattern = "*.lua,*.js,*.ts,*.svelte,*.html,*.json",
+                    callback = function()
                         vim.lsp.buf.format()
                     end
                 })
@@ -101,11 +100,11 @@ return { -- LSP Configuration & Plugins
             -- formatters
             "stylua", -- Used to format lua code
             "prettier",
+            "prettierd",
             -- linters
             "eslint_d",
             -- "luacheck",
             "shellcheck",
-            "vint",
             -- lsp servers
             "emmet_ls",
             "tsserver",
@@ -113,6 +112,7 @@ return { -- LSP Configuration & Plugins
             "cssls",
             "tailwindcss",
             "svelte",
+            "jdtls", -- java
             "gopls",
         })
         require("mason-tool-installer").setup({ ensure_installed = ensure_installed })

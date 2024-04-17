@@ -17,4 +17,8 @@ if not status_ok then
 	return
 end
 
-lazyvim.setup("lucas/plugins")
+lazyvim.setup("lucas/plugins", {
+    change_detection = {
+    notify = false, -- hide notification when changes are found
+  }
+})

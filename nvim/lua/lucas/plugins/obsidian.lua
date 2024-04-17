@@ -168,11 +168,11 @@ return {
 				callbacks = {
 					enter_note = function()
 						vim.cmd("ZenMode")
-						vim.cmd("TwilightEnable")
+						-- vim.cmd("TwilightEnable")
 					end,
 					leave_note = function()
 						vim.cmd("ZenMode")
-						vim.cmd("TwilightDisable")
+						-- vim.cmd("TwilightDisable")
 					end,
 				},
 			})
