@@ -1,15 +1,22 @@
 local opts = { noremap = true, silent = true }
 local desc = function(description)
-	return { desc = description, noremap = true, silent = true }
+    return { desc = description, noremap = true, silent = true }
 end
 local keymap = vim.keymap.set
 
-keymap({ "n", "v" }, "<Space>", "<Nop>", opts)
 
 -- disable annoying commands
+keymap({ "n", "v" }, "<F1>", "<Nop>", opts)
+keymap({ "n", "v" }, "<Space>", "<Nop>", opts)
 keymap({ "n", "v" }, "<C-w>q", "<Nop>", opts) -- disable close window
-keymap("c", "W<CR>", "w<CR>", opts) -- :W writes the file too
-keymap("c", "Q<CR>", "q<CR>", opts) -- :Q closes the buffer too
+-- keymap("c", "W<CR>", "w<CR>", opts)           -- :W writes the file too
+-- keymap("c", "Q<CR>", "q<CR>", opts)           -- :Q closes the buffer too
+
+-- Disable arrow keys/mouse wheel
+keymap({ "n", "v", "i" }, "<left>", '<Nop>', opts)
+keymap({ "n", "v", "i" }, "<right>", '<Nop>', opts)
+keymap({ "n", "v", "i" }, "<up>", '<Nop>', opts)
+keymap({ "n", "v", "i" }, "<down>", '<Nop>', opts)
 
 -- Diagnostic keymaps
 keymap("n", "[d", vim.diagnostic.goto_prev, desc("Go to previous [D]iagnostic message"))
@@ -17,19 +24,12 @@ keymap("n", "]d", vim.diagnostic.goto_next, desc("Go to next [D]iagnostic messag
 keymap("n", "<leader>e", vim.diagnostic.open_float, desc("Show diagnostic [E]rror messages"))
 keymap("n", "<leader>q", vim.diagnostic.setloclist, desc("Open diagnostic [Q]uickfix list"))
 
--- Disable arrow keys/mouse wheel
--- , "<left>", "<Nop>", opts) -- disable close window
-keymap({ "n", "v", "i" }, "<left>", '<cmd>echo "Use h to move!!"<CR>', opts)
-keymap({ "n", "v", "i" }, "<right>", '<cmd>echo "Use l to move!!"<CR>', opts)
-keymap({ "n", "v", "i" }, "<up>", '<cmd>echo "Use k to move!!"<CR>', opts)
-keymap({ "n", "v", "i" }, "<down>", '<cmd>echo "Use j to move!!"<CR>', opts)
-
 -- Cancel terminal mode
 keymap("t", "<Esc><Esc>", "<C-\\><C-n>", desc("Exit terminal mode"))
 
 -- Move lines up and down
-keymap({ "n", "i" }, "<A-j>", ":m .+1<CR>==", desc("Move line down"))
-keymap({ "n", "i" }, "<A-k>", ":m .-2<CR>==", desc("Move line up"))
+keymap("n", "<A-j>", ":m .+1<CR>==", desc("Move line down"))
+keymap("n", "<A-k>", ":m .-2<CR>==", desc("Move line up"))
 
 keymap({ "x", "v" }, "<A-j>", ":m '>+1<CR>gv=gv", desc("Move lines down"))
 keymap({ "x", "v" }, "<A-k>", ":m '<-2<CR>gv=gv", desc("Move lines up"))
@@ -80,7 +80,7 @@ keymap("n", "<leader>gb", ":Git blame<CR>", desc("Git blame"))
 keymap("n", "<leader>gd", ":Gvdiffsplit<CR>", desc("Git diff"))
 
 -- Autoformat
-keymap("n", "<leader>==", "ggVG=<C-o>zz", desc("Autoformat"))
+keymap("n", "<leader>==", "ggVG=<C-o>", desc("Autoformat"))
 
 -- Number increment/decrement
 keymap("n", "++", "<C-a>", desc("Increment number under cursor"))
