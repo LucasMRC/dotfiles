@@ -72,12 +72,12 @@ return { -- LSP Configuration & Plugins
                     })
                 end
 
-                vim.api.nvim_create_autocmd("BufWritePost", {
-                    pattern = "*.lua,*.js,*.ts,*.svelte,*.html,*.json",
-                    callback = function()
-                        vim.lsp.buf.format()
-                    end
-                })
+                -- vim.api.nvim_create_autocmd("BufWritePost", {
+                --     pattern = "*.lua,*.js,*.ts,*.svelte,*.html,*.json",
+                --     callback = function()
+                --         vim.lsp.buf.format()
+                --     end
+                -- })
             end,
         })
 

@@ -80,7 +80,7 @@ keymap("n", "<leader>gb", ":Git blame<CR>", desc("Git blame"))
 keymap("n", "<leader>gd", ":Gvdiffsplit<CR>", desc("Git diff"))
 
 -- Autoformat
-keymap("n", "<leader>==", "ggVG=<C-o>", desc("Autoformat"))
+keymap("n", "<leader>=", "ggVG=<C-o>", desc("Autoformat"))
 
 -- Number increment/decrement
 keymap("n", "++", "<C-a>", desc("Increment number under cursor"))
