@@ -49,7 +49,7 @@ return { -- LSP Configuration & Plugins
                     float = {
                         focusable = false,
                         border = _border,
-                        source = "always",
+                        source = true,
                         header = "",
                     },
                     virtual_text = false,
@@ -88,13 +88,21 @@ return { -- LSP Configuration & Plugins
             lua_ls = {
                 settings = {
                     Lua = {
-                        diagnostics = {
-                            -- Get the language server to recognize the `vim` global
-                            globals = {
-                                "vim",
-                            },
+                        runtime = {
+                            -- Tell the language server which version of Lua you're using (most likely LuaJIT)
+                            version = 'LuaJIT',
+                            -- Setup your lua path
+                            -- path = runtime_path,
                         },
-                        checkThirdParty = false,
+                        diagnostics = {
+                            globals = { 'vim' },
+                        },
+                        workspace = {
+                            library = vim.api.nvim_get_runtime_file('', true),
+                            checkThirdParty = false,
+                        },
+                        -- Do not send telemetry data containing a randomized but unique identifier
+                        telemetry = { enable = false },
                     },
                 },
             },
