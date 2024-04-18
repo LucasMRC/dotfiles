@@ -13,20 +13,20 @@ return {
                 lualine_c = { { "branch", icons_enabled = true }, "diff", "diagnostics" },
                 lualine_x = {
                     {
-                        require("noice").api.status.mode.get,
-                        cond = function()
-                            local mode = require("noice").api.status.mode.get()
-                            if mode == nil then
-                                return false
-                            else
-                                if string.match(mode, "recording") then
-                                    return true
-                                else
-                                    return false
-                                end
-                            end
-                        end,
-                        color = { fg = "#f0abfc" },
+                        -- require("noice").api.status.mode.get,
+                        -- cond = function()
+                        --     local mode = require("noice").api.status.mode.get()
+                        --     if mode == nil then
+                        --         return false
+                        --     else
+                        --         if string.match(mode, "recording") then
+                        --             return true
+                        --         else
+                        --             return false
+                        --         end
+                        --     end
+                        -- end,
+                        -- color = { fg = "#f0abfc" },
                     },
                 },
                 lualine_y = {

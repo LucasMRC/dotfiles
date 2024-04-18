@@ -28,7 +28,8 @@ return { -- LSP Configuration & Plugins
                     vim.lsp.with(vim.lsp.diagnostic.on_publish_diagnostics, {
                         virtual_text = false,
                         severity_sort = true,
-                        signs = false,
+                        signs = true,
+                        underline = true,
                         float = {
                             source = "always",
                         },
@@ -36,16 +37,21 @@ return { -- LSP Configuration & Plugins
 
                 local _border = "single"
 
-                -- vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, {
-                --     border = _border,
-                -- })
-                --
-                -- vim.lsp.handlers["textDocument/signatureHelp"] = vim.lsp.with(vim.lsp.handlers.signature_help, {
-                --     border = _border,
-                -- })
+                vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, {
+                    border = _border,
+                })
+
+                vim.lsp.handlers["textDocument/signatureHelp"] = vim.lsp.with(vim.lsp.handlers.signature_help, {
+                    border = _border,
+                })
 
                 vim.diagnostic.config({
-                    float = { border = _border },
+                    float = {
+                        focusable = false,
+                        border = _border,
+                        source = "always",
+                        header = "",
+                    },
                     virtual_text = false,
                 })
 
@@ -88,9 +94,13 @@ return { -- LSP Configuration & Plugins
                                 "vim",
                             },
                         },
+                        checkThirdParty = false,
                     },
                 },
             },
+            gopls = {
+                codelenses = { test = true },
+            }
         }
 
         require("mason").setup()
@@ -113,7 +123,6 @@ return { -- LSP Configuration & Plugins
             "tailwindcss",
             "svelte",
             "jdtls", -- java
-            "gopls",
         })
         require("mason-tool-installer").setup({ ensure_installed = ensure_installed })
 

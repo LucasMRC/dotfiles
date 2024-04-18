@@ -9,8 +9,8 @@ local keymap = vim.keymap.set
 keymap({ "n", "v" }, "<F1>", "<Nop>", opts)
 keymap({ "n", "v" }, "<Space>", "<Nop>", opts)
 keymap({ "n", "v" }, "<C-w>q", "<Nop>", opts) -- disable close window
--- keymap("c", "W<CR>", "w<CR>", opts)           -- :W writes the file too
--- keymap("c", "Q<CR>", "q<CR>", opts)           -- :Q closes the buffer too
+keymap("c", "W<CR>", "w<CR>", opts)           -- :W writes the file too
+keymap("c", "Q<CR>", "q<CR>", opts)           -- :Q closes the buffer too
 
 -- Disable arrow keys/mouse wheel
 keymap({ "n", "v", "i" }, "<left>", '<Nop>', opts)
