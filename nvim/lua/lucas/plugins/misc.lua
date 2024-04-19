@@ -24,18 +24,6 @@ return {
         dependencies = { "nvim-lua/plenary.nvim" },
         opts = { signs = false },
     },
-    {
-        "j-hui/fidget.nvim",
-        config = function()
-            require("fidget").setup({
-                integration = {
-                    ["nvim-tree"] = {
-                        enable = true, -- Integrate with nvim-tree/nvim-tree.lua (if installed)
-                    },
-                },
-            })
-        end,
-    },
     "nvim-lua/plenary.nvim",          -- don't forget to add this one if you don't have it yet!
     "windwp/nvim-ts-autotag",         -- auto close html tags
     "tpope/vim-fugitive",             -- git
