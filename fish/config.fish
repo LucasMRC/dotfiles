@@ -8,6 +8,8 @@ if status is-interactive
     function fish_user_key_bindings
         fish_vi_key_bindings 
     end
+    bind -M visual -m insert i repaint-mode
+    bind -M visual -m default v repaint-mode
 end
 # Set normal mode as the default
 for mode in default insert visual
