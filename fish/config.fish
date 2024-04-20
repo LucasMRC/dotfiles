@@ -10,9 +10,9 @@ if status is-interactive
     end
 end
 # Set normal mode as the default
-# for mode in default insert visual
-#   bind -M $mode \r -m default execute
-# end
+for mode in default insert visual
+  bind -M $mode \r -m default execute
+end
 
 # Supresses fish's intro message
 set fish_greeting
@@ -29,6 +29,7 @@ alias conda-activate='eval ~/anaconda3/bin/conda "shell.fish" "hook" $argv | sou
 alias vbox-enable='sudo modprobe vboxnetadp'
 alias :q='exit'
 alias bruno='~/AppImages/Bruno/bruno_1.12.2_x86_64_linux.AppImage'
+alias tmux-launcher='sh ~/.config/qtile/tmux-launcher.sh'
 
 if [ -f /usr/bin/neofetch ]
     # neofetch | lolcat

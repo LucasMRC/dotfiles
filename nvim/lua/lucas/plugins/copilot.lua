@@ -12,6 +12,7 @@ return {
 			},
             filetypes = {
                 go = false,
+                sh = false,
                 ["*"] = true,
             }
 		})

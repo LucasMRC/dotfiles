@@ -58,6 +58,17 @@ def client_new(client):
 
 mod = "mod4"
 
+# def tmux_launcher():
+#     def __inner(qtile):
+#         for window in qtile.windows_map.values():
+#             if hasattr(window, "cmd_match") and window.cmd_match(Match(name="Tmux")):
+#                 qtile.current_screen.set_group(window.group)
+#                 window.focus(False)
+#                 return
+#     
+#         qtile.cmd_spawn("kitty --title \"Tmux\" --hold sh -c ~/.config/qtile/tmux-launcher.sh")
+#     return __inner
+
 terminal = guess_terminal()
 
 keys = [
@@ -93,7 +104,7 @@ keys = [
     Key([mod, "shift"], "Return", lazy.spawn("brave"), desc="Open brave browser"),
     Key([mod], "r", lazy.spawn("rofi -show drun"), desc="Spawn a command using a prompt widget"),
     Key([mod, "shift"], "s", lazy.spawn("flameshot gui"), desc="Open screenshot tool"),
-    Key([mod, "shift"], "z", lazy.spawn("kitty 'tmux'"), desc="Open a tmux session"),
+    Key([mod, "shift"], "z", lazy.spawn("kitty --title \"Tmux\" --hold sh -c ~/.config/qtile/tmux-launcher.sh"), desc="Open the tmux launcher"),
     Key(["mod1"], "Tab", lazy.spawn("rofi -show window"), desc="Display open windows"), # The 'mod1' key is the 'Alt' key
     Key([mod, "control"], "p", lazy.spawn("sh /home/lucas/.config/scripts/pomodoro.sh"), desc="Manage pomodoro sessions"),
     # Audio keys
