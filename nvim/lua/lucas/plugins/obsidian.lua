@@ -35,7 +35,7 @@ return {
 					},
 					twilight = { enabled = false }, -- enable to start Twilight when zen mode opens
 					gitsigns = { enabled = false }, -- disables git signs
-					tmux = { enabled = true }, -- disables the tmux statusline
+					tmux = { enabled = false }, -- disables the tmux statusline
 					wezterm = {
 						enabled = true,
 						font = "+20", -- (10% increase per step)

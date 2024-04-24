@@ -36,6 +36,7 @@ return { -- Fuzzy Finder (files, lsp, etc)
                     "--with-filename",
                     "--line-number",
                     "--column",
+                    "--hidden",
                     "--smart-case",
                 },
                 selection_strategy = "reset",
@@ -121,7 +122,7 @@ return { -- Fuzzy Finder (files, lsp, etc)
         local builtin = require("telescope.builtin")
 
         vim.keymap.set("n", "<leader>sf", builtin.find_files, { desc = "[S]earch [F]iles" })
-        vim.keymap.set("n", "<leader>sb", builtin.git_branches, { desc = "[S]earch [B]ranches" })
+        vim.keymap.set("n", "<leader>sB", builtin.git_branches, { desc = "[S]earch [B]ranches" })
         vim.keymap.set("n", "<leader>sh", builtin.help_tags, { desc = "[S]earch [H]elp" })
         vim.keymap.set("n", "<leader>sw", builtin.grep_string, { desc = "[S]earch current [W]ord" })
         vim.keymap.set("n", "<leader>sg", builtin.live_grep, { desc = "[S]earch by [G]rep" }) -- requires ripgrep installed
