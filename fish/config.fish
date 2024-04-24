@@ -31,7 +31,7 @@ alias conda-activate='eval ~/anaconda3/bin/conda "shell.fish" "hook" $argv | sou
 alias vbox-enable='sudo modprobe vboxnetadp'
 alias :q='exit'
 alias bruno='~/AppImages/Bruno/bruno_1.12.2_x86_64_linux.AppImage'
-alias tmux-launcher='sh ~/.config/qtile/tmux-launcher.sh'
+alias tmux-launcher='sh ~/.config/scripts/tmux-launcher.sh'
 alias RM='rm'
 alias rm='trash'
 
