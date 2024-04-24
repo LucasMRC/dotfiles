@@ -1,15 +1,15 @@
 if status is-interactive
     # Commands to run in interactive sessions can go here
-
     set fish_cursor_default     block      blink
     set fish_cursor_insert      line       blink
     set fish_cursor_replace_one underscore blink
-    set fish_cursor_visual      block   # Set vi mode
+    set fish_cursor_replace     underscore
+    set fish_cursor_visual      block
     function fish_user_key_bindings
         fish_vi_key_bindings 
+        # bind -M visual i cancel repaint-mode
+        # bind -M visual v cancel repaint-mode
     end
-    bind -M visual -m insert i repaint-mode
-    bind -M visual -m default v repaint-mode
 end
 # Set normal mode as the default
 for mode in default insert visual
@@ -32,6 +32,8 @@ alias vbox-enable='sudo modprobe vboxnetadp'
 alias :q='exit'
 alias bruno='~/AppImages/Bruno/bruno_1.12.2_x86_64_linux.AppImage'
 alias tmux-launcher='sh ~/.config/qtile/tmux-launcher.sh'
+alias RM='rm'
+alias rm='trash'
 
 if [ -f /usr/bin/neofetch ]
     # neofetch | lolcat
