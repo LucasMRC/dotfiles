@@ -106,9 +106,6 @@ return { -- LSP Configuration & Plugins
                     },
                 },
             },
-            gopls = {
-                codelenses = { test = true },
-            }
         }
 
         require("mason").setup()
@@ -131,6 +128,7 @@ return { -- LSP Configuration & Plugins
             "tailwindcss",
             "svelte",
             "jdtls", -- java
+            "gopls",
         })
         require("mason-tool-installer").setup({ ensure_installed = ensure_installed })
 
