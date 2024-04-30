@@ -14,7 +14,7 @@ launch_session() {
             echo
             case $REPLY in
                 [nN] )
-                    read -p "Which directory should I open on that window? " DIR;;
+                    read -e -p "Which directory should I open on that window? " DIR;;
                 [yY] )
                     echo;;
             esac
@@ -72,12 +72,11 @@ prompt_new_session() {
 launch_tmux() {
     echo "Hey 😁! Let's set up the environment 💻"
     NEOVIM_SESSION=$(tmux list-sessions | grep "Neovim")
-    if [ ! $NEOVIM_SESSION ]; then
-        SESSION_NAME="Neovim"
-        launch_session Neovim
-    else
-        tmux attach Neovim
+    if [[ ! -z $NEOVIM_SESSION ]]; then
+        tmux kill-session "Neovim" &>2 /dev/null
     fi
+    SESSION_NAME="Neovim"
+    launch_session Neovim
 }
 
 launch_tmux
