@@ -2,21 +2,17 @@
 
 launch_session() {
     SESSION_NAME=$1
-    echo "How many windows 🪟 should I add for $SESSION_NAME?"
-    read WIN_NUMBER
+    read -p "How many windows 🪟 should I add for $SESSION_NAME? " WIN_NUMBER
     DIR=""
     for iw in `seq 1 $WIN_NUMBER`; do
         read -p "🖊️ How should I name window number $iw? " WIN_NAME
         if [ $iw -eq 1 ]; then
             read -e -p "Open any specific directory 📁 on that window? " DIR
         else
-            read -p "Same directory? (yes/no) " -n 1 -r
-            echo
+            read -p "Same directory? (yes/no) " -r
             case $REPLY in
                 [nN] )
                     read -e -p "Which directory should I open on that window? " DIR;;
-                [yY] )
-                    echo;;
             esac
         fi
         if [ ! $DIR ]; then
@@ -34,36 +30,31 @@ launch_session() {
             tmux neww -t "$SESSION_NAME":$iw -n "$WIN_NAME" -c $DIR
         fi
         if [[ ! -z $COMMAND ]]; then
-            tmux send-keys -t "$SESSION_NAME:$WIN_NAME" "$COMMAND" "Enter"
+            tmux send-keys -t "$SESSION_NAME:$WIN_NAME" "i$COMMAND" "Enter" # i to enter insert mode
         fi
     done
     prompt_new_session
 }
 
 prompt_new_session() {
-    read -p "That's done 😉, should I create another session? (yes/no) " -n 1 -r
-    echo
+    read -p "That's done 😉, should I create another session? (yes/no) " -r
     case $REPLY in
     [yY] )
         read -p "Awesome 🙌! How should I name it? " NAME
         launch_session $NAME;;
     [nN] )
         echo "All done! Have fun! 🙃"
-        read
-        TARGET_WINDOW=$(tmux list-windows -t nvim | gawk 'match($0, /1: (.+) \(1 panes\)/, a) {print a[1]}')
+        TARGET_WINDOW=$(tmux list-windows -t Neovim | gawk 'match($0, /1: (.+)- \(1 panes\)/, a) {print a[1]}')
         tmux attach -t "Neovim:$TARGET_WINDOW";;
-    * ) read -p "I didn't quite get that. Should I add another session? 🤔 (yes/no) " -n 1 -r
-        echo
+    * ) read -p "I didn't quite get that. Should I add another session? 🤔 (yes/no) " -r
             case $REPLY in
             [yY] )
                 read -p "Awesome 🙌! How should I name it? " NAME
                 launch_session $NAME;;
             [nN] )
                 echo "All done! Have fun! 🙃"
-                read
                 tmux attach;;
             * ) echo "Ok, I have no answer for that. See ya! 👋"
-                read
                 tmux attach;;
             esac
     esac
