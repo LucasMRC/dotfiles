@@ -11,6 +11,7 @@ keymap({ "n", "v" }, "<Space>", "<Nop>", opts)
 keymap({ "n", "v" }, "<C-w>q", "<Nop>", opts) -- disable close window
 keymap("c", "W<CR>", "w<CR>", opts)           -- :W writes the file too
 keymap("c", "Q<CR>", "q<CR>", opts)           -- :Q closes the buffer too
+keymap({ "n", "v" }, "q:", "<Nop>", opts)     -- disable command history
 
 -- Disable arrow keys/mouse wheel
 keymap({ "n", "v", "i" }, "<left>", '<Nop>', opts)
@@ -19,10 +20,10 @@ keymap({ "n", "v", "i" }, "<up>", '<Nop>', opts)
 keymap({ "n", "v", "i" }, "<down>", '<Nop>', opts)
 
 -- Diagnostic keymaps
-keymap("n", "[d", vim.diagnostic.goto_prev, desc("Go to previous [D]iagnostic message"))
-keymap("n", "]d", vim.diagnostic.goto_next, desc("Go to next [D]iagnostic message"))
-keymap("n", "<leader>e", vim.diagnostic.open_float, desc("Show diagnostic [E]rror messages"))
-keymap("n", "<leader>q", vim.diagnostic.setloclist, desc("Open diagnostic [Q]uickfix list"))
+keymap("n", "[d", vim.diagnostic.goto_prev, desc("Go to previous diagnostic"))
+keymap("n", "]d", vim.diagnostic.goto_next, desc("Go to next diagnostic"))
+keymap("n", "<leader>e", vim.diagnostic.open_float, desc("[E]rror messages"))
+keymap("n", "<leader>q", vim.diagnostic.setloclist, desc("[Q]uickfix list"))
 
 -- Cancel terminal mode
 keymap("t", "<Esc><Esc>", "<C-\\><C-n>", desc("Exit terminal mode"))
@@ -75,9 +76,9 @@ keymap({ "n", "v" }, "<C-l>", "$", desc("Move to end of line"))
 keymap({ "n", "v" }, "<C-h>", "^", desc("Move to start of line"))
 
 -- Git
-keymap("n", "<leader>gg", ":Git<CR>", desc("Git status"))
-keymap("n", "<leader>gb", ":Git blame<CR>", desc("Git blame"))
-keymap("n", "<leader>gd", ":Gvdiffsplit<CR>", desc("Git diff"))
+keymap("n", "<leader>gg", ":Git<CR>", desc("[G]it status"))
+keymap("n", "<leader>gb", ":Git blame<CR>", desc("[G]it [b]lame"))
+keymap("n", "<leader>gd", ":Gvdiffsplit<CR>", desc("[G]it [d]iff"))
 
 -- Autoformat
 keymap("n", "<leader>=", "ggVG=<C-o>", desc("Autoformat"))
