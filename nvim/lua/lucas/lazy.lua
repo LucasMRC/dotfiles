@@ -19,6 +19,6 @@ end
 
 lazyvim.setup("lucas/plugins", {
     change_detection = {
-    notify = false, -- hide notification when changes are found
-  }
+        notify = false, -- hide notification when changes are found
+    }
 })
