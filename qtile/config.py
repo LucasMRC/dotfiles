@@ -51,24 +51,12 @@ def client_new(client):
             client.togroup("4")
         if client.window.get_wm_class()[0] == "1password" and client.name.find("Quick Access") == -1:
             client.togroup("9")
-        if client.window.get_wm_class()[0] == "spotify":
+        if client.name.find("Spotify") != -1:
             client.togroup("8")
-        if client.window.get_wm_class()[0] == "stremio":
-            lazy.spawn("xdg-screensaver suspend " + client.window.id);
+        # if client.window.get_wm_class()[0] == "stremio":
+        #     lazy.spawn("xdg-screensaver suspend " + client.window.id);
 
 mod = "mod4"
-
-# def tmux_launcher():
-#     def __inner(qtile):
-#         for window in qtile.windows_map.values():
-#             if hasattr(window, "cmd_match") and window.cmd_match(Match(name="Tmux")):
-#                 qtile.current_screen.set_group(window.group)
-#                 window.focus(False)
-#                 return
-#     
-#         qtile.cmd_spawn("kitty --title \"Tmux\" --hold sh -c ~/.config/qtile/tmux-launcher.sh")
-#     return __inner
-
 terminal = guess_terminal()
 
 keys = [
