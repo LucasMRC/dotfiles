@@ -6,9 +6,12 @@ if status is-interactive
     set fish_cursor_replace     underscore
     set fish_cursor_visual      block
     function fish_user_key_bindings
-        fish_vi_key_bindings 
-        # bind -M visual i cancel repaint-mode
-        # bind -M visual v cancel repaint-mode
+        fish_vi_key_bindings default
+        bind --preset -M visual -m insert i kill-selection end-selection repaint-mode
+        bind --preset -M visual -m default v kill-selection end-selection repaint-mode
+        bind --preset -M insert -m default \cc cancel-commandline repaint-mode
+        bind --erase --preset -M default \cc
+        bind --erase --preset :q
     end
 end
 # Set normal mode as the default
@@ -24,6 +27,7 @@ alias ls='ls --color=auto'
 alias grep='grep --color=auto -i'
 alias standing-setup='sh /home/lucas/.config/scripts/standing-setup.sh'
 alias sitting-setup='sh /home/lucas/.config/scripts/sitting-setup.sh'
+alias office-setup='sh /home/lucas/.config/scripts/office-setup.sh'
 alias laptop-only='sh /home/lucas/.config/scripts/laptop-only.sh'
 alias pdf='mupdf'
 alias hist='history --show-time="%d/%m/%Y %T " | less'
