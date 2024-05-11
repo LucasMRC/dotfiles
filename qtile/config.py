@@ -41,15 +41,15 @@ def client_new(client):
     if hasattr(client, 'window'):
         if client.window.get_wm_class()[0] == "brave-browser" and client.name.find("DevTools") == -1:
             client.togroup("2")
-        if client.name.find("Neovim") != -1:
+        if client.name.find("Tmux") != -1:
             client.togroup("1")
         if client.window.get_wm_class()[0] == "ferdium":
             client.togroup("4")
         if client.window.get_wm_class()[0] == "slack":
             client.togroup("4")
-        if client.window.get_wm_class()[1] == "thunderbird":
+        if client.name.find("Proton") != -1:
             client.togroup("4")
-        if client.window.get_wm_class()[0] == "1password" and client.name.find("Quick Access") == -1:
+        if client.name.find("Proton Pass") != -1:
             client.togroup("9")
         if client.name.find("Spotify") != -1:
             client.togroup("8")
@@ -104,7 +104,7 @@ keys = [
 # Custom workspace icons from https://fontawesome.com/v4/cheatsheet/
 groups = []
 group_names = ["1", "2", "3", "4", "5", "6", "7", "8", "9"]
-group_labels = [" ", "", " ", "", " ", "6", "7", " ", " "]
+group_labels = [" ", "", "3", "", "5", "6", "7", " ", " "]
 
 for i in range(len(group_names)):
     groups.append(
