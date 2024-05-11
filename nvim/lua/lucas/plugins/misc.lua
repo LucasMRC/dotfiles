@@ -26,6 +26,4 @@ return {
     },
     "nvim-lua/plenary.nvim",          -- don't forget to add this one if you don't have it yet!
     "windwp/nvim-ts-autotag",         -- auto close html tags
-    "tpope/vim-fugitive",             -- git
-    "ThePrimeagen/git-worktree.nvim", -- git worktrees
 }

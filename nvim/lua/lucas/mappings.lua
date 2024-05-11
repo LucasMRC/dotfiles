@@ -75,11 +75,6 @@ keymap({ "n", "v" }, "<C-k>", "gk", desc("Move up by visual line"))
 keymap({ "n", "v" }, "<C-l>", "$", desc("Move to end of line"))
 keymap({ "n", "v" }, "<C-h>", "^", desc("Move to start of line"))
 
--- Git
-keymap("n", "<leader>gg", ":Git<CR>", desc("[G]it status"))
-keymap("n", "<leader>gb", ":Git blame<CR>", desc("[G]it [b]lame"))
-keymap("n", "<leader>gd", ":Gvdiffsplit<CR>", desc("[G]it [d]iff"))
-
 -- Autoformat
 keymap("n", "<leader>=", "ggVG=<C-o>", desc("Autoformat"))
 
