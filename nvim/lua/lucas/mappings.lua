@@ -4,14 +4,12 @@ local desc = function(description)
 end
 local keymap = vim.keymap.set
 
-
 -- disable annoying commands
 keymap({ "n", "v" }, "<F1>", "<Nop>", opts)
 keymap({ "n", "v" }, "<Space>", "<Nop>", opts)
 keymap({ "n", "v" }, "<C-w>q", "<Nop>", opts) -- disable close window
 keymap("c", "W<CR>", "w<CR>", opts)           -- :W writes the file too
 keymap("c", "Q<CR>", "q<CR>", opts)           -- :Q closes the buffer too
-keymap({ "n", "v" }, "q:", "<Nop>", opts)     -- disable command history
 
 -- Disable arrow keys/mouse wheel
 keymap({ "n", "v", "i" }, "<left>", '<Nop>', opts)
@@ -83,7 +81,10 @@ keymap("n", "++", "<C-a>", desc("Increment number under cursor"))
 keymap("n", "--", "<C-x>", desc("Decrement number under cursor"))
 
 -- Splits
-keymap("n", "<leader>pv", "<C-w>v", desc("Split vertically"))
-keymap("n", "<leader>ph", "<C-w>s", desc("Split horizontally"))
-keymap("n", "<leader>pq", "<C-w>q", desc("Close window"))
-keymap("n", "<leader>pe", "<C-w>=", desc("Equal size windows"))
+keymap("n", "<leader>pv", "<C-w>v", desc("[P]ane: [V]ertical split"))
+keymap("n", "<leader>ph", "<C-w>s", desc("[P]ane: [H]orizontal split"))
+keymap("n", "<leader>pq", "<C-w>q", desc("[P]ane: [Q]uit"))
+keymap("n", "<leader>pe", "<C-w>=", desc("[P]ane: [E]qual size"))
+keymap("n", "<leader>pm", "<C-w>o", desc("[P]ane: [M]aximize"))
+
+keymap("n", "Y", "Vy", desc("Yank line"))
