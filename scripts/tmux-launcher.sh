@@ -9,8 +9,10 @@ launch_session() {
         if [ $iw -eq 1 ]; then
             read -e -p "Open any specific directory 📁 on that window? " DIR
         else
-            read -p "Same directory? (yes/no) " -r
+            read -p "Same directory? (yes/no/almost) " -r
             case $REPLY in
+                [aA] )
+                    read -e -p "Which directory should I open on that window? " -i "$DIR" DIR;;
                 [nN] )
                     read -e -p "Which directory should I open on that window? " DIR;;
             esac
@@ -44,25 +46,28 @@ prompt_new_session() {
         launch_session $NAME;;
     [nN] )
         echo "All done! Have fun! 🙃"
+        read
         TARGET_WINDOW=$(tmux list-windows -t Neovim | gawk 'match($0, /1: (.+)- \(1 panes\)/, a) {print a[1]}')
         tmux attach -t "Neovim:$TARGET_WINDOW";;
     * ) read -p "I didn't quite get that. Should I add another session? 🤔 (yes/no) " -r
-            case $REPLY in
+        case $REPLY in
             [yY] )
                 read -p "Awesome 🙌! How should I name it? " NAME
                 launch_session $NAME;;
             [nN] )
                 echo "All done! Have fun! 🙃"
+                read
                 tmux attach;;
             * ) echo "Ok, I have no answer for that. See ya! 👋"
+                read
                 tmux attach;;
-            esac
+        esac
     esac
 }
 
 launch_tmux() {
     echo "Hey 😁! Let's set up the environment 💻"
-    NEOVIM_SESSION=$(tmux list-sessions | grep "Neovim")
+    NEOVIM_SESSION=$(tmux list-sessions 2> /dev/null | grep "Neovim" &>2 /dev/null)
     if [[ ! -z $NEOVIM_SESSION ]]; then
         tmux kill-session "Neovim" &>2 /dev/null
     fi
