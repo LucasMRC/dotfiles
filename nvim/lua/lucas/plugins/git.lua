@@ -5,97 +5,109 @@ end
 
 return {
     "ThePrimeagen/git-worktree.nvim", -- git worktrees
-    -- {
-        -- "tpope/vim-fugitive",             -- git
-    --     config = function()
-    --         map("n", "<leader>gg", ":Git<CR>", { desc = "[G]it status" })
-    --         map("n", "<leader>gb", ":Git blame<CR>", { desc = "[G]it [b]lame" })
-    --         map("n", "<leader>gd", ":Gvdiffsplit<CR>", { desc = "[G]it [d]iff" })
-    --     end
-    -- },
     {
-        "NeogitOrg/neogit",
-        dependencies = {
-            "nvim-lua/plenary.nvim",         -- required
-            "sindrets/diffview.nvim",        -- optional - Diff integration
-            "FabijanZulj/blame.nvim", -- optional: adds git blame to neogit
-            "nvim-telescope/telescope.nvim", -- optional
-        },
+        "tpope/vim-fugitive",         -- git
         config = function()
-            local neogit = require("neogit")
-            neogit.setup({
-                disable_line_numbers = false,
-                kind = "auto",
-                signs = {
-                    -- { CLOSED, OPENED }
-                    hunk = { "", "" },
-                    item = { "", "" },
-                    section = { "", "" },
-                },
-                integrations = {
-                    telescope = true,
-                    diffview = false,
-                },
-                commit_select_view = {
-                    kind = "auto",
-                },
-                log_view = {
-                    kind = "auto",
-                },
-                reflog_view = {
-                    kind = "auto",
-                },
-                mappings = {
-                    status = {
-                        ["q"] = "Close",
-                        ["<c-q>"] = "Close",
-                        ["I"] = false,
-                        ["1"] = false,
-                        ["2"] = false,
-                        ["3"] = false,
-                        ["4"] = false,
-                        ["<tab>"] = false,
-                        ["<backspace>"] = "Depth2",
-                        ["o"] = "Toggle",
-                        ["x"] = "Discard",
-                        ["s"] = "Stage",
-                        ["S"] = "StageUnstaged",
-                        ["<c-s>"] = "StageAll",
-                        ["u"] = "Unstage",
-                        ["U"] = "UnstageStaged",
-                        ["$"] = "CommandHistory",
-                        ["#"] = "Console",
-                        ["Y"] = "YankSelected",
-                        ["<c-r>"] = "RefreshBuffer",
-                        ["<enter>"] = "GoToFile",
-                        ["<c-v>"] = "VSplitOpen",
-                        ["<c-x>"] = "SplitOpen",
-                        ["<c-t>"] = false,
-                        ["{"] = "GoToPreviousHunkHeader",
-                        ["}"] = "GoToNextHunkHeader",
-                    },
-                }
-            })
-            require("blame").setup()
-            require("diffview").setup({
-                hooks = {
-                    view_opened = function()
-                        require("diffview.actions").toggle_files()
-                    end,
-                },
-                keymaps = {
-                    view = {
-                        { "n", "<c-q", "<cmd>DiffviewClose<CR>", { silent = true }},
-                    }
-                }
-            })
-
-            map({ "n", "v" }, "<leader>gg", ":Neogit<CR>", { desc = "[G]it status" })
-            map({ "n", "v" }, "<leader>gb", ":BlameToggle window<CR>", { desc = "[G]it [b]lame" })
-            map({ "n", "v" }, "<leader>gd", ":DiffviewOpen<CR>", { desc = "[G]it [d]iff" })
-            map({ "c" }, "G", "!git", {})
+            map("n", "<leader>gg", ":Git<CR>", { desc = "[G]it status" })
+            map("n", "<leader>gb", ":Git blame<CR>", { desc = "[G]it [b]lame" })
+            map("n", "<leader>gd", ":Gvdiffsplit<CR>", { desc = "[G]it [d]iff" })
         end
     },
+    -- {
+    --     "NeogitOrg/neogit",
+    --     dependencies = {
+    --         "nvim-lua/plenary.nvim",         -- required
+    --         "sindrets/diffview.nvim",        -- optional - Diff integration
+    --         "FabijanZulj/blame.nvim",        -- optional: adds git blame to neogit
+    --         "nvim-telescope/telescope.nvim", -- optional
+    --     },
+    --     config = function()
+    --         local neogit = require("neogit")
+    --         neogit.setup({
+    --             disable_line_numbers = false,
+    --             kind = "split",
+    --             signs = {
+    --                 -- { CLOSED, OPENED }
+    --                 hunk = { "", "" },
+    --                 item = { "", "" },
+    --                 section = { "", "" },
+    --             },
+    --             integrations = {
+    --                 telescope = true,
+    --             },
+    --             commit_select_view = {
+    --                 kind = "split",
+    --             },
+    --             log_view = {
+    --                 kind = "split",
+    --             },
+    --             reflog_view = {
+    --                 kind = "split",
+    --             },
+    --             mappings = {
+    --                 status = {
+    --                     ["q"] = "Close",
+    --                     ["<c-q>"] = "Close",
+    --                     ["I"] = false,
+    --                     ["1"] = false,
+    --                     ["2"] = false,
+    --                     ["3"] = false,
+    --                     ["4"] = false,
+    --                     ["<tab>"] = false,
+    --                     ["<backspace>"] = "Depth2",
+    --                     ["o"] = "Toggle",
+    --                     ["x"] = "Discard",
+    --                     ["s"] = "Stage",
+    --                     ["S"] = "StageUnstaged",
+    --                     ["<c-s>"] = "StageAll",
+    --                     ["u"] = "Unstage",
+    --                     ["U"] = "UnstageStaged",
+    --                     ["$"] = "CommandHistory",
+    --                     ["#"] = "Console",
+    --                     ["Y"] = "YankSelected",
+    --                     ["<c-r>"] = "RefreshBuffer",
+    --                     ["<enter>"] = "GoToFile",
+    --                     ["<c-v>"] = "VSplitOpen",
+    --                     ["<c-x>"] = "SplitOpen",
+    --                     ["<c-t>"] = false,
+    --                     ["{"] = "GoToPreviousHunkHeader",
+    --                     ["}"] = "GoToNextHunkHeader",
+    --                 },
+    --             }
+    --         })
+    --         require("blame").setup()
+    --         local actions = require("diffview.actions")
+    --         require("diffview").setup({
+    --             hooks = {
+    --                 view_opened = function()
+    --                     actions.toggle_files()
+    --                 end,
+    --             },
+    --             keymaps = {
+    --                 view = {
+    --                     { "n", "<c-q>",      "<cmd>DiffviewClose<CR>",              { silent = true } },
+    --                     { "n", "[x",         actions.prev_conflict,                 { desc = "Prev conflict" } },
+    --                     { "n", "]x",         actions.next_conflict,                 { desc = "Next conflict" } },
+    --                     { "n", "<leader>co", actions.conflict_choose("ours"),       { desc = "[C]onflict: choose [O]urs" } },
+    --                     { "n", "<leader>ct", actions.conflict_choose("theirs"),     { desc = "[C]onflict: choose [T]heirs" } },
+    --                     { "n", "<leader>cb", actions.conflict_choose("base"),       { desc = "[C]onflict: choose [B]ase" } },
+    --                     { "n", "<leader>ca", actions.conflict_choose("all"),        { desc = "[C]onflict: choose [A]ll" } },
+    --                     { "n", "<leader>cn", actions.conflict_choose("none"),       { desc = "[C]onflict: choose [N]one" } },
+    --                     { "n", "<leader>cO", actions.conflict_choose_all("ours"),   { desc = "[C]onflict: always choose [O]urs" } },
+    --                     { "n", "<leader>cT", actions.conflict_choose_all("theirs"), { desc = "[C]onflict: always choose [T]heirs" } },
+    --                     { "n", "<leader>cB", actions.conflict_choose_all("base"),   { desc = "[C]onflict: always choose [B]ase" } },
+    --                     { "n", "<leader>cA", actions.conflict_choose_all("all"),    { desc = "[C]onflict: always choose [A]ll" } },
+    --                     { "n", "<leader>cN", actions.conflict_choose_all("none"),   { desc = "[C]onflict: always choose [N]one" } },
+    --                 }
+    --             }
+    --         })
+    --
+    --         map({ "n", "v" }, "<leader>gg", ":Neogit<CR>", { desc = "[G]it status" })
+    --         map({ "n", "v" }, "<leader>gb", ":BlameToggle window<CR>", { desc = "[G]it [b]lame" })
+    --         map({ "n", "v" }, "<leader>gd", ":DiffviewOpen<CR>", { desc = "[G]it [d]iff" })
+    --         map({ "c" }, "G", "!git", {})
+    --     end
+    -- },
     {
         "lewis6991/gitsigns.nvim",
         config = function()
@@ -173,29 +185,6 @@ return {
                     mapbf({ "o", "x" }, "ih", ":<C-U>Gitsigns select_hunk<CR>", {})
                 end,
             })
-        end,
-    },
-    {
-        'akinsho/git-conflict.nvim',
-        version = "*",
-        config = function()
-            require('git-conflict').setup({
-                default_mappings = false, -- disable buffer local mapping created by this plugin
-                default_commands = true, -- disable commands created by this plugin
-                disable_diagnostics = false, -- This will disable the diagnostics in a buffer whilst it is conflicted
-                list_opener = 'copen', -- command or function to open the conflicts list
-                highlights = { -- They must have background color, otherwise the default color will be used
-                    incoming = 'DiffAdd',
-                    current = 'DiffText',
-                }
-            })
-
-            map('n', '<leader>co', '<Plug>(git-conflict-ours)', { desc = "[C]onflict: Use [O]urs" })
-            map('n', '<leader>ct', '<Plug>(git-conflict-theirs)', { desc = "[C]onflict: Use [T]heirs" })
-            map('n', '<leader>cb', '<Plug>(git-conflict-both)', { desc = "[C]onflict: Use [B]oth" })
-            map('n', '<leader>cn', '<Plug>(git-conflict-none)', { desc = "[C]onflict: Use [N]either" })
-            map('n', ']x', '<Plug>(git-conflict-prev-conflict)', {})
-            map('n', '[x', '<plug>(git-conflict-next-conflict)', {})
         end,
     }
 }
