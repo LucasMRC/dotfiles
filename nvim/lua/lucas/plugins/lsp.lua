@@ -78,6 +78,20 @@ return { -- LSP Configuration & Plugins
                 --         vim.lsp.buf.format()
                 --     end
                 -- })
+
+            end,
+        })
+
+        vim.api.nvim_create_autocmd("BufAdd", {
+            callback = function()
+                for i, buf_hndl in ipairs(vim.api.nvim_list_bufs()) do
+                    if vim.api.nvim_buf_is_loaded(buf_hndl) then
+                        -- print(buf_hndl)
+                        if vim.api.nvim_buf_get_name(buf_hndl) == "" then
+                           vim.api.nvim_buf_delete(buf_hndl, { force = true })
+                        end
+                    end
+                end
             end,
         })
 

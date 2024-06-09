@@ -2,7 +2,15 @@ return {
     {
         "m4xshen/hardtime.nvim",
         dependencies = { "MunifTanjim/nui.nvim", "nvim-lua/plenary.nvim" },
-        opts = {}
+        opts = {
+            disabled_keys = {
+                ["<Space>"] = { "n", "x" },
+                ["<Up>"] = { "n", "x", "i" },
+                ["<Down>"] = { "n", "x", "i" },
+                ["<Left>"] = { "n", "x", "i" },
+                ["<Right>"] = { "n", "x", "i" },
+            }
+        }
     },
     {
         "windwp/nvim-autopairs",
