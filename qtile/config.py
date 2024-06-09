@@ -41,6 +41,8 @@ def client_new(client):
     if hasattr(client, 'window'):
         if client.window.get_wm_class()[0] == "brave-browser" and client.name.find("DevTools") == -1:
             client.togroup("2")
+        if client.window.get_wm_class()[0] == "Navigator" and client.name.find("DevTools") == -1: # Librewolf
+            client.togroup("2")
         if client.name.find("Tmux") != -1:
             client.togroup("1")
         if client.window.get_wm_class()[0] == "ferdium":
@@ -104,7 +106,7 @@ keys = [
 # Custom workspace icons from https://fontawesome.com/v4/cheatsheet/
 groups = []
 group_names = ["1", "2", "3", "4", "5", "6", "7", "8", "9"]
-group_labels = [" ", "", "3", "", "5", "6", "7", " ", " "]
+group_labels = [" ", " ", "3", "", "5", "6", "7", " ", " "]
 
 for i in range(len(group_names)):
     groups.append(
