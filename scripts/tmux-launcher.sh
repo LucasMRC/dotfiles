@@ -1,4 +1,4 @@
-#!/bin/bash
+!/bin/bash
 
 launch_session() {
     SESSION_NAME=$1
@@ -35,7 +35,33 @@ launch_session() {
             tmux send-keys -t "$SESSION_NAME:$WIN_NAME" "i$COMMAND" "Enter" # i to enter insert mode
         fi
     done
-    prompt_new_session
+    if [[ $SESSION_NAME == "Neovim" ]]; then
+        # Add nvim default windows
+        if [[ $WIN_NUMBER == "0" ]]; then
+            tmux new -d -s "Neovim" -n "Dotfiles" -c ~/.dotfiles/
+        else
+            tmux neww -t "Neovim" -n "Dotfiles" -c ~/.dotfiles/
+        fi
+        tmux neww -t "Neovim" -n "Notes" -c ~/.dotfiles/
+        tmux send-keys -t "Neovim:Dotfiles" "invim ." "Enter"
+        tmux send-keys -t "Neovim:Notes" "invim ." "Enter"
+        echo "Let's define the Terminal session."
+        launch_session Terminal
+    else
+        if [[ $SESSION_NAME == "Terminal" ]]; then
+            # Add nvim default windows
+            if [[ $WIN_NUMBER == "0" ]]; then
+                tmux new -d -s "Terminal" -n "HTOP" -c ~/.dotfiles/
+            else
+                tmux neww -t "Terminal" -n "HTOP" -c ~/.dotfiles/
+            fi
+            # Add terminal default windows
+            tmux neww -t "Terminal" -n "Music" -c ~/.dotfiles
+            tmux send-keys -t "Terminal:HTOP" "ihtop" "Enter"
+            tmux send-keys -t "Terminal:Music" "ispt" "Enter"
+        fi
+        prompt_new_session
+    fi
 }
 
 prompt_new_session() {
@@ -46,8 +72,8 @@ prompt_new_session() {
         launch_session $NAME;;
     [nN] )
         echo "All done! Have fun! 🙃"
-        read
         TARGET_WINDOW=$(tmux list-windows -t Neovim | gawk 'match($0, /1: (.+)- \(1 panes\)/, a) {print a[1]}')
+        read
         tmux attach -t "Neovim:$TARGET_WINDOW";;
     * ) read -p "I didn't quite get that. Should I add another session? 🤔 (yes/no) " -r
         case $REPLY in
@@ -72,7 +98,7 @@ launch_tmux() {
         tmux kill-session "Neovim" &>2 /dev/null
     fi
     SESSION_NAME="Neovim"
-    launch_session Neovim
+    launch_session $SESSION_NAME
 }
 
 launch_tmux

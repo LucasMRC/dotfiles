@@ -6,4 +6,5 @@ sh ~/.config/scripts/sitting-setup.sh
 xhost +si:localuser:lucas &
 brave --profile-directory="Profile 4" & # Open messages profile window
 spotifyd &
-setxkbmap -layout us -variant intl
+setxkbmap -layout us -variant intl # Keyboard layout
+gsettings set org.gtk.Settings.FileChooser window-size '(800,600)' # Set default file chooser windows size
