@@ -22,6 +22,10 @@ end
 # Supresses fish's intro message
 set fish_greeting
 
+if [ -z "$DISPLAY" ]
+    startx
+end
+    
 # Aliases
 alias ls='ls --color=auto'
 alias grep='grep --color=auto -i'
@@ -79,13 +83,4 @@ end
 # Kitty
 set -gx KITTY_CONFIG_DIRECTORY "/home/lucas/.config/kitty"
 
-# Connect to bluetooth
-function bt
-    set ADDRESS (bluetoothctl devices | grep $argv | awk '{print $2}')
-    set CONNECTED (bluetoothctl info $ADDRESS | grep 'Connected: yes')
-    if [ -z "$CONNECTED" ]
-        bluetoothctl connect $ADDRESS
-    else
-        bluetoothctl disconnect $ADDRESS
-    end
-end
+
