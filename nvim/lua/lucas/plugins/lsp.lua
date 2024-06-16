@@ -70,7 +70,7 @@ return { -- LSP Configuration & Plugins
                         buffer = event.buf,
                         callback = vim.lsp.buf.clear_references,
                     })
-                end
+            end
 
                 -- vim.api.nvim_create_autocmd("BufWritePost", {
                 --     pattern = "*.lua,*.js,*.ts,*.svelte,*.html,*.json",
@@ -84,14 +84,24 @@ return { -- LSP Configuration & Plugins
 
         vim.api.nvim_create_autocmd("BufAdd", {
             callback = function()
-                for i, buf_hndl in ipairs(vim.api.nvim_list_bufs()) do
+                for _, buf_hndl in ipairs(vim.api.nvim_list_bufs()) do
                     if vim.api.nvim_buf_is_loaded(buf_hndl) then
-                        -- print(buf_hndl)
                         if vim.api.nvim_buf_get_name(buf_hndl) == "" then
                            vim.api.nvim_buf_delete(buf_hndl, { force = true })
                         end
                     end
                 end
+            end,
+        })
+
+        vim.api.nvim_create_autocmd({ "BufNewFile", "BufRead" }, {
+            pattern = "*.html",
+            callback = function()
+                local ho = vim.fn.search("{{", "nw")
+                if ho == 0 then
+                    return
+                end
+                vim.bo.filetype = "gohtmltmpl"
             end,
         })
 
