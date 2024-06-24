@@ -15,7 +15,16 @@ return { -- Fuzzy Finder (files, lsp, etc)
         },
         { "nvim-telescope/telescope-symbols.nvim" },
         { "debugloop/telescope-undo.nvim" },
-        { "nvim-tree/nvim-web-devicons",          enabled = vim.g.have_nerd_font },
+        {
+            "nvim-tree/nvim-web-devicons",
+            enabled = vim.g.have_nerd_font
+        },
+        {
+            "nvim-telescope/telescope-live-grep-args.nvim" ,
+            -- This will not install any breaking changes.
+            -- For major updates, this must be adjusted manually.
+            version = "^1.0.0",
+        },
     },
     config = function()
         local status_ok, telescope = pcall(require, "telescope")
@@ -23,6 +32,7 @@ return { -- Fuzzy Finder (files, lsp, etc)
             print("Telescope failed to load")
             return
         end
+        local lga_actions = require("telescope-live-grep-args.actions")
 
         telescope.setup({
             defaults = {
@@ -114,18 +124,30 @@ return { -- Fuzzy Finder (files, lsp, etc)
                 git_worktree = {
                     initial_mode = "normal",
                 },
+                live_grep_args = {
+                    mappings = {
+                        n = {
+                            ["<C-k>"] = lga_actions.quote_prompt()
+                        },
+                        i = {
+                            ["<C-k>"] = lga_actions.quote_prompt()
+                        }
+                    }
+                }
             },
         })
 
         telescope.load_extension("undo")
         telescope.load_extension("fzf")
+        telescope.load_extension("live_grep_args")
         local builtin = require("telescope.builtin")
 
         vim.keymap.set("n", "<leader>sf", builtin.find_files, { desc = "[S]earch [F]iles" })
         vim.keymap.set("n", "<leader>sB", builtin.git_branches, { desc = "[S]earch [B]ranches" })
         vim.keymap.set("n", "<leader>sh", builtin.help_tags, { desc = "[S]earch [H]elp" })
         vim.keymap.set("n", "<leader>sw", builtin.grep_string, { desc = "[S]earch current [W]ord" })
-        vim.keymap.set("n", "<leader>sg", builtin.live_grep, { desc = "[S]earch by [G]rep" }) -- requires ripgrep installed
+        -- vim.keymap.set("n", "<leader>sg", builtin.live_grep, { desc = "[S]earch by [G]rep" }) -- requires ripgrep installed
+        vim.keymap.set("n", "<leader>sg", ":lua require('telescope').extensions.live_grep_args.live_grep_args()", { desc = "[S]earch by [G]rep" }) -- requires ripgrep installed
         vim.keymap.set("n", "<leader>sd", builtin.diagnostics, { desc = "[S]earch [D]iagnostics" })
         vim.keymap.set("n", "<leader>se", builtin.symbols, { desc = "[S]earch [E]moji" })
         vim.keymap.set("n", "<leader>su", "<CMD>Telescope undo<CR>", { desc = "[S]earch [U]ndo" })

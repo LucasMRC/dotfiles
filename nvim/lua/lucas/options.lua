@@ -79,11 +79,11 @@ g.editorconfig = false -- disable .editorconfig file search
 set.backspace = "indent,eol,start"
 
 -- Folding
-set.fillchars = { fold = " " }
-set.foldmethod = "indent"
-set.foldenable = false
-set.foldlevel = 99
-g.markdown_folding = 1 -- enable markdown folding
+-- set.fillchars = { fold = " " }
+-- set.foldmethod = "indent"
+-- set.foldenable = false
+-- set.foldlevel = 99
+-- g.markdown_folding = 1 -- enable markdown folding
 --
 
 -- vim.o.exrc = true -- enable per-directory .vimrc files
