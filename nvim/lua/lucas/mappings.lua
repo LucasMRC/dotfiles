@@ -10,6 +10,10 @@ keymap({ "n", "v" }, "<Space>", "<Nop>", opts)
 keymap({ "n", "v" }, "<C-w>q", "<Nop>", opts) -- disable close window
 keymap("c", "W<CR>", "w<CR>", opts)           -- :W writes the file too
 keymap("c", "Q<CR>", "q<CR>", opts)           -- :Q closes the buffer too
+keymap({ "n", "v", "i" }, "<S-left>", '<Nop>', opts)
+keymap({ "n", "v", "i" }, "<S-right>", '<Nop>', opts)
+keymap({ "n", "v", "i" }, "<S-up>", '<Nop>', opts)
+keymap({ "n", "v", "i" }, "<S-down>", '<Nop>', opts)
 
 -- Disable arrow keys/mouse wheel
 keymap({ "n", "v", "i" }, "<left>", '<Nop>', opts)
