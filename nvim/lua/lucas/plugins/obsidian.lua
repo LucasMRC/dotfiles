@@ -86,13 +86,13 @@ return {
 			require("obsidian").setup({
 				workspaces = {
 					{
-						name = "personal",
-						path = "~/Notes/Personal",
-					},
-					{
 						name = "work",
 						path = "~/Notes/Work",
 					},
+          {
+              name = "personal",
+              path = "~/Notes/Personal",
+          },
 				},
 				completion = {
 					-- Set to false to disable completion.

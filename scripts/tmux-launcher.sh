@@ -58,7 +58,7 @@ launch_session() {
             # Add terminal default windows
             tmux neww -t "Terminal" -n "Music" -c ~/.dotfiles
             tmux send-keys -t "Terminal:BTOP" "ibtop" "Enter"
-            tmux send-keys -t "Terminal:Music" "ispt" "Enter"
+            tmux send-keys -t "Terminal:Music" "ispotify_player" "Enter"
         fi
         prompt_new_session
     fi

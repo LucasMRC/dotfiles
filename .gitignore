@@ -5,3 +5,4 @@ __pycache__
 packer_compiled.lua
 nvim/lazy-lock.json
 test.sh
+pass
