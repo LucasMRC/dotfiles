@@ -23,34 +23,32 @@ end
 set fish_greeting
 
 if [ -z "$DISPLAY" ]
-    startx
+    startx # start X11
 end
     
 # Aliases
 alias ls='ls --color=auto'
 alias grep='grep --color=auto -i'
-alias standing-setup='sh /home/lucas/.config/scripts/standing-setup.sh'
-alias sitting-setup='sh /home/lucas/.config/scripts/sitting-setup.sh'
-alias office-setup='sh /home/lucas/.config/scripts/office-setup.sh'
-alias laptop-only='sh /home/lucas/.config/scripts/laptop-only.sh'
 alias pdf='mupdf'
 alias hist='history --show-time="%d/%m/%Y %T " | less'
-alias conda-activate='eval ~/anaconda3/bin/conda "shell.fish" "hook" $argv | source'
 alias vbox-enable='sudo modprobe vboxnetadp'
 alias :q='exit'
-alias bruno='~/AppImages/Bruno/bruno_1.12.2_x86_64_linux.AppImage'
 alias tmux-launcher='sh ~/.config/scripts/tmux-launcher.sh'
-alias RM='rm'
 alias rm='trash'
 
-if [ -f /usr/bin/neofetch ]
-    # neofetch | lolcat
+# Set up arandr layout aliases
+set SCREENS (ls ~/.screenlayout/ | sed 's/.sh//g')
+for SCREEN in $SCREENS
+    alias $SCREEN="sh ~/.config/scripts/screen.sh $SCREEN"
 end
 
-# Set up ssh-agent with GH key
-if [ -z "$SSH_AUTH_SOCK" ]
-    eval "$(ssh-agent -c)" &>/dev/null
-    ssh-add -q ~/.ssh/id_ed25519_GH
+# if [ -f /usr/bin/neofetch ]
+    # neofetch | lolcat
+# end
+
+# Set up ssh-agent service
+if [ -z "$SSH_CONNECTION" ]
+  set -gx SSH_AUTH_SOCK "$XDG_RUNTIME_DIR/ssh-agent.socket"
 end
 
 set fish_color_normal '#17a1a1'
@@ -82,5 +80,3 @@ end
 
 # Kitty
 set -gx KITTY_CONFIG_DIRECTORY "/home/lucas/.config/kitty"
-
-
