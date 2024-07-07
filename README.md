@@ -1,1 +1,1 @@
-# Config file for Lukey's desktop 💻
+# Config file for Lukey's environment 💻
