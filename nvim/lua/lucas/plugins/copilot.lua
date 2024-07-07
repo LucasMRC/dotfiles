@@ -8,6 +8,7 @@ return {
 				auto_trigger = true,
 				keymap = {
 					accept_word = "<C-M-l>",
+					accept_line = "<S-M-l>",
 				},
 			},
             filetypes = {

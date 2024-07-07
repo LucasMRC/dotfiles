@@ -136,7 +136,7 @@ return { -- LSP Configuration & Plugins
             "prettierd",
             -- linters
             "eslint_d",
-            -- "luacheck",
+            "luacheck",
             "shellcheck",
             -- lsp servers
             "emmet_ls",

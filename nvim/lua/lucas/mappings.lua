@@ -14,6 +14,7 @@ keymap({ "n", "v", "i" }, "<S-left>", '<Nop>', opts)
 keymap({ "n", "v", "i" }, "<S-right>", '<Nop>', opts)
 keymap({ "n", "v", "i" }, "<S-up>", '<Nop>', opts)
 keymap({ "n", "v", "i" }, "<S-down>", '<Nop>', opts)
+keymap({ "n", "v" }, "q:", '<Nop>', opts)
 
 -- Disable arrow keys/mouse wheel
 keymap({ "n", "v", "i" }, "<left>", '<Nop>', opts)

@@ -10,6 +10,10 @@ if status is-interactive
         bind --preset -M visual -m insert i kill-selection end-selection repaint-mode
         bind --preset -M visual -m default v kill-selection end-selection repaint-mode
         bind --preset -M insert -m default \cc cancel-commandline repaint-mode
+
+        bind --erase --preset -M default o
+        bind --erase --preset -M default O
+
         bind --erase --preset -M default \cc
         bind --erase --preset :q
     end
