@@ -51,13 +51,13 @@ launch_session() {
         if [[ $SESSION_NAME == "Terminal" ]]; then
             # Add nvim default windows
             if [[ $WIN_NUMBER == "0" ]]; then
-                tmux new -d -s "Terminal" -n "BTOP" -c ~/.dotfiles/
+                tmux new -d -s "Terminal" -n "HTOP" -c ~/.dotfiles/
             else
-                tmux neww -t "Terminal" -n "BTOP" -c ~/.dotfiles/
+                tmux neww -t "Terminal" -n "HTOP" -c ~/.dotfiles/
             fi
             # Add terminal default windows
             tmux neww -t "Terminal" -n "Music" -c ~/.dotfiles
-            tmux send-keys -t "Terminal:BTOP" "ibtop" "Enter"
+            tmux send-keys -t "Terminal:HTOP" "ihtop" "Enter"
             tmux send-keys -t "Terminal:Music" "ispotify_player" "Enter"
         fi
         prompt_new_session
