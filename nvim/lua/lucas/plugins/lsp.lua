@@ -70,15 +70,7 @@ return { -- LSP Configuration & Plugins
                         buffer = event.buf,
                         callback = vim.lsp.buf.clear_references,
                     })
-            end
-
-                -- vim.api.nvim_create_autocmd("BufWritePost", {
-                --     pattern = "*.lua,*.js,*.ts,*.svelte,*.html,*.json",
-                --     callback = function()
-                --         vim.lsp.buf.format()
-                --     end
-                -- })
-
+                end
             end,
         })
 
@@ -94,15 +86,16 @@ return { -- LSP Configuration & Plugins
             end,
         })
 
-        vim.api.nvim_create_autocmd({ "BufNewFile", "BufRead" }, {
-            pattern = "*.html",
-            callback = function()
-                local ho = vim.fn.search("{{", "nw")
-                if ho == 0 then
-                    return
+        vim.filetype.add({
+            extension = {
+                html = function()
+                    local ho = vim.fn.search("{{", "nw")
+                    if ho == 0 then
+                        return "html"
+                    end
+                    return "gohtmltmpl"
                 end
-                vim.bo.filetype = "gohtmltmpl"
-            end,
+            }
         })
 
         local capabilities = vim.lsp.protocol.make_client_capabilities()

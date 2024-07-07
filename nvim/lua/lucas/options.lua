@@ -10,9 +10,9 @@ set.numberwidth = 4 -- set number column width {default 4}
 set.rnu = true
 
 -- Indentation
-set.tabstop = 2
-set.softtabstop = 2
-set.shiftwidth = 2
+set.tabstop = 4
+set.softtabstop = 4
+set.shiftwidth = 4
 set.autoindent = true
 set.smartindent = true
 set.expandtab = true
@@ -73,7 +73,7 @@ set.guifont = "monospace:h17" -- the font used in graphical neovim applications
 set.title = true
 
 set.conceallevel = 1 -- markdown syntax concealing
-set.concealcursor = "nc" -- markdown syntax concealing visibility
+set.concealcursor = "c" -- markdown syntax concealing visibility
 
 g.editorconfig = false -- disable .editorconfig file search
 

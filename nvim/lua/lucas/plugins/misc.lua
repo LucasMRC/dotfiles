@@ -24,6 +24,7 @@ return {
             require("Comment").setup({
                 padding = true,
             })
+            require("Comment.ft").set("gohtmltmpl", {"{{/*%s*/}}", "{{/*%s*/}}"})
         end,
     }, -- toggle comments
     {
