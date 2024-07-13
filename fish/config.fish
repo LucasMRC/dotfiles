@@ -26,8 +26,11 @@ end
 # Supresses fish's intro message
 set fish_greeting
 
-if [ -z "$DISPLAY" ]
-    startx # start X11
+# Start X at login
+if status is-login
+    if test -z "$DISPLAY" -a "$XDG_VTNR" = 1
+        exec startx -- -keeptty
+    end
 end
     
 # Aliases
