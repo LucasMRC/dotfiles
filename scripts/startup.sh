@@ -6,3 +6,4 @@ sh ~/.config/scripts/screen.sh
 xhost +si:localuser:lucas &
 setxkbmap -layout us -variant intl # Keyboard layout
 gsettings set org.gtk.Settings.FileChooser window-size '(800,600)' # Set default file chooser windows size
+systemctl --user start spotifyd # For some reason fails when started as enabled service

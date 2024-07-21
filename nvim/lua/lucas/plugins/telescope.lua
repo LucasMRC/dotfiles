@@ -154,9 +154,7 @@ return { -- Fuzzy Finder (files, lsp, etc)
         vim.keymap.set("n", "<leader>sb", builtin.buffers, { desc = "[S]earch existing [B]uffers" })
         vim.keymap.set("n", "<leader><tab>", builtin.commands, { desc = "[S]earch [C]ommands", noremap = false })
         vim.keymap.set("n", "<leader>sS", builtin.git_status, { desc = "[S]earch Git [S]tatus" })
-        vim.keymap.set("n", "<leader>s.", function()
-            builtin.find_files({ cwd = "~/.dotfiles/" })
-        end, { desc = "[S]earch [.]dot files" })
+        vim.keymap.set("n", "<leader>sk", builtin.keymaps, { desc = "[S]earch [K]eymaps" })
 
         local wt_status_ok, git_wt = pcall(require, "git-worktree")
         if not wt_status_ok then
@@ -170,12 +168,6 @@ return { -- Fuzzy Finder (files, lsp, etc)
                 "<leader>st",
                 telescope.extensions.git_worktree.git_worktrees,
                 { desc = "[S]earch [T]rees" }
-            )
-            vim.keymap.set(
-                "n",
-                "<leader>sn",
-                telescope.extensions.git_worktree.create_git_worktree,
-                { desc = "[S]tart [N]ew tree" }
             )
         end
     end,

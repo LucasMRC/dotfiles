@@ -14,7 +14,10 @@ keymap({ "n", "v", "i" }, "<S-left>", '<Nop>', opts)
 keymap({ "n", "v", "i" }, "<S-right>", '<Nop>', opts)
 keymap({ "n", "v", "i" }, "<S-up>", '<Nop>', opts)
 keymap({ "n", "v", "i" }, "<S-down>", '<Nop>', opts)
+keymap({ "n", "v", "i", "c" }, "<F1>", '<Nop>', opts)
 keymap({ "n", "v" }, "q:", '<Nop>', opts)
+keymap({ "i" }, "<PageUp>", "<Nop>", opts)
+keymap({ "i" }, "<PageDown>", "<Nop>", opts)
 
 -- Disable arrow keys/mouse wheel
 keymap({ "n", "v", "i" }, "<left>", '<Nop>', opts)
@@ -26,7 +29,7 @@ keymap({ "n", "v", "i" }, "<down>", '<Nop>', opts)
 keymap("n", "[d", vim.diagnostic.goto_prev, desc("Go to previous diagnostic"))
 keymap("n", "]d", vim.diagnostic.goto_next, desc("Go to next diagnostic"))
 keymap("n", "<leader>e", vim.diagnostic.open_float, desc("[E]rror messages"))
-keymap("n", "<leader>q", vim.diagnostic.setloclist, desc("[Q]uickfix list"))
+keymap("n", "<leader>qq", vim.diagnostic.setloclist, desc("[Q]uickfix list"))
 
 -- Cancel terminal mode
 keymap("t", "<Esc><Esc>", "<C-\\><C-n>", desc("Exit terminal mode"))

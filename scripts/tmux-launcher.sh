@@ -1,4 +1,4 @@
-!/bin/bash
+#!/bin/bash
 
 launch_session() {
     SESSION_NAME=$1
@@ -91,14 +91,10 @@ prompt_new_session() {
     esac
 }
 
-launch_tmux() {
-    echo "Hey 😁! Let's set up the environment 💻"
-    NEOVIM_SESSION=$(tmux list-sessions 2> /dev/null | grep "Neovim" &>2 /dev/null)
-    if [[ ! -z $NEOVIM_SESSION ]]; then
-        tmux kill-session "Neovim" &>2 /dev/null
-    fi
-    SESSION_NAME="Neovim"
-    launch_session $SESSION_NAME
-}
-
-launch_tmux
+echo "Hey 😁! Let's set up the environment 💻"
+NEOVIM_SESSION=$(tmux list-sessions 2> /dev/null | grep "Neovim" &> /dev/null)
+if [[ ! -z $NEOVIM_SESSION ]]; then
+    tmux kill-session "Neovim" &> /dev/null
+fi
+SESSION_NAME="Neovim"
+launch_session $SESSION_NAME
