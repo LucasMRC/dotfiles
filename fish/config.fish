@@ -42,6 +42,7 @@ alias vbox-enable='sudo modprobe vboxnetadp'
 alias :q='exit'
 alias tmux-launcher='sh ~/.config/scripts/tmux-launcher.sh'
 alias rm='trash'
+alias g='sh ~/.config/scripts/gfn.sh'
 
 # Set up arandr layout aliases
 set SCREENS (ls ~/.screenlayout/ | sed 's/.sh//g')
