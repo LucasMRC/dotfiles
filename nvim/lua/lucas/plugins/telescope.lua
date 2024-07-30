@@ -92,6 +92,9 @@ return { -- Fuzzy Finder (files, lsp, etc)
                     preview = false,
                     initial_mode = "normal",
                 },
+                git_commits = {
+                    initial_mode = "normal",
+                },
                 git_status = {
                     preview = true,
                     initial_mode = "normal",
@@ -151,10 +154,11 @@ return { -- Fuzzy Finder (files, lsp, etc)
         vim.keymap.set("n", "<leader>sd", builtin.diagnostics, { desc = "[S]earch [D]iagnostics" })
         vim.keymap.set("n", "<leader>se", builtin.symbols, { desc = "[S]earch [E]moji" })
         vim.keymap.set("n", "<leader>su", "<CMD>Telescope undo<CR>", { desc = "[S]earch [U]ndo" })
-        vim.keymap.set("n", "<leader>sb", builtin.buffers, { desc = "[S]earch existing [B]uffers" })
-        vim.keymap.set("n", "<leader><tab>", builtin.commands, { desc = "[S]earch [C]ommands", noremap = false })
+        vim.keymap.set("n", "<leader>sb", builtin.buffers, { desc = "[S]earch [B]uffers" })
+        vim.keymap.set("n", "<leader><tab>", builtin.commands, { desc = "[S]earch Commands", noremap = false })
         vim.keymap.set("n", "<leader>sS", builtin.git_status, { desc = "[S]earch Git [S]tatus" })
         vim.keymap.set("n", "<leader>sk", builtin.keymaps, { desc = "[S]earch [K]eymaps" })
+        vim.keymap.set("n", "<leader>sc", builtin.git_commits, { desc = "[S]earch [C]ommits" })
 
         local wt_status_ok, git_wt = pcall(require, "git-worktree")
         if not wt_status_ok then

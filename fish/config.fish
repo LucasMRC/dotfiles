@@ -41,8 +41,10 @@ alias hist='history --show-time="%d/%m/%Y %T " | less'
 alias vbox-enable='sudo modprobe vboxnetadp'
 alias :q='exit'
 alias tmux-launcher='sh ~/.config/scripts/tmux-launcher.sh'
+alias RM='rm -rf'
 alias rm='trash'
 alias g='sh ~/.config/scripts/gfn.sh'
+alias ghn='sh ~/.config/scripts/github/toggle.sh'
 
 # Set up arandr layout aliases
 set SCREENS (ls ~/.screenlayout/ | sed 's/.sh//g')
