@@ -45,6 +45,8 @@ alias RM='rm -rf'
 alias rm='trash'
 alias g='sh ~/.config/scripts/gfn.sh'
 alias ghn='sh ~/.config/scripts/github/toggle.sh'
+alias git-aw='sh ~/.config/scripts/git/add-worktree.sh'
+alias git-bare='sh ~/.config/scripts/git/bare.sh'
 
 # Set up arandr layout aliases
 set SCREENS (ls ~/.screenlayout/ | sed 's/.sh//g')
