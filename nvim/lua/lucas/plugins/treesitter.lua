@@ -6,7 +6,7 @@ return {
     build = ":TSUpdate",
     config = function()
         require("nvim-treesitter.configs").setup({
-            -- A list of parser names, or "all" (the five listed parsers should always be installed)
+            -- A list of parser names
             ensure_installed = {
                 "markdown",
                 "markdown_inline",
@@ -24,6 +24,8 @@ return {
                 "bash",
                 "gotmpl",
                 "yaml",
+                "scss",
+                "jsdoc",
             },
             textobjects = {
                 select = {

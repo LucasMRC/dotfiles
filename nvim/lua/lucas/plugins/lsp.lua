@@ -124,6 +124,12 @@ return { -- LSP Configuration & Plugins
                     },
                 },
             },
+            emmet_ls = {
+                filetypes = { "css", "html", "sass", "scss", "svelte", "gohtmltmpl" }
+            },
+            tailwindcss = {
+                filetypes = {--[[  "html", "css", "scss", ]] "svelte", --[[ "gohtmltmpl"  ]]}
+            },
         }
 
         require("mason").setup()
@@ -132,10 +138,8 @@ return { -- LSP Configuration & Plugins
         vim.list_extend(ensure_installed, {
             -- formatters
             "stylua", -- Used to format lua code
-            "prettier",
-            "prettierd",
             -- linters
-            "eslint_d",
+            "quick-lint-js",
             "luacheck",
             "shellcheck",
             -- lsp servers
@@ -145,7 +149,7 @@ return { -- LSP Configuration & Plugins
             "cssls",
             "tailwindcss",
             "svelte",
-            "jdtls", -- java
+            -- "jdtls", -- java
             "gopls",
         })
         require("mason-tool-installer").setup({ ensure_installed = ensure_installed })

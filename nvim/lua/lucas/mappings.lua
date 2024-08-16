@@ -32,7 +32,7 @@ keymap("n", "<leader>e", vim.diagnostic.open_float, desc("[E]rror messages"))
 keymap("n", "<leader>qq", vim.diagnostic.setloclist, desc("[Q]uickfix list"))
 
 -- Cancel terminal mode
-keymap("t", "<Esc><Esc>", "<C-\\><C-n>", desc("Exit terminal mode"))
+keymap("t", "<C-q>", "<C-\\><C-n>", desc("Exit terminal mode"))
 
 -- Move lines up and down
 keymap("n", "<A-j>", ":m .+1<CR>==", desc("Move line down"))
