@@ -1,7 +1,8 @@
 notified
 Stretchly
 !Stretchly/config.json
-fish/conf.d/work.fish
+fish
+!fish/config.fish
 __pycache__
 packer_compiled.lua
 nvim/lazy-lock.json

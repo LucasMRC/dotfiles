@@ -3,7 +3,7 @@
 # The cron job package that I'm using now is 'cronie'
 # 'crontab -e' to edit the cron jobs, and '0 * * * *' to check every hour.
 
-export $(dbus-launch) # fixes Error spawning command line 'dbus-launch --autolaunch'
+# export $(dbus-launch) # fixes Error spawning command line 'dbus-launch --autolaunch'
 # fix 'Couldn't initialize x11 output' error
 export DISPLAY=:0
 export DBUS_SESSION_BUS_ADDRESS="unix:path=/run/user/1000/bus"

@@ -14,8 +14,18 @@ keymap({ "n", "v", "i" }, "<S-left>", '<Nop>', opts)
 keymap({ "n", "v", "i" }, "<S-right>", '<Nop>', opts)
 keymap({ "n", "v", "i" }, "<S-up>", '<Nop>', opts)
 keymap({ "n", "v", "i" }, "<S-down>", '<Nop>', opts)
+
 keymap({ "n", "v", "i", "c" }, "<F1>", '<Nop>', opts)
-keymap({ "n", "v" }, "q:", '<Nop>', opts)
+keymap({ "n", "v", "i", "c" }, "<F2>", '<Nop>', opts)
+keymap({ "n", "v", "i", "c" }, "<F3>", '<Nop>', opts)
+keymap({ "n", "v", "i", "c" }, "<F4>", '<Nop>', opts)
+keymap({ "n", "v", "i", "c" }, "<F5>", '<Nop>', opts)
+keymap({ "n", "v", "i", "c" }, "<F6>", '<Nop>', opts)
+keymap({ "n", "v", "i", "c" }, "<F7>", '<Nop>', opts)
+keymap({ "n", "v", "i", "c" }, "<F8>", '<Nop>', opts)
+keymap({ "n", "v", "i", "c" }, "<F9>", '<Nop>', opts)
+keymap({ "n", "v", "i", "c" }, "<F10>", '<Nop>', opts)
+
 keymap({ "i" }, "<PageUp>", "<Nop>", opts)
 keymap({ "i" }, "<PageDown>", "<Nop>", opts)
 
@@ -85,8 +95,8 @@ keymap({ "n", "v" }, "<C-h>", "^", desc("Move to start of line"))
 keymap("n", "<leader>=", "ggVG=<C-o>", desc("Autoformat"))
 
 -- Number increment/decrement
-keymap("n", "++", "<C-a>", desc("Increment number under cursor"))
-keymap("n", "--", "<C-x>", desc("Decrement number under cursor"))
+keymap({ "n", "v" }, "++", "<C-a>", desc("Increment number under cursor"))
+keymap({ "n", "v" }, "--", "<C-x>", desc("Decrement number under cursor"))
 
 -- Splits
 keymap("n", "<leader>pv", "<C-w>v", desc("[P]ane: [V]ertical split"))

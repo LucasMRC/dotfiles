@@ -86,17 +86,17 @@ return { -- LSP Configuration & Plugins
             end,
         })
 
-        vim.filetype.add({
-            extension = {
-                html = function()
-                    local ho = vim.fn.search("{{", "nw")
-                    if ho == 0 then
-                        return "html"
-                    end
-                    return "gohtmltmpl"
-                end
-            }
-        })
+        -- vim.filetype.add({
+        --     extension = {
+        --         html = function()
+        --             local ho = vim.fn.search("{{", "nw")
+        --             if ho == 0 then
+        --                 return "html"
+        --             end
+        --             return "gohtmltmpl"
+        --         end
+        --     }
+        -- })
 
         local capabilities = vim.lsp.protocol.make_client_capabilities()
         capabilities = vim.tbl_deep_extend("force", capabilities, require("cmp_nvim_lsp").default_capabilities())
@@ -125,10 +125,10 @@ return { -- LSP Configuration & Plugins
                 },
             },
             emmet_ls = {
-                filetypes = { "css", "html", "sass", "scss", "svelte", "gohtmltmpl" }
+                filetypes = { "css", "html", "sass", "scss", "svelte", "htmlhugo", "typescriptreact", "javascriptreact" }
             },
             tailwindcss = {
-                filetypes = {--[[  "html", "css", "scss", ]] "svelte", --[[ "gohtmltmpl"  ]]}
+                filetypes = {--[[  "html", "css", "scss", ]] "svelte", "htmlhugo" }
             },
         }
 

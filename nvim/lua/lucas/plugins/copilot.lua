@@ -11,11 +11,12 @@ return {
 					accept_line = "<S-M-l>",
 				},
 			},
-            filetypes = {
-                go = false,
-                sh = false,
-                ["*"] = true,
-            }
+			filetypes = {
+				go = false,
+				lua = false,
+				sh = false,
+				["*"] = true,
+			}
 		})
 	end,
 }

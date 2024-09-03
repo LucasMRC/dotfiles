@@ -15,7 +15,7 @@ set.softtabstop = 4
 set.shiftwidth = 4
 set.autoindent = true
 set.smartindent = true
-set.expandtab = true
+set.expandtab = false
 
 vim.o.breakindent = true
 --
@@ -81,5 +81,6 @@ set.backspace = "indent,eol,start"
 
 set.listchars = "tab:->,trail:·,multispace:·"
 set.list = true
-set.expandtab = true
+
+set.formatoptions:remove "o" -- remove comment prefix on 'o/O'
 -- vim.o.exrc = true -- enable per-directory .vimrc files

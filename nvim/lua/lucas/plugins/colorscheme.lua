@@ -21,6 +21,7 @@ return {
 				-- TelescopeSelection = { bg = c.references },
 				Search = { fg = c.background_darker, bg = c.yellow },
 				IncSearch = { fg = c.background_darker, bg = c.yellow },
+				Whitespace = { fg = c.diff_add_background }
 			},
 		})
 
