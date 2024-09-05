@@ -8,7 +8,8 @@ return {
 				"help",
 				"NvimTree",
 				"fugitive",
-				"octo"
+				"octo",
+				"lazy"
 			},
 			disabled_keys = {
 				["<Space>"] = { "n", "x" },
