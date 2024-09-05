@@ -104,5 +104,3 @@ keymap("n", "<leader>ph", "<C-w>s", desc("[P]ane: [H]orizontal split"))
 keymap("n", "<leader>pq", "<C-w>q", desc("[P]ane: [Q]uit"))
 keymap("n", "<leader>pe", "<C-w>=", desc("[P]ane: [E]qual size"))
 keymap("n", "<leader>pm", "<C-w>o", desc("[P]ane: [M]aximize"))
-
-keymap("n", "Y", "Vy", desc("Yank line"))
