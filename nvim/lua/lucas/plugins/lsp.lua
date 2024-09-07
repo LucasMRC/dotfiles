@@ -74,13 +74,21 @@ return { -- LSP Configuration & Plugins
 			end,
 		})
 
+		local function is_no_name_buf(buf)
+			return
+				vim.api.nvim_buf_is_loaded(buf)
+				and vim.api.nvim_get_option_value('buflisted', { buf = 0 })
+				and vim.api.nvim_buf_get_name(buf) == ''
+				and vim.api.nvim_get_option_value('buftype', { buf = 0 }) == ''
+				and vim.api.nvim_get_option_value('filetype', { buf = 0 }) == ''
+		end
+
 		vim.api.nvim_create_autocmd("BufAdd", {
 			callback = function()
-				for _, buf_hndl in ipairs(vim.api.nvim_list_bufs()) do
+				local no_named_buffers = vim.tbl_filter(is_no_name_buf, vim.api.nvim_list_bufs())
+				for _, buf_hndl in ipairs(no_named_buffers) do
 					if vim.api.nvim_buf_is_loaded(buf_hndl) then
-						if vim.api.nvim_buf_get_name(buf_hndl) == "" then
-							vim.api.nvim_buf_delete(buf_hndl, { force = true })
-						end
+						vim.api.nvim_buf_delete(buf_hndl, { force = true })
 					end
 				end
 			end,
