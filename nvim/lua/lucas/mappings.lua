@@ -1,6 +1,6 @@
 local opts = { noremap = true, silent = true }
 local desc = function(description)
-    return { desc = description, noremap = true, silent = true }
+	return { desc = description, noremap = true, silent = true }
 end
 local keymap = vim.keymap.set
 
@@ -92,7 +92,7 @@ keymap({ "n", "v" }, "<C-l>", "$", desc("Move to end of line"))
 keymap({ "n", "v" }, "<C-h>", "^", desc("Move to start of line"))
 
 -- Autoformat
-keymap("n", "<leader>=", "ggVG=<C-o>", desc("Autoformat"))
+keymap("n", "<leader>=", "gg=G<C-o>", desc("Autoformat"))
 
 -- Number increment/decrement
 keymap({ "n", "v" }, "++", "<C-a>", desc("Increment number under cursor"))
