@@ -94,17 +94,12 @@ return { -- LSP Configuration & Plugins
 			end,
 		})
 
-		-- vim.filetype.add({
-		--     extension = {
-		--         html = function()
-		--             local ho = vim.fn.search("{{", "nw")
-		--             if ho == 0 then
-		--                 return "html"
-		--             end
-		--             return "gohtmltmpl"
-		--         end
-		--     }
-		-- })
+		vim.api.nvim_create_autocmd("BufWritePre", {
+			pattern = "*.lua",
+			callback = function(e)
+				vim.lsp.buf.format({ bufnr = e.buf })
+			end,
+		})
 
 		local capabilities = vim.lsp.protocol.make_client_capabilities()
 		capabilities = vim.tbl_deep_extend("force", capabilities, require("cmp_nvim_lsp").default_capabilities())

@@ -16,6 +16,7 @@ return {
 			"dapui_breakpoints",
 			"dapui_console",
 			"dap_repl",
+			"DressingInput"
 		},
 		disabled_keys = {
 			["<Space>"] = { "n", "x" },

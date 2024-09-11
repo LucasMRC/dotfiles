@@ -7,10 +7,10 @@ return {
 			"theHamsta/nvim-dap-virtual-text",
 		},
 		config = function()
-			local dap = require'dap'
+			local dap = require 'dap'
 
-			require('nvim-dap-virtual-text').setup()
-			local dap_ui = require'dapui'
+			require('nvim-dap-virtual-text').setup({})
+			local dap_ui = require 'dapui'
 
 			dap_ui.setup()
 
@@ -30,7 +30,7 @@ return {
 			dap.adapters.chrome = {
 				type = "executable",
 				command = "node",
-				args = {os.getenv("HOME") .. "/.build/vscode-chrome-debug/out/src/chromeDebug.js"}
+				args = { os.getenv("HOME") .. "/.build/vscode-chrome-debug/out/src/chromeDebug.js" }
 			}
 			dap.configurations.javascript = {
 				{
@@ -46,15 +46,17 @@ return {
 			}
 
 			local function set(mode, key, cmd, desc)
-				vim.keymap.set(mode, key, cmd, { desc = desc or ""})
+				vim.keymap.set(mode, key, cmd, { silent = true, desc = desc or "" })
 			end
 			set("n", "<leader>dc", ":DapContinue<CR>", "[D]ebug [C]ontinue")
 			set("n", "<leader>ds", ":DapStepOver<CR>", "[D]ebug [S]tep Over")
 			set("n", "<leader>di", ":DapStepInto<CR>", "[D]ebug Step [I]nto")
 			set("n", "<leader>do", ":DapStepOut<CR>", "[D]ebug Step [O]ut")
 			set("n", "<leader>dt", ":DapToggleBreakpoint<CR>", "[D]ebug [T]oggle Breakpoint")
-			set("n", "<leader>dC", ":lua require'dap'.set_breakpoint(vim.fn.input(('Breakpoint condition: ')))<CR>", "[D]ebug [C]onditional")
-			set("n", "<leader>dl", ":lua require'dap'.set_breakpoint(nil, nil, vim.fn.input('Log point message: '))", "[D]ebug [L]og point")
+			set("n", "<leader>dC", ":lua require'dap'.set_breakpoint(vim.fn.input(('Breakpoint condition: ')))<CR>",
+				"[D]ebug [C]onditional")
+			set("n", "<leader>dl", ":lua require'dap'.set_breakpoint(nil, nil, vim.fn.input('Log point message: '))",
+				"[D]ebug [L]og point")
 			set("n", "<leader>dr", function() dap_ui.open({ reset = true }) end, "[D]ebug ui [R]eset")
 			set("n", "<leader>du", dap_ui.toggle, "[D]ebug [U]i")
 		end,
@@ -65,8 +67,8 @@ return {
 			"rcarriga/nvim-dap-ui",
 		},
 		config = function()
-			local dap_go = require'dap-go'
-			local find_cmd = vim.system({"find", ".", "-type", "f", "-name", "main.go"}):wait()
+			local dap_go = require 'dap-go'
+			local find_cmd = vim.system({ "find", ".", "-type", "f", "-name", "main.go" }):wait()
 			local file_path = find_cmd.stdout:gsub("^%.", ""):gsub("/main.go\n", "")
 
 			dap_go.setup({
@@ -83,7 +85,7 @@ return {
 			})
 
 			local function set(mode, key, cmd, desc)
-				vim.keymap.set(mode, key, cmd, { desc = desc or ""})
+				vim.keymap.set(mode, key, cmd, { desc = desc or "" })
 			end
 
 			set("n", "<leader>dT", dap_go.debug_test, "[D]ebug [T]est")
