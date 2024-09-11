@@ -1,0 +1,17 @@
+tab-twisty {
+  display: none;
+}
+
+tab-item tab-closebox {
+  display: none;
+}
+
+tab-item tab-favicon {
+  position: relative;
+  translate: 50%;
+  bottom: 1px;
+}
+
+.after-tabs.vbox {
+  display: none;
+}
