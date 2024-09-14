@@ -40,13 +40,15 @@ alias pdf='mupdf'
 alias hist='history --show-time="%d/%m/%Y %T " | less'
 alias vbox-enable='sudo modprobe vboxnetadp'
 alias :q='exit'
-alias tmux-launcher='sh ~/.config/scripts/tmux-launcher.sh'
 alias RM='rm -rf'
 alias rm='trash'
-alias g='sh ~/.config/scripts/gfn.sh'
 alias ghn='sh ~/.config/scripts/github/toggle.sh'
 alias git-aw='sh ~/.config/scripts/git/add-worktree.sh'
 alias git-bare='sh ~/.config/scripts/git/bare.sh'
+alias tmux-launcher='sh ~/.config/scripts/tmux-launcher.sh'
+alias m='man -k . | fzf --preview "echo {} | awk \'{ print $1 }\' | xargs man" --preview-window "right,wrap" | xargs man'
+alias f='fzf --preview "cat {}" --preview-window "right,wrap" | xargs nvim'
+alias t='sh ~/.config/scripts/tmux-launcher.sh'
 
 # Set up arandr layout aliases
 set SCREENS (ls ~/.screenlayout/ | sed 's/.sh//g')
@@ -73,6 +75,7 @@ set __fish_git_prompt_show_informative_status true
 set __fish_git_prompt_showcolorhints true
 set __fish_git_prompt_char_dirtystate '*'
 set -gx EDITOR nvim
+set -gx PAGER less
 
 # bun
 set --export BUN_INSTALL "$HOME/.bun"
