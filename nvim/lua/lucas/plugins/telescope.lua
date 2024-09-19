@@ -73,6 +73,29 @@ return { -- Fuzzy Finder (files, lsp, etc)
 				file_sorter = require("telescope.sorters").get_fuzzy_file,
 				winblend = 0,
 				buffer_previewer_maker = require("telescope.previewers").buffer_previewer_maker,
+				preview = {
+					mime_hook = function(filepath, bufnr, opts)
+						local ok, image_api = pcall(require, 'image')
+						if not ok then return end
+
+						local is_image = function(fp)
+							local image_extensions = { 'png', 'jpg', 'svg', 'webm', 'jpeg', 'gif' } -- Supported image formats
+							local split_path = vim.split(fp:lower(), '.', { plain = true })
+							local extension = split_path[#split_path]
+							return vim.tbl_contains(image_extensions, extension)
+						end
+						if is_image(filepath) then
+							local image_in_preview = image_api.from_file(filepath, {
+								buffer = bufnr,
+								window = opts.winid
+							})
+							image_in_preview:render()
+						else
+							require("telescope.previewers.utils").set_preview_message(bufnr, opts.winid,
+								"Binary cannot be previewed")
+						end
+					end
+				}
 			},
 			pickers = {
 				find_files = {
