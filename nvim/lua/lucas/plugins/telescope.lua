@@ -73,32 +73,6 @@ return { -- Fuzzy Finder (files, lsp, etc)
 				file_sorter = require("telescope.sorters").get_fuzzy_file,
 				winblend = 0,
 				buffer_previewer_maker = require("telescope.previewers").buffer_previewer_maker,
-            },
-            pickers = {
-                find_files = {
-                    no_ignore = true,
-                    hidden = true,
-                },
-                live_grep = {
-                    hidden = true,
-                    no_ignore = true,
-                    preview = true,
-                },
-                help_tags = {
-                    hidden = true,
-                    preview = true,
-                },
-                git_branches = {
-                    preview = false,
-                    initial_mode = "normal",
-                },
-                git_commits = {
-                    initial_mode = "normal",
-                },
-                git_status = {
-                    preview = true,
-                    initial_mode = "normal",
-                    disable_devicons = false,
 			},
 			pickers = {
 				find_files = {

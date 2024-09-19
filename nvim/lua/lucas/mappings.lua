@@ -40,7 +40,6 @@ keymap({ "n", "v", "i" }, "<down>", '<Nop>', opts)
 keymap("n", "[d", vim.diagnostic.goto_prev, desc("Go to previous diagnostic"))
 keymap("n", "]d", vim.diagnostic.goto_next, desc("Go to next diagnostic"))
 keymap("n", "<leader>e", vim.diagnostic.open_float, desc("[E]rror messages"))
-keymap("n", "<leader>qq", vim.diagnostic.setloclist, desc("[Q]uickfix list"))
 
 -- Cancel terminal mode
 keymap("t", "<C-q>", "<C-\\><C-n>", desc("Exit terminal mode"))
@@ -105,3 +104,7 @@ keymap("n", "<leader>ph", "<C-w>s", desc("[P]ane: [H]orizontal split"))
 keymap("n", "<leader>pq", "<C-w>q", desc("[P]ane: [Q]uit"))
 keymap("n", "<leader>pe", "<C-w>=", desc("[P]ane: [E]qual size"))
 keymap("n", "<leader>pm", "<C-w>o", desc("[P]ane: [M]aximize"))
+
+-- QuickFix List
+keymap("n", "<leader>qn", ":cn<CR>", desc("[Q]uickFix [N]ext"))
+keymap("n", "<leader>qq", ":cw<CR>", desc("[Q]uickfix list"))

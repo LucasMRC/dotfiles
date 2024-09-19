@@ -4,6 +4,7 @@ return {
 	opts = {
 		disabled_filetypes = {
 			"GHN",
+			"mason",
 			"help",
 			"NvimTree",
 			"fugitive",

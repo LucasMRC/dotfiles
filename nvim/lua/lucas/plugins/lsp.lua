@@ -25,15 +25,15 @@ return { -- LSP Configuration & Plugins
 				map("gD", vim.lsp.buf.declaration, "[G]oto [D]eclaration")
 
 				vim.lsp.handlers["textDocument/publishDiagnostics"] =
-				vim.lsp.with(vim.lsp.diagnostic.on_publish_diagnostics, {
-					virtual_text = false,
-					severity_sort = true,
-					signs = true,
-					underline = true,
-					float = {
-						source = "always",
-					},
-				})
+					vim.lsp.with(vim.lsp.diagnostic.on_publish_diagnostics, {
+						virtual_text = false,
+						severity_sort = true,
+						signs = true,
+						underline = true,
+						float = {
+							source = "always",
+						},
+					})
 
 				local _border = "single"
 
@@ -131,7 +131,7 @@ return { -- LSP Configuration & Plugins
 				filetypes = { "css", "html", "sass", "scss", "svelte", "htmlhugo", "typescriptreact", "javascriptreact" }
 			},
 			tailwindcss = {
-				filetypes = {--[[  "html", "css", "scss", ]] "svelte", "htmlhugo" }
+				filetypes = { --[[  "html", "css", "scss", ]] "svelte", "htmlhugo" }
 			},
 		}
 
@@ -147,7 +147,7 @@ return { -- LSP Configuration & Plugins
 			"shellcheck",
 			-- lsp servers
 			"emmet_ls",
-			"tsserver",
+			"ts_ls",
 			"html",
 			"cssls",
 			"tailwindcss",
@@ -161,9 +161,6 @@ return { -- LSP Configuration & Plugins
 			handlers = {
 				function(server_name)
 					-- https://github.com/neovim/nvim-lspconfig/pull/3232
-					if server_name == "tsserver" then
-						server_name = "ts_ls"
-					end
 					local server = servers[server_name] or {}
 
 					server.capabilities = vim.tbl_deep_extend("force", {}, capabilities, server.capabilities or {})
