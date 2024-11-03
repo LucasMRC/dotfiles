@@ -1,7 +1,8 @@
 return {
     'kevinhwang91/nvim-ufo',
+	event = "VeryLazy",
     dependencies = {
-        'kevinhwang91/promise-async'
+        { 'kevinhwang91/promise-async', lazy = true }
     },
     config = function()
         vim.o.foldcolumn = '0' -- '0' is not bad

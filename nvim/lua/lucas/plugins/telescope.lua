@@ -73,29 +73,29 @@ return { -- Fuzzy Finder (files, lsp, etc)
 				file_sorter = require("telescope.sorters").get_fuzzy_file,
 				winblend = 0,
 				buffer_previewer_maker = require("telescope.previewers").buffer_previewer_maker,
-				preview = {
-					mime_hook = function(filepath, bufnr, opts)
-						local ok, image_api = pcall(require, 'image')
-						if not ok then return end
-
-						local is_image = function(fp)
-							local image_extensions = { 'png', 'jpg', 'svg', 'webm', 'jpeg', 'gif' } -- Supported image formats
-							local split_path = vim.split(fp:lower(), '.', { plain = true })
-							local extension = split_path[#split_path]
-							return vim.tbl_contains(image_extensions, extension)
-						end
-						if is_image(filepath) then
-							local image_in_preview = image_api.from_file(filepath, {
-								buffer = bufnr,
-								window = opts.winid
-							})
-							image_in_preview:render()
-						else
-							require("telescope.previewers.utils").set_preview_message(bufnr, opts.winid,
-								"Binary cannot be previewed")
-						end
-					end
-				}
+				-- preview = {
+					-- mime_hook = function(filepath, bufnr, opts)
+					-- 	local ok, image_api = pcall(require, 'image')
+					-- 	if not ok then return end
+					--
+					-- 	local is_image = function(fp)
+					-- 		local image_extensions = { 'png', 'jpg', 'svg', 'webm', 'jpeg', 'gif' } -- Supported image formats
+					-- 		local split_path = vim.split(fp:lower(), '.', { plain = true })
+					-- 		local extension = split_path[#split_path]
+					-- 		return vim.tbl_contains(image_extensions, extension)
+					-- 	end
+					-- 	if is_image(filepath) then
+					-- 		local image_in_preview = image_api.from_file(filepath, {
+					-- 			buffer = bufnr,
+					-- 			window = opts.winid
+					-- 		})
+					-- 		image_in_preview:render()
+					-- 	else
+					-- 		require("telescope.previewers.utils").set_preview_message(bufnr, opts.winid,
+					-- 			"Binary cannot be previewed")
+					-- 	end
+					-- end
+				-- }
 			},
 			pickers = {
 				find_files = {
@@ -172,9 +172,7 @@ return { -- Fuzzy Finder (files, lsp, etc)
 		vim.keymap.set("n", "<leader>sB", builtin.git_branches, { desc = "[S]earch [B]ranches" })
 		vim.keymap.set("n", "<leader>sh", builtin.help_tags, { desc = "[S]earch [H]elp" })
 		vim.keymap.set("n", "<leader>sw", builtin.grep_string, { desc = "[S]earch current [W]ord" })
-		-- vim.keymap.set("n", "<leader>sg", builtin.live_grep, { desc = "[S]earch by [G]rep" }) -- requires ripgrep installed
-		vim.keymap.set("n", "<leader>sg", ":lua require('telescope').extensions.live_grep_args.live_grep_args()<CR>",
-			{ desc = "[S]earch by [G]rep" }) -- requires ripgrep installed
+		vim.keymap.set("n", "<leader>sg", telescope.extensions.live_grep_args.live_grep_args, { silent = true, desc = "[S]earch by [G]rep" }) -- requires ripgrep installed
 		vim.keymap.set("n", "<leader>sd", builtin.diagnostics, { desc = "[S]earch [D]iagnostics" })
 		vim.keymap.set("n", "<leader>se", builtin.symbols, { desc = "[S]earch [E]moji" })
 		vim.keymap.set("n", "<leader>su", "<CMD>Telescope undo<CR>", { desc = "[S]earch [U]ndo" })

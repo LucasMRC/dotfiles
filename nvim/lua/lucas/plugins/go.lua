@@ -1,10 +1,9 @@
 return {
 	{
 		"ray-x/go.nvim",
-		lazy = true,
-		event = "VeryLazy",
+		ft = "go",
 		dependencies = { -- optional packages
-			"ray-x/guihua.lua",
+			{ "ray-x/guihua.lua", lazy = true },
 		},
 		config = function()
 			local format_sync_grp = vim.api.nvim_create_augroup("GoFormat", {})

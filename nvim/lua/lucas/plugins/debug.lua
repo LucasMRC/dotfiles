@@ -1,10 +1,11 @@
 return {
 	{
 		"mfussenegger/nvim-dap",
+		lazy = true,
 		dependencies = {
-			"nvim-neotest/nvim-nio",
-			"rcarriga/nvim-dap-ui",
-			"theHamsta/nvim-dap-virtual-text",
+			{ "nvim-neotest/nvim-nio", lazy = true },
+			{ "rcarriga/nvim-dap-ui", lazy = true },
+			{ "theHamsta/nvim-dap-virtual-text", lazy = true },
 		},
 		config = function()
 			local dap = require 'dap'
@@ -63,26 +64,46 @@ return {
 	},
 	{
 		"leoluz/nvim-dap-go",
+		keys = {
+			{ "<leader>DS", mode = "n", desc = "[D]ap [S]tart" },
+		},
 		dependencies = {
 			"rcarriga/nvim-dap-ui",
+			"mfussenegger/nvim-dap",
 		},
 		config = function()
 			local dap_go = require 'dap-go'
 			local find_cmd = vim.system({ "find", ".", "-type", "f", "-name", "main.go" }):wait()
 			local file_path = find_cmd.stdout:gsub("^%.", ""):gsub("/main.go\n", "")
+			local dap = require 'dap'
 
 			dap_go.setup({
 				dap_configurations = {
 					{
 						type = "go",
-						name = "Debug",
+						name = "DDeb",
 						request = "launch",
 						logOutput = "dap",
 						showLog = true,
 						program = "${workspaceFolder}" .. file_path,
 					},
+					{
+						type = "go",
+						name = "DDeb with args",
+						request = "launch",
+						logOutput = "dap",
+						showLog = true,
+						args = require("dap-go").get_arguments,
+						program = "${workspaceFolder}" .. file_path,
+					},
 				}
 			})
+
+			-- Remove default go dap configs
+			dap.configurations.go = {
+				dap.configurations.go[9],
+				dap.configurations.go[8],
+			}
 
 			local function set(mode, key, cmd, desc)
 				vim.keymap.set(mode, key, cmd, { desc = desc or "" })

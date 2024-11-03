@@ -1,6 +1,7 @@
 return {
 	{
 		"windwp/nvim-autopairs",
+		event = "VeryLazy",
 		config = function()
 			require("nvim-autopairs").setup({})
 		end,
@@ -16,16 +17,21 @@ return {
 	}, -- toggle comments
 	{
 		"fladson/vim-kitty",
-		lazy = true,
-		event = "VeryLazy",
+		ft = "kitty"
 	},
 	{
 		"folke/todo-comments.nvim",
-		event = "VimEnter",
-		dependencies = { "nvim-lua/plenary.nvim" },
+		event = "VeryLazy",
+		dependencies = { "nvim-lua/plenary.nvim", lazy = true },
 		opts = { signs = false },
 	},
+	{
+		"windwp/nvim-ts-autotag",         -- auto close html tags
+		ft = { "html", "htmlhugo", "svelte" },
+	},
+	{
+		"phelipetls/vim-hugo",
+		ft = "htmlhugo"
+	},
 	"nvim-lua/plenary.nvim",          -- don't forget to add this one if you don't have it yet!
-	"windwp/nvim-ts-autotag",         -- auto close html tags
-	"phelipetls/vim-hugo",
 }

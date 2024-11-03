@@ -97,7 +97,7 @@ return { -- LSP Configuration & Plugins
 		vim.api.nvim_create_autocmd("BufWritePre", {
 			pattern = "*.lua",
 			callback = function(e)
-				vim.lsp.buf.format({ bufnr = e.buf })
+				-- vim.lsp.buf.format({ bufnr = e.buf })
 			end,
 		})
 

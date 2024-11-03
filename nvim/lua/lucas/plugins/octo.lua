@@ -38,21 +38,21 @@ return {
 			timeout = 5000, -- timeout for requests between the remote server
 			default_to_projects_v2 = false, -- use projects v2 for the `Octo card ...` command by default. Both legacy and v2 commands are available under `Octo cardlegacy ...` and `Octo cardv2 ...` respectively.
 			ui = {
-				use_signcolumn = false, -- show "modified" marks on the sign column
-				use_signstatus = false, -- show "modified" marks on the status column
+				use_signcolumn = true, -- show "modified" marks on the sign column
+				use_statuscolumn = false, -- show "modified" marks on the status column
 			},
 			issues = {
 				order_by = { -- criteria to sort results of `Octo issue list`
 					field = "CREATED_AT", -- either COMMENTS, CREATED_AT or UPDATED_AT (https://docs.github.com/en/graphql/reference/enums#issueorderfield)
 					direction =
-					"DESC" -- either DESC or ASC (https://docs.github.com/en/graphql/reference/enums#orderdirection)
+						"DESC" -- either DESC or ASC (https://docs.github.com/en/graphql/reference/enums#orderdirection)
 				}
 			},
 			pull_requests = {
 				order_by = {               -- criteria to sort the results of `Octo pr list`
 					field = "CREATED_AT",  -- either COMMENTS, CREATED_AT or UPDATED_AT (https://docs.github.com/en/graphql/reference/enums#issueorderfield)
 					direction =
-					"DESC"                 -- either DESC or ASC (https://docs.github.com/en/graphql/reference/enums#orderdirection)
+						"DESC"                 -- either DESC or ASC (https://docs.github.com/en/graphql/reference/enums#orderdirection)
 				},
 				always_select_remote_on_create = false -- always give prompt to select base remote repo when creating PRs
 			},
@@ -221,14 +221,13 @@ return {
 		vim.treesitter.language.register('markdown', 'octo')
 
 		-- Re-enables line numbers - CURRENTLY NOT WORKING
-		-- vim.api.nvim_create_autocmd({ "BufEnter" }, {
-		-- 	pattern = { "octo://*" },
-		-- 	callback = function()
-		-- 		vim.opt_local.nu = true
-		-- 		vim.opt_local.numberwidth = 4 -- set number column width {default 4}
-		-- 		vim.opt_local.rnu = true
-		-- 		vim.cmd [[setlocal number relativenumber cursorline wrap]]
-		-- 	end
-		-- })
+		vim.api.nvim_create_autocmd({ "BufEnter" }, {
+			pattern = { "octo://*" },
+			callback = function()
+				vim.opt_local.nu = true
+				vim.opt_local.numberwidth = 4 -- set number column width {default 4}
+				vim.opt_local.rnu = true
+			end
+		})
 	end,
 }

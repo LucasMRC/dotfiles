@@ -1,6 +1,10 @@
 return {
 	"m4xshen/hardtime.nvim",
-	dependencies = { "MunifTanjim/nui.nvim", "nvim-lua/plenary.nvim" },
+	event = "VeryLazy",
+	dependencies = {
+		{ "MunifTanjim/nui.nvim", lazy = true },
+		{ "nvim-lua/plenary.nvim", lazy = true }
+	},
 	opts = {
 		disabled_filetypes = {
 			"GHN",
