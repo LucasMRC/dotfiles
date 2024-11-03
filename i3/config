@@ -250,9 +250,9 @@ bar {
 }
 
 # Bind windows to workspaces
-assign [title="Tmux" class="kitty"] $ws1
 
 # Other windows settings
+for_window [class="stremio"] exec ~/.config/scripts/suspend-screensaver.sh
 
 # Custom Keybindings
 bindsym --release $mod+Shift+s exec --no-startup-id flameshot gui
