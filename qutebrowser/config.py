@@ -25,3 +25,4 @@ c.tabs.last_close = "blank"
 c.tabs.mousewheel_switching = False
 
 themes.setup(c, "frappe", True)
+config.load_autoconfig(False)

@@ -9,7 +9,7 @@ fi
 
 # Primary
 tmux new -d -s "Neovim" -n "Primary" -c $WORKING_DIR
-tmux send-keys -t "Neovim:Primary" "invim ." Enter
+tmux send-keys -t "Neovim:Primary" "invim . --startuptime /home/lucas/.dotfiles/nvim/startuptime.log" Enter
 # Github
 tmux neww -t "Neovim:2" -n "Github" -c $WORKING_DIR
 tmux send-keys -t "Neovim:Github" "invim ." Enter

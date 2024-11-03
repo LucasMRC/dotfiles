@@ -58,29 +58,29 @@ set.cmdheight = 1
 
 set.completeopt = { "menuone", "noselect" } -- Completion options
 
-set.pumheight = 10 -- pop up menu height
+set.pumheight = 10                          -- pop up menu height
 set.pumblend = 10
 
--- set.showmode = false -- we don't need to see things like -- INSERT -- anymore
-set.splitbelow = true -- force all horizontal splits to go below current window
-set.splitright = true -- force all vertical splits to go to the right of current window
+set.showmode = false          -- we don't need to see things like -- INSERT -- anymore
+set.splitbelow = true         -- force all horizontal splits to go below current window
+set.splitright = true         -- force all vertical splits to go to the right of current window
 
-set.cursorline = true -- highlight the current line
+set.cursorline = true         -- highlight the current line
 
-set.laststatus = 3 -- show status line always and only on last window
-set.signcolumn = "yes" -- always show the sign column, otherwise it would shift the text each time
+set.laststatus = 3            -- show status line always and only on last window
+set.signcolumn = "yes"        -- always show the sign column, otherwise it would shift the text each time
 set.guifont = "monospace:h17" -- the font used in graphical neovim applications
 set.title = true
 
-set.conceallevel = 1 -- markdown syntax concealing
+set.conceallevel = 1    -- markdown syntax concealing
 set.concealcursor = "c" -- markdown syntax concealing visibility
 
-g.editorconfig = false -- disable .editorconfig file search
+g.editorconfig = false  -- disable .editorconfig file search
 
 set.backspace = "indent,eol,start"
 
 set.listchars = "tab:->,trail:·,multispace:·"
 set.list = true
 
-set.formatoptions:remove "o" -- remove comment prefix on 'o/O'
+set.formatoptions:remove "o" -- remove comment prefix on ''
 -- vim.o.exrc = true -- enable per-directory .vimrc files

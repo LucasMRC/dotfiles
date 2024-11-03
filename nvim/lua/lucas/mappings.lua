@@ -85,6 +85,9 @@ keymap("v", ">", ">gv", desc("Indent right"))
 -- Persistent pasting
 keymap("v", "p", '"_dP', desc("Paste without yanking"))
 
+-- Copy to clipboard
+keymap({ "v", "n" }, "<A-y>", "\"+y", desc("Copy to clipboard"))
+
 -- Move down and up by visual lines
 keymap({ "n", "v" }, "<C-j>", "gj", desc("Move down by visual line"))
 keymap({ "n", "v" }, "<C-k>", "gk", desc("Move up by visual line"))

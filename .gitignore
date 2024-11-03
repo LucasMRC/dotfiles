@@ -1,4 +1,5 @@
 notified
+startuptime*.log
 Stretchly
 !Stretchly/config.json
 fish
@@ -9,3 +10,6 @@ nvim/lazy-lock.json
 nvim/lua/lucas/plugins/development
 test.*
 *.pass
+btop.log
+qutebrowser
+!qutebrowser/config.py

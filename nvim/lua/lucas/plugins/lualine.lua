@@ -11,6 +11,7 @@ return {
 				lualine_a = { "mode" },
 				lualine_b = { { "filename", path = 4 } },
 				lualine_c = { { "branch", icons_enabled = true }, "diff", "diagnostics" },
+				lualine_x = {},
 				lualine_y = {
 					{ "filetype", fmt = string.upper },
 				},
