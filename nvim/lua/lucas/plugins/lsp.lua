@@ -131,7 +131,7 @@ return { -- LSP Configuration & Plugins
 				filetypes = { "css", "html", "sass", "scss", "svelte", "htmlhugo", "typescriptreact", "javascriptreact" }
 			},
 			tailwindcss = {
-				filetypes = { --[[  "html", "css", "scss", ]] "svelte", "htmlhugo" }
+				filetypes = { --[[  "html", "css", "scss", ]] "svelte", "htmlhugo", "markdown" }
 			},
 		}
 

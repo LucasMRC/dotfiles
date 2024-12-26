@@ -220,13 +220,11 @@ return {
 		-- Treesitter
 		vim.treesitter.language.register('markdown', 'octo')
 
-		-- Re-enables line numbers - CURRENTLY NOT WORKING
-		vim.api.nvim_create_autocmd({ "BufEnter" }, {
+		-- Enables line wrap on file diff view
+		vim.api.nvim_create_autocmd({ "BufAdd", "BufEnter" }, {
 			pattern = { "octo://*" },
 			callback = function()
-				vim.opt_local.nu = true
-				vim.opt_local.numberwidth = 4 -- set number column width {default 4}
-				vim.opt_local.rnu = true
+				vim.opt_local.wrap = true
 			end
 		})
 	end,

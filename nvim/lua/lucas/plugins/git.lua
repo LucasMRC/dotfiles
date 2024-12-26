@@ -6,12 +6,20 @@ end
 return {
 	"ThePrimeagen/git-worktree.nvim", -- git worktrees
 	{
+		'akinsho/git-conflict.nvim',
+		version = "*",
+		config = function()
+			require("git-conflict").setup()
+			map("n", "<leader>gq", ":GitConflictListQf<CR>", { desc = "[G]it [Q]uickfix" })
+		end
+	},
+	{
 		"tpope/vim-fugitive",      -- git
 		event = "VeryLazy",
 		config = function()
 			map("n", "<leader>gg", ":Git<CR>", { desc = "[G]it status" })
-			map("n", "<leader>gb", ":Git blame<CR>", { desc = "[G]it [b]lame" })
-			map("n", "<leader>gd", ":Gvdiffsplit<CR>", { desc = "[G]it [d]iff" })
+			map("n", "<leader>gb", ":Git blame<CR>", { desc = "[G]it [B]lame" })
+			map("n", "<leader>gd", ":Gvdiffsplit<CR>", { desc = "[G]it [D]iff" })
 		end
 	},
 	{
