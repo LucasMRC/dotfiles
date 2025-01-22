@@ -13,3 +13,5 @@ test.*
 btop.log
 qutebrowser
 !qutebrowser/config.py
+*.tmp.*
+tmux/plugins

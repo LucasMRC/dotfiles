@@ -29,8 +29,8 @@ tmux new -d -s "Terminal" -n "Tasks" -c $WORKING_DIR
 tmux neww -t "Terminal:2" -n "HTOP" -c $DOTFILES_DIR
 tmux send-keys -t "Terminal:HTOP" "ihtop" Enter
 # Music player
-tmux neww -t "Terminal:3" -n "Music" -c $DOTFILES_DIR
-tmux send-keys -t "Terminal:Music" "ispotify_player" Enter
+# tmux neww -t "Terminal:3" -n "Music" -c $DOTFILES_DIR
+# tmux send-keys -t "Terminal:Music" "ispotify_player" Enter
 
 # Select main windows
 tmux selectw -t "Terminal:Tasks"

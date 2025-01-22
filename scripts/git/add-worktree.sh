@@ -19,7 +19,7 @@ echo "Creating new worktree..."
 if [ -z $ORIGIN ]; then
     MAIN=$(git branch | grep -E '(main|master)' | gawk 'match($0, /master|main/) {print $2}')
     ORIGIN="origin/$MAIN"
-	git fetch origin $MAIN 2> /dev/null
+	git fetch origin $MAIN
 fi
 
 git worktree add -b $BRANCH $BRANCH $ORIGIN

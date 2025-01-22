@@ -1,17 +1,22 @@
 tab-twisty {
-  display: none;
+	display: none;
 }
 
 tab-item tab-closebox {
-  display: none;
+	display: none;
 }
 
 tab-item tab-favicon {
-  position: relative;
-  translate: 50%;
-  bottom: 1px;
+	position: relative;
+	translate: 50%;
+	bottom: 1px;
 }
 
 .after-tabs.vbox {
-  display: none;
+	display: none;
+}
+
+tab-item.pinned {
+	width: 100%; 
+	max-width: 100%;
 }
