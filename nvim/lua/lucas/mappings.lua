@@ -15,6 +15,7 @@ keymap({ "n", "v", "i" }, "<S-right>", '<Nop>', opts)
 keymap({ "n", "v", "i" }, "<S-up>", '<Nop>', opts)
 keymap({ "n", "v", "i" }, "<S-down>", '<Nop>', opts)
 keymap("n", "<C-f>", "<Nop>", opts)
+keymap("n", "<C-w>q", "<Nop>", opts)
 
 keymap({ "n", "v", "i", "c" }, "<F1>", '<Nop>', opts)
 keymap({ "n", "v", "i", "c" }, "<F2>", '<Nop>', opts)

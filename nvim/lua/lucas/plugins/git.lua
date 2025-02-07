@@ -4,12 +4,12 @@ local function map(mode, l, r, opts)
 end
 
 return {
-	-- "ThePrimeagen/git-worktree.nvim", -- git worktrees
-	{
-		'polarmutex/git-worktree.nvim',
-		version = '^2',
-		dependencies = { "nvim-lua/plenary.nvim" }
-	},
+	-- -- "ThePrimeagen/git-worktree.nvim", -- git worktrees
+	-- {
+	-- 	'polarmutex/git-worktree.nvim',
+	-- 	version = '^2',
+	-- 	dependencies = { "nvim-lua/plenary.nvim" }
+	-- },
 	{
 		'akinsho/git-conflict.nvim',
 		version = "*",

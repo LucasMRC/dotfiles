@@ -4,6 +4,13 @@ return {
 	lazy = false,
 	config = function()
 		require("nvim-tree").setup({
+			on_attach = function(bufnr)
+				local api = require "nvim-tree.api"
+				-- default mappings
+				api.config.mappings.default_on_attach(bufnr)
+				-- delete mappings
+				vim.keymap.del('n', 's', { buffer = bufnr }) -- open in terminal
+			end,
 			hijack_unnamed_buffer_when_opening = true,
 			diagnostics = {
 				enable = true,

@@ -3,6 +3,10 @@ return { -- Fuzzy Finder (files, lsp, etc)
 	event = "VimEnter",
 	branch = "0.1.x",
 	dependencies = {
+		{
+			'polarmutex/git-worktree.nvim',
+			branch = 'devel'
+		},
 		"nvim-lua/plenary.nvim",
 		{ -- If encountering errors, see telescope-fzf-native README for install instructions
 			"nvim-telescope/telescope-fzf-native.nvim",
@@ -65,7 +69,7 @@ return { -- Fuzzy Finder (files, lsp, etc)
 					height = 0.80,
 					preview_cutoff = 120,
 				},
-				file_ignore_patterns = { "node_modules/", "^%.git/", "^%.vim/", "%-lock%." },
+				file_ignore_patterns = { "node_modules/", "^%.git/", "^%.vim/", "%-lock%.", "dist/" },
 				set_env = { ["COLORTERM"] = "truecolor" }, -- default = nil,
 				file_previewer = require("telescope.previewers").vim_buffer_cat.new,
 				grep_previewer = require("telescope.previewers").vim_buffer_vimgrep.new,
@@ -74,27 +78,27 @@ return { -- Fuzzy Finder (files, lsp, etc)
 				winblend = 0,
 				buffer_previewer_maker = require("telescope.previewers").buffer_previewer_maker,
 				-- preview = {
-					-- mime_hook = function(filepath, bufnr, opts)
-					-- 	local ok, image_api = pcall(require, 'image')
-					-- 	if not ok then return end
-					--
-					-- 	local is_image = function(fp)
-					-- 		local image_extensions = { 'png', 'jpg', 'svg', 'webm', 'jpeg', 'gif' } -- Supported image formats
-					-- 		local split_path = vim.split(fp:lower(), '.', { plain = true })
-					-- 		local extension = split_path[#split_path]
-					-- 		return vim.tbl_contains(image_extensions, extension)
-					-- 	end
-					-- 	if is_image(filepath) then
-					-- 		local image_in_preview = image_api.from_file(filepath, {
-					-- 			buffer = bufnr,
-					-- 			window = opts.winid
-					-- 		})
-					-- 		image_in_preview:render()
-					-- 	else
-					-- 		require("telescope.previewers.utils").set_preview_message(bufnr, opts.winid,
-					-- 			"Binary cannot be previewed")
-					-- 	end
-					-- end
+				-- mime_hook = function(filepath, bufnr, opts)
+				-- 	local ok, image_api = pcall(require, 'image')
+				-- 	if not ok then return end
+				--
+				-- 	local is_image = function(fp)
+				-- 		local image_extensions = { 'png', 'jpg', 'svg', 'webm', 'jpeg', 'gif' } -- Supported image formats
+				-- 		local split_path = vim.split(fp:lower(), '.', { plain = true })
+				-- 		local extension = split_path[#split_path]
+				-- 		return vim.tbl_contains(image_extensions, extension)
+				-- 	end
+				-- 	if is_image(filepath) then
+				-- 		local image_in_preview = image_api.from_file(filepath, {
+				-- 			buffer = bufnr,
+				-- 			window = opts.winid
+				-- 		})
+				-- 		image_in_preview:render()
+				-- 	else
+				-- 		require("telescope.previewers.utils").set_preview_message(bufnr, opts.winid,
+				-- 			"Binary cannot be previewed")
+				-- 	end
+				-- end
 				-- }
 			},
 			pickers = {
@@ -166,6 +170,7 @@ return { -- Fuzzy Finder (files, lsp, etc)
 		telescope.load_extension("undo")
 		telescope.load_extension("fzf")
 		telescope.load_extension("live_grep_args")
+		telescope.load_extension("git_worktree")
 		local builtin = require("telescope.builtin")
 
 		vim.keymap.set("n", "<leader>sf", builtin.find_files, { desc = "[S]earch [F]iles" })
@@ -181,21 +186,15 @@ return { -- Fuzzy Finder (files, lsp, etc)
 		vim.keymap.set("n", "<leader>sS", builtin.git_status, { desc = "[S]earch Git [S]tatus" })
 		vim.keymap.set("n", "<leader>sk", builtin.keymaps, { desc = "[S]earch [K]eymaps" })
 		vim.keymap.set("n", "<leader>sc", builtin.git_commits, { desc = "[S]earch [C]ommits" })
+		vim.keymap.set("n", "<leader>st", telescope.extensions.git_worktree.git_worktree, { desc = "[S]earch [T]rees" })
 
-		local wt_status_ok, git_wt = pcall(require, "git-worktree")
-		if not wt_status_ok then
-			print("git-worktree failed to load")
-			return
-		else
-			git_wt.setup()
-			telescope.load_extension("git_worktree")
-			vim.keymap.set(
-				"n",
-				"<leader>st",
-				telescope.extensions.git_worktree.git_worktrees,
-				{ desc = "[S]earch [T]rees" }
-			)
-		end
+		-- Worktree hooks
+		local Hooks = require("git-worktree.hooks")
+		local update_on_switch = Hooks.builtins.update_current_buffer_on_switch
+
+		Hooks.register(Hooks.type.SWITCH, function (path, prev_path)
+			update_on_switch(path, prev_path)
+		end)
 
 		vim.api.nvim_create_autocmd("User", {
 			pattern = "TelescopePreviewerLoaded",

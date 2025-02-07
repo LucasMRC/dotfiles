@@ -25,15 +25,15 @@ return { -- LSP Configuration & Plugins
 				map("gD", vim.lsp.buf.declaration, "[G]oto [D]eclaration")
 
 				vim.lsp.handlers["textDocument/publishDiagnostics"] =
-					vim.lsp.with(vim.lsp.diagnostic.on_publish_diagnostics, {
-						virtual_text = false,
-						severity_sort = true,
-						signs = true,
-						underline = true,
-						float = {
-							source = "always",
-						},
-					})
+				vim.lsp.with(vim.lsp.diagnostic.on_publish_diagnostics, {
+					virtual_text = false,
+					severity_sort = true,
+					signs = true,
+					underline = true,
+					float = {
+						source = "always",
+					},
+				})
 
 				local _border = "single"
 
@@ -131,7 +131,12 @@ return { -- LSP Configuration & Plugins
 				filetypes = { "css", "html", "sass", "scss", "svelte", "htmlhugo", "typescriptreact", "javascriptreact" }
 			},
 			tailwindcss = {
-				filetypes = { --[[  "html", "css", "scss", ]] "svelte", "htmlhugo", "markdown" }
+				filetypes = { --[[  "html", "css", "scss", ]] "svelte", "htmlhugo", "markdown" },
+				experimental = {
+					classRegex = {
+						"tw-", -- 'tw-' prefix
+					}
+				}
 			},
 		}
 
