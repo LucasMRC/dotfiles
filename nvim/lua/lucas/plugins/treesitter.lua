@@ -27,6 +27,7 @@ return {
 				"yaml",
 				"scss",
 				"jsdoc",
+				"jsonnet", -- Grafana only
 			},
 			textobjects = {
 				select = {

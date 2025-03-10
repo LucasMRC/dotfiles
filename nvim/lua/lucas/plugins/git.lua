@@ -14,7 +14,7 @@ return {
 		'akinsho/git-conflict.nvim',
 		version = "*",
 		config = function()
-			require("git-conflict").setup()
+			require("git-conflict").setup({})
 			map("n", "<leader>gq", ":GitConflictListQf<CR>", { desc = "[G]it [Q]uickfix" })
 		end
 	},
