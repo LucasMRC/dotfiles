@@ -1,0 +1,16 @@
+configpath: /home/lucas/.config/nom/config.yml
+showfavourites: false
+version: ""
+feeds:
+    - url: https://archlinux.org/feeds/news/
+    - url: https://neovim.io/news.xml
+    - url: http://grapheneos.org/releases.atom
+ordering: desc
+theme:
+    glamour: dark
+    titleColor: "62"
+    filterColor: "62"
+    selectedItemColor: "170"
+    readIcon: ✓
+http:
+    mintls: TLS 1.2
