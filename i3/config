@@ -253,6 +253,11 @@ bar {
 
 # Other windows settings
 for_window [class="stremio"] exec ~/.config/scripts/suspend-screensaver.sh
+for_window [title="Neovimput"] floating enable resize set 800 240
+for_window [class="zoom"] floating enable
+for_window [class="zoom" title="Zoom Workplace - Licensed account"] floating disable
+for_window [class="zoom" title="Settings"] floating disable
+for_window [class="zoom" title="Meeting"] floating disable
 
 # Custom Keybindings
 bindsym --release $mod+Shift+s exec --no-startup-id flameshot gui
@@ -261,6 +266,8 @@ bindsym --release $mod+Ctrl+Return exec --no-startup-id librewolf
 bindsym --release $mod+Tab exec --no-startup-id rofi -show window
 # bindsym --release $mod+Shift+z exec kitty --title \"Tmux\" --hold sh -c ~/.config/scripts/tmux-launcher.sh
 bindsym --release $mod+Shift+p exec --no-startup-id sh /home/lucas/.config/scripts/pomodoro.sh 
+
+bindsym --release $mod+a exec --no-startup-id neovimput
 
 # Execute the startup script
 exec --no-startup-id ~/.config/scripts/startup.sh
