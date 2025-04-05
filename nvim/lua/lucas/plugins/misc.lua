@@ -26,8 +26,10 @@ return {
 		ft = { "html", "htmlhugo", "svelte" },
 	},
 	{
-		"phelipetls/vim-hugo",
-		ft = "htmlhugo"
+		"fatih/vim-go",
+		config = function()
+			vim.cmd([[let g:go_fmt_autosave = 0]])
+		end
 	},
 	"nvim-lua/plenary.nvim",          -- don't forget to add this one if you don't have it yet!
 }

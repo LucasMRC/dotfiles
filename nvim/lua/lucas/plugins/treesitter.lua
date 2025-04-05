@@ -9,13 +9,16 @@ return {
 		require("nvim-treesitter.configs").setup({
 			-- A list of parser names
 			ensure_installed = {
+				"gomod",
+				"gosum",
+				"gotmpl",
+				"go",
 				"markdown",
 				"markdown_inline",
 				"css",
 				"javascript",
 				"typescript",
 				"svelte",
-				"go",
 				"lua",
 				"vim",
 				"vimdoc",
@@ -23,7 +26,6 @@ return {
 				"sql",
 				"json",
 				"bash",
-				"gotmpl",
 				"yaml",
 				"scss",
 				"jsdoc",
@@ -38,10 +40,8 @@ return {
 						["ia"] = "@parameter.inner",
 						["af"] = "@function.outer",
 						["if"] = "@function.inner",
-						["ii"] = "@conditional.inner",
-						["ai"] = "@conditional.outer",
-						["il"] = "@loop.inner",
-						["al"] = "@loop.outer",
+						["ib"] = "@block.inner",
+						["ab"] = "@block.outer",
 						["ac"] = "@comment.outer",
 					},
 				},
@@ -62,5 +62,18 @@ return {
 				enable = true,
 			},
 		})
+
+		vim.filetype.add({
+			extension = {
+				html = function()
+					local ho = vim.fn.search("{{", "nw")
+					if ho == 0 then
+						return "html"
+					end
+					return "gohtmltmpl"
+				end,
+			}
+		})
+
 	end,
 }

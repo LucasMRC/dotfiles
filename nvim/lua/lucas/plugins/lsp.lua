@@ -128,7 +128,7 @@ return { -- LSP Configuration & Plugins
 				},
 			},
 			emmet_ls = {
-				filetypes = { "css", "html", "sass", "scss", "svelte", "htmlhugo", "typescriptreact", "javascriptreact" }
+				filetypes = { "css", "html", "sass", "scss", "svelte", "htmlhugo", "gohtmltmpl", "typescriptreact", "javascriptreact" }
 			},
 			tailwindcss = {
 				filetypes = { --[[  "html", "css", "scss", ]] "svelte", "htmlhugo", "markdown" },
