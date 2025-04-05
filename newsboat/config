@@ -8,6 +8,7 @@ unbind-key o
 unbind-key O
 unbind-key g # bound to `sort` by default
 unbind-key G # bound to `rev-sort` by default
+unbind-key r
 
 # bind keys - vim style
 bind-key k up			feedlist
@@ -21,6 +22,7 @@ bind-key h prev-feed	articlelist
 bind-key g home
 bind-key G end
 bind-key o open
+bind-key r toggle-article-read
 
 show-read-articles no
 

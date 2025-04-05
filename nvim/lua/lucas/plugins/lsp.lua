@@ -96,7 +96,7 @@ return { -- LSP Configuration & Plugins
 
 		vim.api.nvim_create_autocmd("BufWritePre", {
 			pattern = "*.lua",
-			callback = function(e)
+			callback = function(--[[ e ]])
 				-- vim.lsp.buf.format({ bufnr = e.buf })
 			end,
 		})
@@ -147,7 +147,8 @@ return { -- LSP Configuration & Plugins
 			-- formatters
 			"stylua", -- Used to format lua code
 			-- linters
-			"quick-lint-js",
+			-- "quick-lint-js",
+			"biome",
 			"luacheck",
 			"shellcheck",
 			-- lsp servers

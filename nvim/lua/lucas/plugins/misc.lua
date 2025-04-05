@@ -16,10 +16,6 @@ return {
 		end,
 	}, -- toggle comments
 	{
-		"fladson/vim-kitty",
-		ft = "kitty"
-	},
-	{
 		"folke/todo-comments.nvim",
 		event = "VeryLazy",
 		dependencies = { "nvim-lua/plenary.nvim", lazy = true },

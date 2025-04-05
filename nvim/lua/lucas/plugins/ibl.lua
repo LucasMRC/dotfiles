@@ -1,7 +1,6 @@
 return {
 	"lukas-reineke/indent-blankline.nvim",
 	main = "ibl",
-	event = "VeryLazy",
 	config = function()
 		local hooks = require("ibl.hooks")
 		local indentFG = "3c3c3c"

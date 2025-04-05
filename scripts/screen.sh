@@ -2,7 +2,7 @@
 LAYOUTS_DIR=~/.screenlayout
 LAYOUT=$1
 if [ -z $LAYOUT ]; then
-    LAYOUT='DEFAULT'
+    LAYOUT='screen_default'
 fi
 DEFAULT_LAYOUT=$(ls $LAYOUTS_DIR | grep $LAYOUT)
 
