@@ -6,10 +6,22 @@ return {
 		require("nvim-tree").setup({
 			on_attach = function(bufnr)
 				local api = require "nvim-tree.api"
+				local function opts(desc)
+					return {
+						desc = "nvim-tree: " .. desc,
+						buffer = bufnr,
+						noremap = true,
+						silent = true,
+						nowait = true,
+					}
+				end
+
 				-- default mappings
 				api.config.mappings.default_on_attach(bufnr)
 				-- delete mappings
 				vim.keymap.del('n', 's', { buffer = bufnr }) -- open in terminal
+				vim.keymap.set('n', 'd', api.fs.trash, opts('Trash'))
+				vim.keymap.set('n', 'D', api.fs.remove, opts('Remove'))
 			end,
 			hijack_unnamed_buffer_when_opening = true,
 			diagnostics = {
@@ -58,6 +70,10 @@ return {
 			filters = {
 				git_ignored = false,
 				custom = { "^\\.git$" },
+			},
+			trash = {
+				cmd = 'trash',
+				require_confirm = true
 			},
 			live_filter = {
 				always_show_folders = false,
