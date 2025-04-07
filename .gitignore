@@ -1,11 +1,8 @@
 notified
 startuptime*.log
-Stretchly
-!Stretchly/config.json
 fish
 !fish/config.fish
 __pycache__
-packer_compiled.lua
 nvim/lazy-lock.json
 nvim/lua/lucas/plugins/development
 test.*
