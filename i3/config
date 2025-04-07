@@ -140,7 +140,7 @@ bindsym $mod+Shift+space floating toggle
 # bindsym $mod+space focus mode_toggle
 
 # focus the parent container
-bindsym $mod+a focus parent
+# bindsym $mod+a focus parent
 
 # focus the child container
 #bindsym $mod+d focus child
@@ -264,10 +264,7 @@ bindsym --release $mod+Shift+s exec --no-startup-id flameshot gui
 bindsym --release $mod+Shift+Return exec --no-startup-id brave --profile-directory="Default"
 bindsym --release $mod+Ctrl+Return exec --no-startup-id librewolf
 bindsym --release $mod+Tab exec --no-startup-id rofi -show window
-# bindsym --release $mod+Shift+z exec kitty --title \"Tmux\" --hold sh -c ~/.config/scripts/tmux-launcher.sh
-bindsym --release $mod+Shift+p exec --no-startup-id sh /home/lucas/.config/scripts/pomodoro.sh 
-
-bindsym --release $mod+a exec --no-startup-id neovimput
+bindsym --release $mod+a exec --no-startup-id ~/.local/bin/neovimput
 
 # Execute the startup script
 exec --no-startup-id ~/.config/scripts/startup.sh
