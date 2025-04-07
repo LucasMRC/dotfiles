@@ -38,8 +38,8 @@ keymap({ "n", "v", "i" }, "<up>", '<Nop>', opts)
 keymap({ "n", "v", "i" }, "<down>", '<Nop>', opts)
 
 -- Diagnostic keymaps
-keymap("n", "[d", vim.diagnostic.goto_prev, desc("Go to previous diagnostic"))
-keymap("n", "]d", vim.diagnostic.goto_next, desc("Go to next diagnostic"))
+keymap("n", "[d", function() vim.diagnostic.jump({count=-1,float=true}) end, desc("Go to previous diagnostic"))
+keymap("n", "]d", function() vim.diagnostic.jump({count=1,float=true}) end, desc("Go to next diagnostic"))
 keymap("n", "<leader>e", vim.diagnostic.open_float, desc("[E]rror messages"))
 
 -- Cancel terminal mode

@@ -82,5 +82,7 @@ set.backspace = "indent,eol,start"
 set.listchars = "tab:->,trail:·,multispace:·"
 set.list = true
 
+set.winborder = 'single'
+
 set.formatoptions:remove "o" -- remove comment prefix on ''
 -- vim.o.exrc = true -- enable per-directory .vimrc files
