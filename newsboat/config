@@ -1,5 +1,4 @@
 # unbind keys
-unbind-key ENTER
 unbind-key j
 unbind-key k
 unbind-key J
@@ -22,9 +21,12 @@ bind-key h prev-feed	articlelist
 bind-key g home
 bind-key G end
 bind-key o open
-bind-key r toggle-article-read
 
-show-read-articles no
+# other bindings
+bind-key r toggle-article-read
+bind-key I toggle-show-read-feeds
+
+# show-read-articles 
 
 # theme
 color listnormal         color15 default
@@ -45,3 +47,5 @@ highlight article "^(Feed|Title|Author|Link|Date):" color14 default bold
 highlight article "\\((link|image|video)\\)" color8 default
 highlight article "https?://[^ ]+" color4 default
 highlight article "\[[0-9]+\]" color6 default bold
+
+auto-reload yes
