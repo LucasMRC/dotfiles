@@ -205,17 +205,17 @@ return {
 				projects_v2 = true, -- suppress missing scope warning for projects v2
 			}
 		})
-		vim.keymap.set("n", "<leader>op", ":Octo search repo:grafana/website is:open is:pr author:@me archived:false<CR>",
-			{ noremap = true, silent = true, desc = "[O]cto [P]R mine list" })
-		vim.keymap.set("n", "<leader>or", ":Octo search repo:grafana/website is:open is:pr archived:false<CR>",
-			{ noremap = true, silent = true, desc = "[O]cto [R]eview requested list" })
-		vim.keymap.set("n", "<leader>oi",
+		Keymap("n", "<leader>op", ":Octo search repo:grafana/website is:open is:pr author:@me archived:false<CR>",
+			Desc("[O]cto [P]R mine list"))
+		Keymap("n", "<leader>or", ":Octo search repo:grafana/website is:open is:pr archived:false<CR>",
+			Desc("[O]cto [R]eview requested list"))
+		Keymap("n", "<leader>oi",
 			":Octo search repo:grafana/website is:open is:issue assignee:@me archived:false<CR>",
-			{ noremap = true, silent = true, desc = "[O]cto [I]ssues assigned list" })
-		vim.keymap.set("n", "<leader>om",
+			Desc("[O]cto [I]ssues assigned list"))
+		Keymap("n", "<leader>om",
 			":Octo search repo:grafana/website is:open is:issue author:@me archived:false<CR>",
-			{ noremap = true, silent = true, desc = "[O]cto [M]y issues list" })
-		vim.keymap.set("n", "<leader>oo", ":Octo<CR>", { noremap = true, silent = true, desc = "[O]cto" })
+			Desc("[O]cto [M]y issues list"))
+		Keymap("n", "<leader>oo", ":Octo<CR>", Desc("[O]cto"))
 
 		-- Treesitter
 		vim.treesitter.language.register('markdown', 'octo')

@@ -20,8 +20,8 @@ return {
 				api.config.mappings.default_on_attach(bufnr)
 				-- delete mappings
 				vim.keymap.del('n', 's', { buffer = bufnr }) -- open in terminal
-				vim.keymap.set('n', 'd', api.fs.trash, opts('Trash'))
-				vim.keymap.set('n', 'D', api.fs.remove, opts('Remove'))
+				Keymap('n', 'd', api.fs.trash, opts('Trash'))
+				Keymap('n', 'D', api.fs.remove, opts('Remove'))
 			end,
 			hijack_unnamed_buffer_when_opening = true,
 			diagnostics = {

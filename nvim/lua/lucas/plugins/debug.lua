@@ -72,19 +72,16 @@ return {
 				}
 			}
 
-			local function set(mode, key, cmd, desc)
-				vim.keymap.set(mode, key, cmd, { silent = true, desc = desc or "" })
-			end
-			set("n", "<leader>dc", ":DapContinue<CR>", "[D]ebug [C]ontinue")
-			set("n", "<leader>ds", ":DapStepOver<CR>", "[D]ebug [S]tep Over")
-			set("n", "<leader>di", ":DapStepInto<CR>", "[D]ebug Step [I]nto")
-			set("n", "<leader>do", ":DapStepOut<CR>", "[D]ebug Step [O]ut")
-			set("n", "<leader>dS", ":DapStop<CR>", "[D]ebug [S]top")
-			set("n", "<leader>dt", ":DapToggleBreakpoint<CR>", "[D]ebug [T]oggle Breakpoint")
-			set("n", "<leader>dC", ":lua require'dap'.set_breakpoint(vim.fn.input(('Breakpoint condition: ')))<CR>", "[D]ebug [C]onditional")
-			set("n", "<leader>dl", ":lua require'dap'.set_breakpoint(nil, nil, vim.fn.input('Log point message: '))", "[D]ebug [L]og point")
-			set("n", "<leader>dr", function() dap_ui.open({ reset = true }) end, "[D]ebug ui [R]eset")
-			set("n", "<leader>du", dap_ui.toggle, "[D]ebug [U]i")
+			Keymap("n", "<leader>dc", ":DapContinue<CR>", Desc("D]ebug [C]ontinue"))
+			Keymap("n", "<leader>ds", ":DapStepOver<CR>", Desc("D]ebug [S]tep Over"))
+			Keymap("n", "<leader>di", ":DapStepInto<CR>", Desc("D]ebug Step [I]nto"))
+			Keymap("n", "<leader>do", ":DapStepOut<CR>", Desc("D]ebug Step [O]ut"))
+			Keymap("n", "<leader>dS", ":DapStop<CR>", Desc("D]ebug [S]top"))
+			Keymap("n", "<leader>dt", ":DapToggleBreakpoint<CR>", Desc("D]ebug [T]oggle Breakpoint"))
+			Keymap("n", "<leader>dC", ":lua require'dap'.set_breakpoint(vim.fn.input(('Breakpoint condition: ')))<CR>", Desc("D]ebug [C]onditional"))
+			Keymap("n", "<leader>dl", ":lua require'dap'.set_breakpoint(nil, nil, vim.fn.input('Log point message: '))", Desc("D]ebug [L]og point"))
+			Keymap("n", "<leader>dr", function() dap_ui.open({ reset = true }) end, Desc("D]ebug ui [R]eset"))
+			Keymap("n", "<leader>du", dap_ui.toggle, Desc("D]ebug [U]i"))
 		end,
 	},
 	{
@@ -131,11 +128,7 @@ return {
 				dap.configurations.go[8],
 			}
 
-			local function set(mode, key, cmd, desc)
-				vim.keymap.set(mode, key, cmd, { desc = desc or "" })
-			end
-
-			set("n", "<leader>dT", dap_go.debug_test, "[D]ebug [T]est")
+			Keymap("n", "<leader>dT", dap_go.debug_test, Desc("D]ebug [T]est"))
 		end
 	}
 }

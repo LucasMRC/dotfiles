@@ -204,11 +204,11 @@ return {
 				}
 			})
 
-			vim.keymap.set("n", "<leader>no", ":ObsidianQuickSwitch<CR>", { noremap = true, silent = true, desc = "[N]otes [o]pen"})
-			vim.keymap.set("n", "<leader>nn", ":ObsidianNew<CR>", { noremap = true, silent = true, desc = "[N]otes [n]ew"})
-			vim.keymap.set("n", "<leader>nt", ":ObsidianToday<CR>", { noremap = true, silent = true, desc = "[N]otes [t]oday"})
-			vim.keymap.set("n", "<leader>ns", ":ObsidianSearch<CR>", { noremap = true, silent = true, desc = "[N]otes [s]earch"})
-			vim.keymap.set("n", "<leader>nw", ":ObsidianWorkspace<CR>", { noremap = true, silent = true, desc = "[N]otes [w]orkspace"})
+			Keymap("n", "<leader>no", ":ObsidianQuickSwitch<CR>", Desc("[N]otes [o]pen"))
+			Keymap("n", "<leader>nn", ":ObsidianNew<CR>", Desc("[N]otes [n]ew"))
+			Keymap("n", "<leader>nt", ":ObsidianToday<CR>", Desc("[N]otes [t]oday"))
+			Keymap("n", "<leader>ns", ":ObsidianSearch<CR>", Desc("[N]otes [s]earch"))
+			Keymap("n", "<leader>nw", ":ObsidianWorkspace<CR>", Desc("[N]otes [w]orkspace"))
 		end,
 	},
 }

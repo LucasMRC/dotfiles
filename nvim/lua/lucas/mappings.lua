@@ -1,114 +1,108 @@
-local opts = { noremap = true, silent = true }
-local desc = function(description)
-	return { desc = description, noremap = true, silent = true }
-end
-local keymap = vim.keymap.set
-
 -- disable annoying commands
-keymap({ "n", "v" }, "<F1>", "<Nop>", opts)
-keymap({ "n", "v" }, "<Space>", "<Nop>", opts)
-keymap({ "n", "v" }, "<C-w>q", "<Nop>", opts) -- disable close window
-keymap("c", "W<CR>", "w<CR>", opts)           -- :W writes the file too
-keymap("c", "Q<CR>", "q<CR>", opts)           -- :Q closes the buffer too
-keymap({ "n", "v", "i" }, "<S-left>", '<Nop>', opts)
-keymap({ "n", "v", "i" }, "<S-right>", '<Nop>', opts)
-keymap({ "n", "v", "i" }, "<S-up>", '<Nop>', opts)
-keymap({ "n", "v", "i" }, "<S-down>", '<Nop>', opts)
-keymap("n", "<C-f>", "<Nop>", opts)
-keymap("n", "<C-w>q", "<Nop>", opts)
+Keymap({ "n", "v" }, "<F1>", "<Nop>", Opts)
+Keymap({ "n", "v" }, "<Space>", "<Nop>", Opts)
+Keymap({ "n", "v" }, "<C-w>q", "<Nop>", Opts) -- disable close window
+Keymap("c", "W<CR>", "w<CR>", Opts)           -- :W writes the file too
+Keymap("c", "Q<CR>", "q<CR>", Opts)           -- :Q closes the buffer too
+Keymap({ "n", "v", "i" }, "<S-left>", '<Nop>', Opts)
+Keymap({ "n", "v", "i" }, "<S-right>", '<Nop>', Opts)
+Keymap({ "n", "v", "i" }, "<S-up>", '<Nop>', Opts)
+Keymap({ "n", "v", "i" }, "<S-down>", '<Nop>', Opts)
+Keymap("n", "<C-f>", "<Nop>", Opts)
+Keymap("n", "<C-w>q", "<Nop>", Opts)
 
-keymap({ "n", "v", "i", "c" }, "<F1>", '<Nop>', opts)
-keymap({ "n", "v", "i", "c" }, "<F2>", '<Nop>', opts)
-keymap({ "n", "v", "i", "c" }, "<F3>", '<Nop>', opts)
-keymap({ "n", "v", "i", "c" }, "<F4>", '<Nop>', opts)
-keymap({ "n", "v", "i", "c" }, "<F5>", '<Nop>', opts)
-keymap({ "n", "v", "i", "c" }, "<F6>", '<Nop>', opts)
-keymap({ "n", "v", "i", "c" }, "<F7>", '<Nop>', opts)
-keymap({ "n", "v", "i", "c" }, "<F8>", '<Nop>', opts)
-keymap({ "n", "v", "i", "c" }, "<F9>", '<Nop>', opts)
-keymap({ "n", "v", "i", "c" }, "<F10>", '<Nop>', opts)
+Keymap({ "n", "v", "i", "c" }, "<F1>", '<Nop>', Opts)
+Keymap({ "n", "v", "i", "c" }, "<F2>", '<Nop>', Opts)
+Keymap({ "n", "v", "i", "c" }, "<F3>", '<Nop>', Opts)
+Keymap({ "n", "v", "i", "c" }, "<F4>", '<Nop>', Opts)
+Keymap({ "n", "v", "i", "c" }, "<F5>", '<Nop>', Opts)
+Keymap({ "n", "v", "i", "c" }, "<F6>", '<Nop>', Opts)
+Keymap({ "n", "v", "i", "c" }, "<F7>", '<Nop>', Opts)
+Keymap({ "n", "v", "i", "c" }, "<F8>", '<Nop>', Opts)
+Keymap({ "n", "v", "i", "c" }, "<F9>", '<Nop>', Opts)
+Keymap({ "n", "v", "i", "c" }, "<F10>", '<Nop>', Opts)
 
-keymap({ "i" }, "<PageUp>", "<Nop>", opts)
-keymap({ "i" }, "<PageDown>", "<Nop>", opts)
+Keymap({ "i" }, "<PageUp>", "<Nop>", Opts)
+Keymap({ "i" }, "<PageDown>", "<Nop>", Opts)
 
 -- Disable arrow keys/mouse wheel
-keymap({ "n", "v", "i" }, "<left>", '<Nop>', opts)
-keymap({ "n", "v", "i" }, "<right>", '<Nop>', opts)
-keymap({ "n", "v", "i" }, "<up>", '<Nop>', opts)
-keymap({ "n", "v", "i" }, "<down>", '<Nop>', opts)
+Keymap({ "n", "v", "i" }, "<left>", '<Nop>', Opts)
+Keymap({ "n", "v", "i" }, "<right>", '<Nop>', Opts)
+Keymap({ "n", "v", "i" }, "<up>", '<Nop>', Opts)
+Keymap({ "n", "v", "i" }, "<down>", '<Nop>', Opts)
 
 -- Diagnostic keymaps
-keymap("n", "[d", function() vim.diagnostic.jump({count=-1,float=true}) end, desc("Go to previous diagnostic"))
-keymap("n", "]d", function() vim.diagnostic.jump({count=1,float=true}) end, desc("Go to next diagnostic"))
-keymap("n", "<leader>e", vim.diagnostic.open_float, desc("[E]rror messages"))
+Keymap("n", "[d", function() vim.diagnostic.jump({count=-1,float=true}) end, Desc("Go to previous diagnostic"))
+Keymap("n", "]d", function() vim.diagnostic.jump({count=1,float=true}) end, Desc("Go to next diagnostic"))
+Keymap("n", "<leader>e", vim.diagnostic.open_float, Desc("[E]rror messages"))
 
 -- Cancel terminal mode
-keymap("t", "<C-q>", "<C-\\><C-n>", desc("Exit terminal mode"))
+Keymap("t", "<C-q>", "<C-\\><C-n>", Desc("Exit terminal mode"))
 
 -- Move lines up and down
-keymap("n", "<A-j>", ":m .+1<CR>==", desc("Move line down"))
-keymap("n", "<A-k>", ":m .-2<CR>==", desc("Move line up"))
+Keymap("n", "<A-j>", ":m .+1<CR>==", Desc("Move line down"))
+Keymap("n", "<A-k>", ":m .-2<CR>==", Desc("Move line up"))
 
-keymap({ "x", "v" }, "<A-j>", ":m '>+1<CR>gv=gv", desc("Move lines down"))
-keymap({ "x", "v" }, "<A-k>", ":m '<-2<CR>gv=gv", desc("Move lines up"))
+Keymap({ "x", "v" }, "<A-j>", ":m '>+1<CR>gv=gv", Desc("Move lines down"))
+Keymap({ "x", "v" }, "<A-k>", ":m '<-2<CR>gv=gv", Desc("Move lines up"))
 
 -- Center cursor when jumping through the page
-keymap("n", "<C-d>", "<C-d>zz", desc("Move half page down"))
-keymap("n", "<C-u>", "<C-u>zz", desc("Move half page up"))
-keymap("n", "n", "nzz", desc("Jump to next match"))
-keymap("n", "N", "Nzz", desc("Jump to previous match"))
+Keymap("n", "<C-d>", "<C-d>zz", Desc("Move half page down"))
+Keymap("n", "<C-u>", "<C-u>zz", Desc("Move half page up"))
+Keymap("n", "n", "nzz", Desc("Jump to next match"))
+Keymap("n", "N", "Nzz", Desc("Jump to previous match"))
 
 -- Center cursor when moving using brackets
-keymap("n", "{", "[{zz", desc("Move to matching bracket"))
-keymap("n", "}", "]}zz", desc("Move to matching bracket"))
+Keymap("n", "{", "[{zz", Desc("Move to matching bracket"))
+Keymap("n", "}", "]}zz", Desc("Move to matching bracket"))
 
 -- Clean search highlights
-keymap("n", "<C-c>", ":noh<CR>", desc("Clear search highlights"))
+Keymap("n", "<C-c>", ":noh<CR>", Desc("Clear search highlights"))
 
 -- Open file tree
-keymap("n", "<leader><Space>", ":NvimTreeToggle<CR>", desc("Toggle file tree"))
+Keymap("n", "<leader><Space>", ":NvimTreeToggle<CR>", Desc("Toggle file tree"))
 
 -- Resize windows
-keymap("n", "<C-Left>", ":vertical resize +2<CR>", desc("Resize window left"))
-keymap("n", "<C-Down>", ":resize +2<CR>", desc("Resize window down"))
-keymap("n", "<C-Up>", ":resize -2<CR>", desc("Resize window up"))
-keymap("n", "<C-Right>", ":vertical resize -2<CR>", desc("Resize window right"))
+Keymap("n", "<C-Left>", ":vertical resize +2<CR>", Desc("Resize window left"))
+Keymap("n", "<C-Down>", ":resize +2<CR>", Desc("Resize window down"))
+Keymap("n", "<C-Up>", ":resize -2<CR>", Desc("Resize window up"))
+Keymap("n", "<C-Right>", ":vertical resize -2<CR>", Desc("Resize window right"))
 
 -- Navigate between buffers
-keymap("n", "<C-PageUp>", ":bnext<CR>", desc("Next buffer"))
-keymap("n", "<C-PageDown>", ":bprevious<CR>", desc("Previous buffer"))
-keymap("n", "<C-q>", ":bd<CR>", desc("Close buffer"))
+Keymap("n", "<C-PageUp>", ":bnext<CR>", Desc("Next buffer"))
+Keymap("n", "<C-PageDown>", ":bprevious<CR>", Desc("Previous buffer"))
+Keymap("n", "<C-q>", ":bd<CR>", Desc("Close buffer"))
 
 -- One-key persistent indenting
-keymap("v", "<", "<gv", desc("Indent left"))
-keymap("v", ">", ">gv", desc("Indent right"))
+Keymap("v", "<", "<gv", Desc("Indent left"))
+Keymap("v", ">", ">gv", Desc("Indent right"))
 
 -- Persistent pasting
-keymap("v", "p", '"_dP', desc("Paste without yanking"))
+Keymap("v", "p", '"_dP', Desc("Paste without yanking"))
 
 -- Copy to clipboard
-keymap({ "v", "n" }, "<A-y>", "\"+y", desc("Copy to clipboard"))
+Keymap({ "v", "n" }, "<A-y>", "\"+y", Desc("Copy to clipboard"))
 
 -- Move down and up by visual lines
-keymap({ "n", "v" }, "<C-j>", "gj", desc("Move down by visual line"))
-keymap({ "n", "v" }, "<C-k>", "gk", desc("Move up by visual line"))
-keymap({ "n", "v" }, "<C-l>", "$", desc("Move to end of line"))
-keymap({ "n", "v" }, "<C-h>", "^", desc("Move to start of line"))
+Keymap({ "n", "v" }, "<C-j>", "gj", Desc("Move down by visual line"))
+Keymap({ "n", "v" }, "<C-k>", "gk", Desc("Move up by visual line"))
+Keymap({ "n", "v" }, "<C-l>", "$", Desc("Move to end of line"))
+Keymap({ "n", "v" }, "<C-h>", "^", Desc("Move to start of line"))
 
 -- Autoformat
-keymap("n", "<leader>=", "gg=G<C-o>", desc("Autoformat"))
+Keymap("n", "<leader>=", "gg=G<C-o>", Desc("Autoformat"))
 
 -- Number increment/decrement
-keymap({ "n", "v" }, "++", "<C-a>", desc("Increment number under cursor"))
-keymap({ "n", "v" }, "--", "<C-x>", desc("Decrement number under cursor"))
+Keymap({ "n", "v" }, "++", "<C-a>", Desc("Increment number under cursor"))
+Keymap({ "n", "v" }, "--", "<C-x>", Desc("Decrement number under cursor"))
 
 -- Splits
-keymap("n", "<leader>pv", "<C-w>v", desc("[P]ane: [V]ertical split"))
-keymap("n", "<leader>ph", "<C-w>s", desc("[P]ane: [H]orizontal split"))
-keymap("n", "<leader>pq", "<C-w>q", desc("[P]ane: [Q]uit"))
-keymap("n", "<leader>pe", "<C-w>=", desc("[P]ane: [E]qual size"))
-keymap("n", "<leader>pm", "<C-w>o", desc("[P]ane: [M]aximize"))
+Keymap("n", "<leader>pv", "<C-w>v", Desc("[P]ane: [V]ertical split"))
+Keymap("n", "<leader>ph", "<C-w>s", Desc("[P]ane: [H]orizontal split"))
+Keymap("n", "<leader>pq", "<C-w>q", Desc("[P]ane: [Q]uit"))
+Keymap("n", "<leader>pe", "<C-w>=", Desc("[P]ane: [E]qual size"))
+Keymap("n", "<leader>pm", "<C-w>o", Desc("[P]ane: [M]aximize"))
 
 -- QuickFix List
-keymap("n", "<leader>qn", ":cn<CR>", desc("[Q]uickFix [N]ext"))
-keymap("n", "<leader>qq", ":cw<CR>", desc("[Q]uickfix list"))
+Keymap("n", "<leader>qn", ":cn<CR>", Desc("[Q]uickFix [N]ext"))
+Keymap("n", "<leader>qq", ":cw<CR>", Desc("[Q]uickfix list"))

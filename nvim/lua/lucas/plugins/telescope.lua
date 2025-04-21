@@ -77,29 +77,6 @@ return { -- Fuzzy Finder (files, lsp, etc)
 				file_sorter = require("telescope.sorters").get_fuzzy_file,
 				winblend = 0,
 				buffer_previewer_maker = require("telescope.previewers").buffer_previewer_maker,
-				-- preview = {
-				-- mime_hook = function(filepath, bufnr, opts)
-				-- 	local ok, image_api = pcall(require, 'image')
-				-- 	if not ok then return end
-				--
-				-- 	local is_image = function(fp)
-				-- 		local image_extensions = { 'png', 'jpg', 'svg', 'webm', 'jpeg', 'gif' } -- Supported image formats
-				-- 		local split_path = vim.split(fp:lower(), '.', { plain = true })
-				-- 		local extension = split_path[#split_path]
-				-- 		return vim.tbl_contains(image_extensions, extension)
-				-- 	end
-				-- 	if is_image(filepath) then
-				-- 		local image_in_preview = image_api.from_file(filepath, {
-				-- 			buffer = bufnr,
-				-- 			window = opts.winid
-				-- 		})
-				-- 		image_in_preview:render()
-				-- 	else
-				-- 		require("telescope.previewers.utils").set_preview_message(bufnr, opts.winid,
-				-- 			"Binary cannot be previewed")
-				-- 	end
-				-- end
-				-- }
 			},
 			pickers = {
 				find_files = {
@@ -171,22 +148,6 @@ return { -- Fuzzy Finder (files, lsp, etc)
 		telescope.load_extension("fzf")
 		telescope.load_extension("live_grep_args")
 		telescope.load_extension("git_worktree")
-		local builtin = require("telescope.builtin")
-
-		vim.keymap.set("n", "<leader>sf", builtin.find_files, { desc = "[S]earch [F]iles" })
-		vim.keymap.set("n", "<leader>sB", builtin.git_branches, { desc = "[S]earch [B]ranches" })
-		vim.keymap.set("n", "<leader>sh", builtin.help_tags, { desc = "[S]earch [H]elp" })
-		vim.keymap.set("n", "<leader>sw", builtin.grep_string, { desc = "[S]earch current [W]ord" })
-		vim.keymap.set("n", "<leader>sg", telescope.extensions.live_grep_args.live_grep_args, { silent = true, desc = "[S]earch by [G]rep" }) -- requires ripgrep installed
-		vim.keymap.set("n", "<leader>sd", builtin.diagnostics, { desc = "[S]earch [D]iagnostics" })
-		vim.keymap.set("n", "<leader>se", builtin.symbols, { desc = "[S]earch [E]moji" })
-		vim.keymap.set("n", "<leader>su", "<CMD>Telescope undo<CR>", { desc = "[S]earch [U]ndo" })
-		vim.keymap.set("n", "<leader>sb", builtin.buffers, { desc = "[S]earch [B]uffers" })
-		vim.keymap.set("n", "<leader><tab>", builtin.commands, { desc = "[S]earch Commands", noremap = false })
-		vim.keymap.set("n", "<leader>sS", builtin.git_status, { desc = "[S]earch Git [S]tatus" })
-		vim.keymap.set("n", "<leader>sk", builtin.keymaps, { desc = "[S]earch [K]eymaps" })
-		vim.keymap.set("n", "<leader>sc", builtin.git_commits, { desc = "[S]earch [C]ommits" })
-		vim.keymap.set("n", "<leader>st", telescope.extensions.git_worktree.git_worktree, { desc = "[S]earch [T]rees" })
 
 		-- Worktree hooks
 		local Hooks = require("git-worktree.hooks")
@@ -195,6 +156,20 @@ return { -- Fuzzy Finder (files, lsp, etc)
 		Hooks.register(Hooks.type.SWITCH, function (path, prev_path)
 			update_on_switch(path, prev_path)
 		end)
+
+		local builtin = require("telescope.builtin")
+
+		Keymap("n", "<leader>sf", builtin.find_files, Desc("[S]earch [F]iles"))
+		Keymap("n", "<leader>sB", builtin.git_branches, Desc("[S]earch [B]ranches"))
+		Keymap("n", "<leader>sh", builtin.help_tags, Desc("[S]earch [H]elp"))
+		Keymap("n", "<leader>sw", builtin.grep_string, Desc("[S]earch current [W]ord"))
+		Keymap("n", "<leader>sg", telescope.extensions.live_grep_args.live_grep_args, Desc("[S]earch by [G]rep")) -- requires ripgrep installed
+		Keymap("n", "<leader>sd", builtin.diagnostics, Desc("[S]earch [D]iagnostics"))
+		Keymap("n", "<leader>se", builtin.symbols, Desc("[S]earch [E]moji"))
+		Keymap("n", "<leader>su", "<CMD>Telescope undo<CR>", Desc("[S]earch [U]ndo"))
+		Keymap("n", "<leader>st", "<CMD>Telescope git_worktree<CR>", Desc("[S]earch [T]ree"))
+		Keymap("n", "<leader>sb", builtin.buffers, Desc("[S]earch [B]uffers"))
+		Keymap("n", "<leader><tab>", builtin.commands, Desc("[S]earch Commands"))
 
 		vim.api.nvim_create_autocmd("User", {
 			pattern = "TelescopePreviewerLoaded",

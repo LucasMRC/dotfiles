@@ -1,30 +1,19 @@
-local function map(mode, l, r, opts)
-	opts = { desc = opts.desc or "", noremap = opts.noremap or true, silent = opts.silent or true }
-	vim.keymap.set(mode, l, r, opts)
-end
-
 return {
-	-- -- "ThePrimeagen/git-worktree.nvim", -- git worktrees
-	-- {
-	-- 	'polarmutex/git-worktree.nvim',
-	-- 	version = '^2',
-	-- 	dependencies = { "nvim-lua/plenary.nvim" }
-	-- },
 	{
 		'akinsho/git-conflict.nvim',
 		version = "*",
 		config = function()
 			require("git-conflict").setup({})
-			map("n", "<leader>gq", ":GitConflictListQf<CR>", { desc = "[G]it [Q]uickfix" })
+			Keymap("n", "<leader>gq", ":GitConflictListQf<CR>", Desc("[G]it [Q]uickfix"))
 		end
 	},
 	{
 		"tpope/vim-fugitive",      -- git
 		event = "VeryLazy",
 		config = function()
-			map("n", "<leader>gg", ":Git<CR>", { desc = "[G]it status" })
-			map("n", "<leader>gb", ":Git blame<CR>", { desc = "[G]it [B]lame" })
-			map("n", "<leader>gd", ":Gvdiffsplit<CR>", { desc = "[G]it [D]iff" })
+			Keymap("n", "<leader>gg", ":Git<CR>", Desc("[G]it status"))
+			Keymap("n", "<leader>gb", ":Git blame<CR>", Desc("[G]it [B]lame"))
+			Keymap("n", "<leader>gd", ":Gvdiffsplit<CR>", Desc("[G]it [D]iff"))
 		end
 	},
 	{
@@ -46,14 +35,14 @@ return {
 				on_attach = function(bufnr)
 					local gs = package.loaded.gitsigns
 
-					local function mapbf(mode, l, r, opts)
+					local function opts(opts)
 						opts = { desc = opts.desc or "", noremap = opts.noremap or true, silent = opts.silent or true }
 						opts.buffer = bufnr
-						vim.keymap.set(mode, l, r, opts)
+						return opts
 					end
 
 					-- Navigation
-					mapbf("n", "]c", function()
+					Keymap("n", "]c", function()
 						if vim.wo.diff then
 							return "]c"
 						end
@@ -61,9 +50,9 @@ return {
 							gs.next_hunk()
 						end)
 						return "<Ignore>"
-					end, { expr = true })
+					end, opts({ expr = true }))
 
-					mapbf("n", "[c", function()
+					Keymap("n", "[c", function()
 						if vim.wo.diff then
 							return "[c"
 						end
@@ -71,27 +60,27 @@ return {
 							gs.prev_hunk()
 						end)
 						return "<Ignore>"
-					end, { expr = true })
+					end, opts({ expr = true }))
 
 					-- Actions
-					mapbf("n", "<leader>hs", gs.stage_hunk, { desc = "[H]unk [S]tage" })
-					mapbf("n", "<leader>hr", gs.reset_hunk, { desc = "[H]unk [R]eset" })
-					mapbf("v", "<leader>hs", function()
+					Keymap("n", "<leader>hs", gs.stage_hunk, Desc("[H]unk [S]tage"))
+					Keymap("n", "<leader>hr", gs.reset_hunk, Desc("[H]unk [R]eset"))
+					Keymap("v", "<leader>hs", function()
 						gs.stage_hunk({ vim.fn.line("."), vim.fn.line("v") })
-					end, { desc = "[H]unk [S]tage" })
-					mapbf("v", "<leader>hr", function()
+					end, Desc("[H]unk [S]tage"))
+					Keymap("v", "<leader>hr", function()
 						gs.reset_hunk({ vim.fn.line("."), vim.fn.line("v") })
-					end, { desc = "[H]unk [R]eset" })
-					mapbf("n", "<leader>hu", gs.undo_stage_hunk, { desc = "[H]unk [U]nstage" })
-					mapbf("n", "<leader>hp", gs.preview_hunk, { desc = "[H]unk [P]review" })
-					mapbf("n", "<leader>hb", function()
+					end, Desc("[H]unk [R]eset"))
+					Keymap("n", "<leader>hu", gs.undo_stage_hunk, Desc("[H]unk [U]nstage"))
+					Keymap("n", "<leader>hp", gs.preview_hunk, Desc("[H]unk [P]review"))
+					Keymap("n", "<leader>hb", function()
 						gs.blame_line({ full = true })
-					end, { desc = "[H]unk [B]lame" })
-					mapbf("n", "<leader>htb", gs.toggle_current_line_blame, { desc = "[H]unk: [T]oggle [B]lame" })
-					mapbf("n", "<leader>htd", gs.toggle_deleted, { desc = "[H]unk: [T]oggle [D]eleted" })
+					end, Desc("[H]unk [B]lame"))
+					Keymap("n", "<leader>htb", gs.toggle_current_line_blame, Desc("[H]unk: [T]oggle [B]lame"))
+					Keymap("n", "<leader>htd", gs.toggle_deleted, Desc("[H]unk: [T]oggle [D]eleted"))
 
 					-- Text object
-					mapbf({ "o", "x" }, "ih", ":<C-U>Gitsigns select_hunk<CR>", {})
+					Keymap({ "o", "x" }, "ih", ":<C-U>Gitsigns select_hunk<CR>", {})
 				end,
 			})
 		end,
