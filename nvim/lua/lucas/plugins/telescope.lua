@@ -5,7 +5,8 @@ return { -- Fuzzy Finder (files, lsp, etc)
 	dependencies = {
 		{
 			'polarmutex/git-worktree.nvim',
-			branch = 'devel'
+			version = '^2',
+			dependencies = { "nvim-lua/plenary.nvim" }
 		},
 		"nvim-lua/plenary.nvim",
 		{ -- If encountering errors, see telescope-fzf-native README for install instructions
@@ -148,14 +149,14 @@ return { -- Fuzzy Finder (files, lsp, etc)
 		telescope.load_extension("fzf")
 		telescope.load_extension("live_grep_args")
 		telescope.load_extension("git_worktree")
-
-		-- Worktree hooks
 		local Hooks = require("git-worktree.hooks")
-		local update_on_switch = Hooks.builtins.update_current_buffer_on_switch
-
+		-- Move to worktree directory on switch
 		Hooks.register(Hooks.type.SWITCH, function (path, prev_path)
-			update_on_switch(path, prev_path)
+			local tree_api = require("nvim-tree.api")
+			tree_api.tree.close()
+			Hooks.builtins.update_current_buffer_on_switch(path, prev_path)
 		end)
+		--
 
 		local builtin = require("telescope.builtin")
 
