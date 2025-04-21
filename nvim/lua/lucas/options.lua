@@ -86,3 +86,13 @@ set.winborder = 'single'
 
 set.formatoptions:remove "o" -- remove comment prefix on ''
 vim.o.exrc = false -- enable per-directory .vimrc files
+
+-- folding
+set.foldcolumn = '0'
+set.foldnestmax = 4
+set.foldlevel = 99
+set.foldlevelstart = 1
+set.foldenable = true
+set.foldmethod = "expr"
+set.foldexpr = "v:lua.vim.treesitter.foldexpr()"
+set.foldtext = 'foldtext()'
