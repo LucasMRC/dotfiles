@@ -17,7 +17,7 @@ if not status_ok then
 	return
 end
 
-require("lazy").setup({
+lazyvim.setup({
 	spec = {
 		-- import your plugins
 		{ import = "lucas/plugins" },

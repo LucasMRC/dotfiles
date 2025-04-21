@@ -17,7 +17,8 @@ set.autoindent = true
 set.smartindent = true
 set.expandtab = false
 
-vim.o.breakindent = true
+set.breakindent = true
+set.linebreak = true
 --
 
 -- Big undo history
@@ -69,13 +70,12 @@ set.cursorline = true         -- highlight the current line
 
 set.laststatus = 3            -- show status line always and only on last window
 set.signcolumn = "yes"        -- always show the sign column, otherwise it would shift the text each time
-set.guifont = "monospace:h17" -- the font used in graphical neovim applications
 set.title = true
 
 set.conceallevel = 1    -- markdown syntax concealing
 set.concealcursor = "c" -- markdown syntax concealing visibility
 
-g.editorconfig = false  -- disable .editorconfig file search
+g.editorconfig = true  -- disable .editorconfig file search
 
 set.backspace = "indent,eol,start"
 
@@ -85,4 +85,4 @@ set.list = true
 set.winborder = 'single'
 
 set.formatoptions:remove "o" -- remove comment prefix on ''
--- vim.o.exrc = true -- enable per-directory .vimrc files
+vim.o.exrc = false -- enable per-directory .vimrc files

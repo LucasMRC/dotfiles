@@ -23,7 +23,7 @@ return {
 	},
 	{
 		"windwp/nvim-ts-autotag",         -- auto close html tags
-		ft = { "html", "htmlhugo", "svelte" },
+		ft = { "html", "htmlhugo", "gohtmltmpl", "svelte" },
 	},
 	{
 		"fatih/vim-go",
