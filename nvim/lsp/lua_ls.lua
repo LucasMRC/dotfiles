@@ -1,6 +1,6 @@
 return {
 	cmd = { 'lua-language-server' },
-	root_markers = { '.luarc.json', 'nvim' },
+	root_markers = { 'nvim' },
 	filetypes = { 'lua' },
 	settings = {
 		Lua = {
