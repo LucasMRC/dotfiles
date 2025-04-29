@@ -20,10 +20,6 @@ local lss = {
 }
 local capabilities = vim.lsp.protocol.make_client_capabilities()
 capabilities = vim.tbl_deep_extend('force', capabilities, require('blink.cmp').get_lsp_capabilities({}, false))
-capabilities.textDocument.foldingRange = {
-    dynamicRegistration = false,
-    lineFoldingOnly = true
-}
 vim.lsp.config('*', {
 	capabilities = capabilities
 })
@@ -67,6 +63,11 @@ vim.api.nvim_create_autocmd("LspAttach", {
 					callback = vim.lsp.buf.clear_references,
 				})
 			end
+			-- LSP foldexpr
+			if client:supports_method('textDocument/foldingRange') then
+				local win = vim.api.nvim_get_current_win()
+				vim.wo[win][0].foldexpr = 'v:lua.vim.lsp.foldexpr()'
+			end
 		end
 		-- delete NO NAME buffers
 		local function is_no_name_buf(buf)
@@ -88,7 +89,6 @@ vim.api.nvim_create_autocmd("LspAttach", {
 				end
 			end,
 		})
-
 	end,
 })
 
