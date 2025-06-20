@@ -1,2 +1,1 @@
-#!/bin/bash
-i3lock -c 111111
+../scripts/lock.sh
