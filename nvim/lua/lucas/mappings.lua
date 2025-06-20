@@ -105,4 +105,5 @@ Keymap("n", "<leader>pm", "<C-w>o", Desc("[P]ane: [M]aximize"))
 
 -- QuickFix List
 Keymap("n", "<leader>qn", ":cn<CR>", Desc("[Q]uickFix [N]ext"))
+Keymap("n", "<leader>qp", ":cp<CR>", Desc("[Q]uickFix [P]revious"))
 Keymap("n", "<leader>qq", ":cw<CR>", Desc("[Q]uickfix list"))

@@ -64,10 +64,10 @@ vim.api.nvim_create_autocmd("LspAttach", {
 				})
 			end
 			-- LSP foldexpr
-			if client:supports_method('textDocument/foldingRange') then
-				local win = vim.api.nvim_get_current_win()
-				vim.wo[win][0].foldexpr = 'v:lua.vim.lsp.foldexpr()'
-			end
+			-- if client:supports_method('textDocument/foldingRange') then
+			-- 	local win = vim.api.nvim_get_current_win()
+			-- 	vim.wo[win][0].foldexpr = 'v:lua.vim.lsp.foldexpr()'
+			-- end
 		end
 		-- delete NO NAME buffers
 		local function is_no_name_buf(buf)

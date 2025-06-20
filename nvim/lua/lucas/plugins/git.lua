@@ -1,17 +1,9 @@
 return {
 	{
-		'akinsho/git-conflict.nvim',
-		version = "*",
-		config = function()
-			require("git-conflict").setup({})
-			Keymap("n", "<leader>gq", ":GitConflictListQf<CR>", Desc("[G]it [Q]uickfix"))
-		end
-	},
-	{
 		"tpope/vim-fugitive",      -- git
 		event = "VeryLazy",
 		config = function()
-			Keymap("n", "<leader>gg", ":Git<CR>", Desc("[G]it status"))
+			Keymap("n", "<leader>gg", ":Git<CR>", Desc("[G]it dashboard"))
 			Keymap("n", "<leader>gb", ":Git blame<CR>", Desc("[G]it [B]lame"))
 			Keymap("n", "<leader>gd", ":Gvdiffsplit<CR>", Desc("[G]it [D]iff"))
 		end

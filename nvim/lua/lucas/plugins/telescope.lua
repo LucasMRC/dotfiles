@@ -30,6 +30,13 @@ return { -- Fuzzy Finder (files, lsp, etc)
 			-- For major updates, this must be adjusted manually.
 			version = "^1.0.0",
 		},
+		{
+			"nvim-telescope/telescope.nvim",
+			dependencies = {
+				"nvim-lua/plenary.nvim",
+				"Snikimonkd/telescope-git-conflicts.nvim",
+			},
+		}
 	},
 	config = function()
 		local status_ok, telescope = pcall(require, "telescope")
@@ -149,6 +156,7 @@ return { -- Fuzzy Finder (files, lsp, etc)
 		telescope.load_extension("fzf")
 		telescope.load_extension("live_grep_args")
 		telescope.load_extension("git_worktree")
+        telescope.load_extension("conflicts")
 		local Hooks = require("git-worktree.hooks")
 		-- Move to worktree directory on switch
 		Hooks.register(Hooks.type.SWITCH, function (path, prev_path)
@@ -171,6 +179,9 @@ return { -- Fuzzy Finder (files, lsp, etc)
 		Keymap("n", "<leader>st", "<CMD>Telescope git_worktree<CR>", Desc("[S]earch [T]ree"))
 		Keymap("n", "<leader>sb", builtin.buffers, Desc("[S]earch [B]uffers"))
 		Keymap("n", "<leader><tab>", builtin.commands, Desc("[S]earch Commands"))
+		Keymap("n", "<leader>gs", builtin.git_status, Desc("[G]it [S]tatus"))
+		Keymap("n", "<leader>gc", builtin.git_commits, Desc("[G]it [C]ommits"))
+		Keymap("n", "<leader>sc", "<CMD>Telescope conflicts<CR>", Desc("[S]earch [C]onflicts"))
 
 		vim.api.nvim_create_autocmd("User", {
 			pattern = "TelescopePreviewerLoaded",

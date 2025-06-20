@@ -4,7 +4,7 @@ return { -- Useful plugin to show you pending keybinds.
 	config = function() -- This is the function that runs AFTER loading
 		local wk = require("which-key")
 		wk.setup({
-			delay = 1500,
+			delay = 2500,
 			notify = false,
 		})
 		wk.add({
