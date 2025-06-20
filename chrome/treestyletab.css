@@ -1,22 +1,39 @@
+#normal-tabs-container {
+  margin-block-start: calc(var(--pinned-tabs-area-size) + 8px);
+}
+
 tab-twisty {
-	display: none;
+  display: none;
 }
 
 tab-item tab-closebox {
-	display: none;
+  display: none;
 }
 
 tab-item tab-favicon {
-	position: relative;
-	translate: 50%;
-	bottom: 1px;
+  position: relative;
+  translate: 50%;
+  bottom: 1px;
+}
+
+tab-item tab-item-substance span.background {
+  background: rgba(83,83,83, 0.7);
+}
+
+tab-item.active tab-item-substance span.background {
+  background: rgb(106,106,106);
 }
 
 .after-tabs.vbox {
-	display: none;
+  display: none;
 }
 
 tab-item.pinned {
-	width: 100%; 
-	max-width: 100%;
+  width: 100%;
+  max-width: 100%;
+}
+
+tab-item.pinned tab-favicon.favicon {
+  translate: 0;
+  left: 50%;
 }
