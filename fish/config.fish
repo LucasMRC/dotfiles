@@ -83,6 +83,7 @@ alias m='man -k . | fzf --preview "echo {} | awk \'{ print $1 }\' | xargs man" -
 alias f='fzf --preview "cat {}" --preview-window "right,wrap" | xargs nvim'
 alias t='sh ~/.config/scripts/tmux-launcher.sh'
 alias vpn='sh ~/.config/scripts/vpn.sh'
+alias keys-restore='setxkbmap -layout us -variant intl'
 
 # Set up arandr layout aliases
 set SCREENS (ls ~/.screenlayout/ | sed 's/.sh//g')
