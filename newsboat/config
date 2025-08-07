@@ -10,23 +10,19 @@ unbind-key G # bound to `rev-sort` by default
 unbind-key r
 
 # bind keys - vim style
-bind-key k up			feedlist
-bind-key j down			feedlist
-bind-key k up			article
-bind-key j down			article
-bind-key j next			articlelist
-bind-key k prev			articlelist
-bind-key l next-feed	articlelist
-bind-key h prev-feed	articlelist
+bind-key k up
+bind-key j down
+bind-key l open
+bind-key h quit
+bind-key ^D pagedown
+bind-key ^U pageup
 bind-key g home
 bind-key G end
-bind-key o open
 
 # other bindings
+bind-key o show-urls
 bind-key r toggle-article-read
 bind-key I toggle-show-read-feeds
-
-# show-read-articles 
 
 # theme
 color listnormal         color15 default
@@ -49,3 +45,7 @@ highlight article "https?://[^ ]+" color4 default
 highlight article "\[[0-9]+\]" color6 default bold
 
 auto-reload yes
+text-width 80
+reload-threads 11
+browser "librewolf %u"
+download-full-page yes
